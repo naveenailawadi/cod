@@ -1,0 +1,648 @@
+{
+	"Actor": {
+		"types": ["character"],
+
+		"templates": {
+			"data": {
+				"attributes": {
+					"int": {
+						"type": "Number",
+						"label": "Intelligence",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"wits": {
+						"type": "Number",
+						"label": "Wits",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"res": {
+						"type": "Number",
+						"label": "Resolve",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"str": {
+						"type": "Number",
+						"label": "Strength",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"dex": {
+						"type": "Number",
+						"label": "Dexterity",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"sta": {
+						"type": "Number",
+						"label": "Stamina",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"pre": {
+						"type": "Number",
+						"label": "Presence",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"man": {
+						"type": "Number",
+						"label": "Manipulation",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"com": {
+						"type": "Number",
+						"label": "Composure",
+						"current": 1,
+						"max": 5,
+						"min": 1,
+						"proficient": 0
+					},
+					"hp": {
+						"type": "Number",
+						"label": "Health",
+						"current": 5,
+						"max": 10,
+						"min": 1,
+						"proficient": 0
+					},
+					"wp": {
+						"type": "Number",
+						"label": "Willpower",
+						"current": 5,
+						"max": 10,
+						"min": 1,
+						"proficient": 0
+					},
+					"moral": {
+						"type": "Number",
+						"label": "Integrity",
+						"current": 7,
+						"max": 10,
+						"min": 0,
+						"proficient": 0
+					},
+					"size": {
+						"type": "Number",
+						"label": "Size",
+						"current": 5,
+						"max": 10,
+						"min": 0,
+						"proficient": 0
+					},
+					"speed": {
+						"type": "Number",
+						"label": "Speed",
+						"current": 5,
+						"max": 10,
+						"min": 0,
+						"proficient": 0
+					},
+					"def": {
+						"type": "Number",
+						"label": "Defense",
+						"current": 0,
+						"max": 10,
+						"min": 0,
+						"proficient": 0
+					},
+					"armor": {
+						"type": "Number",
+						"label": "Armor",
+						"current": 0,
+						"max": 10,
+						"min": 0,
+						"proficient": 0
+					},
+					"init": {
+						"type": "Number",
+						"label": "Initiative",
+						"current": 0,
+						"max": 20,
+						"min": 0,
+						"proficient": 0
+					},
+					"exp": {
+						"type": "Number",
+						"label": "Experience",
+						"current": 0,
+						"max": 10,
+						"min": 0,
+						"proficient": 0
+					},
+					"details": {
+						"age": {
+							"type": "Number",
+							"label": "Age",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"player": {
+							"type": "Number",
+							"label": "Player",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"virtue": {
+							"type": "Number",
+							"label": "Virtue",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"vice": {
+							"type": "Number",
+							"label": "Vice",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"concept": {
+							"type": "Number",
+							"label": "Concept",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"chronicle": {
+							"type": "Number",
+							"label": "Chronicle",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"faction": {
+							"type": "Number",
+							"label": "Faction",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"group": {
+							"type": "Number",
+							"label": "Group",
+							"current": 1,
+							"max": 500,
+							"min": 1,
+							"proficient": 0
+						},
+						"height": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"weight": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"haircolor": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"eyecolor": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"birthplace": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"allies": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"contacts": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"enemies": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"residence": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						},
+						"vehicles": {
+							"type": "String",
+							"label": "Availability",
+							"value": ""
+						}
+					}
+				},
+				"skills": {
+					"academics": {
+						"type": "Number",
+						"label": "Academics",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"computer": {
+						"type": "Number",
+						"label": "Computer",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"crafts": {
+						"type": "Number",
+						"label": "Crafts",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"investigation": {
+						"type": "Number",
+						"label": "Investigation",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"medicine": {
+						"type": "Number",
+						"label": "Medicine",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"occult": {
+						"type": "Number",
+						"label": "Occult",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"politics": {
+						"type": "Number",
+						"label": "Politics",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"science": {
+						"type": "Number",
+						"label": "Science",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"athletics": {
+						"type": "Number",
+						"label": "Athletics",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"brawl": {
+						"type": "Number",
+						"label": "Brawl",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"drive": {
+						"type": "Number",
+						"label": "Drive",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"firearms": {
+						"type": "Number",
+						"label": "Firearms",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"larceny": {
+						"type": "Number",
+						"label": "Larceny",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"stealth": {
+						"type": "Number",
+						"label": "Stealth",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"survival": {
+						"type": "Number",
+						"label": "Survival",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"weaponry": {
+						"type": "Number",
+						"label": "Weaponry",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"animalken": {
+						"type": "Number",
+						"label": "Animal Ken",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"empathy": {
+						"type": "Number",
+						"label": "Empathy",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"expression": {
+						"type": "Number",
+						"label": "Expression",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"intimidation": {
+						"type": "Number",
+						"label": "Intimidation",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"persuasion": {
+						"type": "Number",
+						"label": "Persuasion",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"socialize": {
+						"type": "Number",
+						"label": "Socialize",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"streetwise": {
+						"type": "Number",
+						"label": "Streetwise",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					},
+					"subterfuge": {
+						"type": "Number",
+						"label": "Subterfuge",
+						"current": 0,
+						"max": 5,
+						"min": 0,
+						"proficient": 0
+					}
+				},
+				"rolls": []
+			}
+		},
+
+		"character": {
+			"templates": ["data"],
+			"vamp-bg": {
+				"virtue": 0,
+				"vice": 0,
+				"clan": 0,
+				"bloodline": 0,
+				"covenant": 0,
+				"concept": 0,
+				"willpower_current": 0,
+				"willpower_max": 0,
+				"blood_potency": 0
+			}
+		}
+	},
+
+	"Item": {
+		"types": [
+			"armor",
+			"condition",
+			"dread",
+			"equipment",
+			"merit",
+			"discipline",
+			"service",
+			"tilt",
+			"weapon"
+		],
+		"data": {
+			"description": {
+				"type": "String",
+				"label": "Description",
+				"value": ""
+			}
+		},
+		"armor": {
+			"rating": {
+				"type": "String",
+				"label": "Rating",
+				"value": ""
+			},
+			"str": {
+				"type": "String",
+				"label": "Strength",
+				"value": ""
+			},
+			"def": {
+				"type": "String",
+				"label": "Defense",
+				"value": ""
+			},
+			"speed": {
+				"type": "String",
+				"label": "Speed",
+				"value": ""
+			},
+			"availability": {
+				"type": "String",
+				"label": "Availability",
+				"value": ""
+			},
+			"coverage": {
+				"type": "String",
+				"label": "Coverage",
+				"value": ""
+			}
+		},
+		"condition": {},
+		"dread": {},
+		"equipment": {
+			"bonus": {
+				"type": "String",
+				"label": "Dice Bonus",
+				"value": ""
+			},
+			"durability": {
+				"type": "String",
+				"label": "Durability",
+				"value": ""
+			},
+			"size": {
+				"type": "String",
+				"label": "Size",
+				"value": ""
+			},
+			"structure": {
+				"type": "String",
+				"label": "Structure",
+				"value": ""
+			},
+			"availability": {
+				"type": "String",
+				"label": "Availability",
+				"value": ""
+			}
+		},
+		"merit": {},
+		"discipline": {},
+		"service": {
+			"availability": {
+				"type": "String",
+				"label": "Availability",
+				"value": ""
+			},
+			"bonus": {
+				"type": "String",
+				"label": "Dice Bonus",
+				"value": ""
+			}
+		},
+		"tilt": {},
+		"vehicle": {
+			"modifier": {
+				"type": "String",
+				"label": "Dice Modifier",
+				"value": ""
+			},
+			"size": {
+				"type": "String",
+				"label": "Size",
+				"value": ""
+			},
+			"durability": {
+				"type": "String",
+				"label": "Durability/Structure",
+				"value": ""
+			},
+			"speed": {
+				"type": "String",
+				"label": "Speed",
+				"value": ""
+			}
+		},
+		"weapon": {
+			"attack": {
+				"type": "String",
+				"label": "Attack",
+				"value": ""
+			},
+			"damage": {
+				"type": "String",
+				"label": "Damage",
+				"value": ""
+			},
+			"range": {
+				"type": "String",
+				"label": "Range",
+				"value": ""
+			},
+			"capacity": {
+				"type": "String",
+				"label": "Capacity",
+				"value": ""
+			},
+			"initiative": {
+				"type": "String",
+				"label": "Initiative",
+				"value": ""
+			},
+			"str": {
+				"type": "String",
+				"label": "Strength",
+				"value": ""
+			},
+			"size": {
+				"type": "String",
+				"label": "Size",
+				"value": ""
+			},
+			"availability": {
+				"type": "String",
+				"label": "Availability",
+				"value": ""
+			},
+			"tags": {
+				"type": "String",
+				"label": "Tags",
+				"value": ""
+			}
+		}
+	}
+}

@@ -1,0 +1,518 @@
+<div class="display-page">
+	<div class="attribute-section">
+		<div class="attribute-column attribute-categories">
+			<span>Power</span>
+			<span>Finesse</span>
+			<span>Resistance</span>
+		</div>
+		<div class="attribute-column">
+			<span class="attribute-type">Mental</span>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="int">Intelligence</a></span>
+				<span
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.int.current}} / 10 * 100%);"
+					>{{data.attributes.int.current}}</span
+				>
+			</div>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="wits">Wits</a></span>
+				<span
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.wits.current}} / 10 * 100%);"
+					>{{data.attributes.wits.current}}</span
+				>
+			</div>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="res">Resolve</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.res.current}} / 10 * 100%);"
+					>{{data.attributes.res.current}}</label
+				>
+			</div>
+		</div>
+		<div class="attribute-column">
+			<span class="attribute-type">Physical</span>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="str">Strength</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.str.current}} / 10 * 100%);"
+					>{{data.attributes.str.current}}</label
+				>
+			</div>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="dex">Dexterity</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.dex.current}} / 10 * 100%);"
+					>{{data.attributes.dex.current}}</label
+				>
+			</div>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="sta">Stamina</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.sta.current}} / 10 * 100%);"
+					>{{data.attributes.sta.current}}</label
+				>
+			</div>
+		</div>
+		<div class="attribute-column">
+			<span class="attribute-type">Social</span>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="pre">Presence</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.pre.current}} / 10 * 100%);"
+					>{{data.attributes.pre.current}}</label
+				>
+			</div>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="man">Manipulation</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.man.current}} / 10 * 100%);"
+					>{{data.attributes.man.current}}</label
+				>
+			</div>
+			<div class="attribute">
+				<span><a class="roll-pool" data-skill="com">Composure</a></span>
+				<label
+					class="sheet-bubbles"
+					style="--percent: calc({{data.attributes.com.current}} / 10 * 100%);"
+					>{{data.attributes.com.current}}</label
+				>
+			</div>
+		</div>
+	</div>
+
+	<!-- Skills Column -->
+	<div class="mid_column1">
+		<div class="display-skills">
+			<h3>Skills</h3>
+			<div class="skill-section skills">
+				<div class="skill-column">
+					<span class="skill-type">Mental (-3 unskilled)</span>
+					<div class="skill">
+						<span
+							><a class="roll-pool" data-skill="academics">Academics</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.academics.current}} / 5 * 100%);"
+							>{{data.skills.academics.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="computer">Computer</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.computer.current}} / 5 * 100%);"
+							>{{data.skills.computer.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span><a class="roll-pool" data-skill="crafts">Crafts</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.crafts.current}} / 5 * 100%);"
+							>{{data.skills.crafts.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span
+							><a class="roll-pool" data-skill="investigation"
+								>Investigation</a
+							></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.investigation.current}} / 5 * 100%);"
+							>{{data.skills.investigation.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span><a class="roll-pool" data-skill="medicine">Medicine</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.medicine.current}} / 5 * 100%);"
+							>{{data.skills.medicine.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="occult">Occult</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.occult.current}} / 5 * 100%);"
+							>{{data.skills.occult.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span><a class="roll-pool" data-skill="politics">Politics</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.politics.current}} / 5 * 100%);"
+							>{{data.skills.politics.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="science">Science</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.science.current}} / 5 * 100%);"
+							>{{data.skills.science.current}}</span
+						>
+					</div>
+				</div>
+				<div class="skill-column">
+					<span class="skill-type">Physical (-1 unskilled)</span>
+					<div class="skill">
+						<span
+							><a class="roll-pool" data-skill="athletics">Athletics</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.athletics.current}} / 5 * 100%);"
+							>{{data.skills.athletics.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="brawl">Brawl</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.brawl.current}} / 5 * 100%);"
+							>{{data.skills.brawl.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span><a class="roll-pool" data-skill="drive">Drive</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.drive.current}} / 5 * 100%);"
+							>{{data.skills.drive.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="firearms">Firearms</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.firearms.current}} / 5 * 100%);"
+							>{{data.skills.firearms.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span><a class="roll-pool" data-skill="larceny">Larceny</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.larceny.current}} / 5 * 100%);"
+							>{{data.skills.larceny.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="stealth">Stealth</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.stealth.current}} / 5 * 100%);"
+							>{{data.skills.stealth.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span><a class="roll-pool" data-skill="survival">Survival</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.survival.current}} / 5 * 100%);"
+							>{{data.skills.survival.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="weaponry">Weaponry</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.weaponry.current}} / 5 * 100%);"
+							>{{data.skills.weaponry.current}}</span
+						>
+					</div>
+				</div>
+				<div class="skill-column">
+					<span class="skill-type">Social (-1 unskilled)</span>
+					<div class="skill">
+						<span
+							><a class="roll-pool" data-skill="animalken">Animal Ken</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.animalken.current}} / 5 * 100%);"
+							>{{data.skills.animalken.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span><a class="roll-pool" data-skill="empathy">Empathy</a></span>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.empathy.current}} / 5 * 100%);"
+							>{{data.skills.empathy.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span
+							><a class="roll-pool" data-skill="expression">Expression</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.expression.current}} / 5 * 100%);"
+							>{{data.skills.expression.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span
+							><a class="roll-pool" data-skill="intimidation"
+								>Intimidation</a
+							></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.intimidation.current}} / 5 * 100%);"
+							>{{data.skills.intimidation.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span
+							><a class="roll-pool" data-skill="persuasion">Persuasion</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.persuasion.current}} / 5 * 100%);"
+							>{{data.skills.persuasion.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span
+							><a class="roll-pool" data-skill="socialize">Socialize</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.socialize.current}} / 5 * 100%);"
+							>{{data.skills.socialize.current}}</span
+						>
+					</div>
+					<div class="skill">
+						<span
+							><a class="roll-pool" data-skill="streetwise">Streetwise</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.streetwise.current}} / 5 * 100%);"
+							>{{data.skills.streetwise.current}}</span
+						>
+					</div>
+					<div class="skill altcolor">
+						<span
+							><a class="roll-pool" data-skill="subterfuge">Subterfuge</a></span
+						>
+						<span
+							class="skill-bubbles"
+							style="--percent: calc({{data.skills.subterfuge.current}} / 5 * 100%);"
+							>{{data.skills.subterfuge.current}}</span
+						>
+					</div>
+				</div>
+			</div>
+			<div class="specializations">
+				<div class="specializations-title">
+					<span>Specializations</span>
+				</div>
+				<span
+					>{{data.attributes.special.special1.current}},
+					{{data.attributes.special.special2.current}},
+					{{data.attributes.special.special3.current}}</span
+				>
+			</div>
+		</div>
+	</div>
+	<!-- End Skills Column -->
+
+	<!-- Merits/Whatever Column -->
+	<div class="mid_column2">
+		<!-- If this is a Vampire sheet, then... -->
+		<div class="display-disciplines">
+			<h3>Disciplines</h3>
+			<div class="items">
+				<ol class="items-list">
+					{{#each actor.disciplines as |item id|}}
+					<li class="item flexrow" data-item-id="{{item._id}}">
+						<h4 class="item-name">{{item.name}}</h4>
+					</li>
+					{{/each}}
+				</ol>
+			</div>
+		</div>
+		<!-- End -->
+
+		<div class="display-merits">
+			<h3>Merits</h3>
+			<div class="items">
+				<ol class="items-list">
+					{{#each actor.merits as |item id|}}
+					<li class="item flexrow" data-item-id="{{item._id}}">
+						<h4 class="item-name">{{item.name}}</h4>
+					</li>
+					{{/each}}
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!-- End Merits/Whatever Column -->
+
+	<div class="mid_column3">
+		<div class="display-willpower">
+			<h3>Willpower</h3>
+			<span
+				class="sheet-bubbles"
+				style="--percent: calc({{data.vamp-bg.willpower_max.value}} / 10 * 100%);"
+				>{{data.vamp-bg.willpower_max.value}}</span
+			>
+			<input
+				type="text"
+				name="data.vamp-bg.willpower_max.value"
+				value="{{data.vamp-bg.willpower_max.value}}"
+				data-dtype="Number"
+			/><br />
+			<span
+				class="sheet-squares"
+				style="--percent: calc({{data.vamp-bg.willpower_current.value}} / 10 * 100%);"
+				>{{data.vamp-bg.willpower_current.value}}</span
+			>
+			<input
+				type="text"
+				name="data.vamp-bg.willpower_current.value"
+				value="{{data.vamp-bg.willpower_current.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+
+		<div class="vamp_bloodpotency">
+			<span
+				><a class="roll-pool" data-skill="data.vamp-bg.blood_potency.value"
+					>Blood Potency</a
+				></span
+			>
+			<span
+				class="sheet-bubbles"
+				style="--percent: calc({{data.vamp-bg.blood_potency.value}} / 10 * 100%);"
+				>{{data.vamp-bg.blood_potency.value}}</span
+			>
+			<input
+				type="text"
+				name="data.vamp-bg.blood_potency.value"
+				value="{{data.vamp-bg.blood_potency.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div style="clear: both;"></div>
+
+		<div class="resource">
+			<label>Health</label>
+			<input
+				type="text"
+				name="data.health.value"
+				value="{{data.health.value}}"
+				data-dtype="Number"
+			/>
+			<span> / </span>
+			<input
+				type="text"
+				name="data.health.max"
+				value="{{data.health.max}}"
+				data-dtype="Number"
+			/>
+		</div>
+
+		<div class="resource">
+			<label>Blood Pool</label>
+			<input
+				type="text"
+				name="data.power.value"
+				value="{{data.power.value}}"
+				data-dtype="Number"
+			/>
+			<span> / </span>
+			<input
+				type="text"
+				name="data.power.max"
+				value="{{data.power.max}}"
+				data-dtype="Number"
+			/>
+		</div>
+
+		<div style="clear: both;"></div>
+	</div>
+
+	<div style="clear: both;"></div>
+
+	<div class="resources">
+		<div class="resources-type">
+			<span>Health</span>
+			<div class="circles">
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+			</div>
+			<div class="squares">
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+			</div>
+		</div>
+		<div class="resources-type">
+			<span>Willpower</span>
+			<div class="circles">
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+			</div>
+			<div class="squares">
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+			</div>
+		</div>
+		<div class="resources-type">
+			<span>Integrity</span>
+			<div class="circles">
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+				<i class="fas fa-circle"></i>
+			</div>
+			<div class="squares">
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+				<a><i class="far fa-square"></i></a>
+			</div>
+		</div>
+	</div>
+	<hr />
+</div>
