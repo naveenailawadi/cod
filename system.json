@@ -1,14 +1,20 @@
 {
 	"name": "cod",
 	"title": "Chronicles of Darkness",
-	"description": "I'll make one later.",
-	"version": 0.22,
+	"description": "A system for playing Chronicles of Darkness within FVTT.",
+	"version": 0.221,
+	"minimumCoreVersion": "0.5.2",
+	"compatibleCoreVersion": "0.5.5",
+	"templateVersion": 2,
 	"author": "Burning, Burzghash, Moo Man, Precisi",
 	"scripts": ["scripts/cod.js"],
 	"styles": ["styles/cod.css"],
 	"packs": [],
+	"socket": false,
 	"initiative": "1d10",
 	"gridDistance": 1,
 	"gridUnits": "m",
-	"minimumCoreVersion": "0.5.1"
+	"manifest": "https://github.com/Burzghash/cod/blob/master/template.json",
+	"download": "https://github.com/Burzghash/cod/archive/master.zip",
+	"url": "https://github.com/Burzghash/cod"
 }
