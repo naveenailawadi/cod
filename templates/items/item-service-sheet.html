@@ -1,27 +1,34 @@
 <form class="{{cssClass}}" autocomplete="off">
+	<header class="sheet-header">
+		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+		<div class="header-fields">
+			<h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+			<div class="resource">
+				<label>Availability</label>
+				<input
+					type="text"
+					name="data.service.availability.value"
+					value="{{data.service.availability.value}}"
+					data-dtype="{{data.service.availability.type}}"
+				/>
+			</div>
+			<div class="resource">
+				<label>Bonus</label>
+				<input
+					type="text"
+					name="data.service.bonus.value"
+					value="{{data.service.bonus.value}}"
+					data-dtype="{{data.service.bonus.type}}"
+				/>
+			</div>
+		</div>
+	</header>
 
-    <header class="sheet-header">
-      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
-      <div class="header-fields">
-        <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
-        <div class="resource">
-          <label>Availability</label>
-          <input type="text" name="data.service.availability.value" value="{{data.service.availability.value}}" data-dtype="{{data.service.availability.type}}"/>
-        </div>
-        <div class="resource">
-          <label>Bonus</label>
-          <input type="text" name="data.service.bonus.value" value="{{data.service.bonus.value}}" data-dtype="{{data.service.bonus.type}}"/>
-        </div>
-      </div>
-    </header>
-  
-  
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
-      {{!-- Description Tab --}}
-      <div class="tab">
-        {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
-      </div>
-    </section>
-    
-  </form>
+	{{!-- Sheet Body --}}
+	<section class="sheet-body">
+		<div class="tab">
+			{{editor content=data.description.value target="data.description.value" button=true owner=owner
+			editable=editable}}
+		</div>
+	</section>
+</form>

@@ -87,7 +87,7 @@ CONFIG.groupMapping = {
 CONFIG.attacks = {
 	brawl: 'Brawl',
 	melee: 'Melee',
-	gun: 'Gun',
+	ranged: 'Ranged',
 	thrown: 'Thrown',
 	brawlFinesse: 'Brawl (Fighting Finesse)',
 	meleeFinesse: 'Melee (Fighting Finesse)',
@@ -97,13 +97,14 @@ CONFIG.attacks = {
 CONFIG.attackSkills = {
 	brawl: 'str,brawl',
 	melee: 'str,weaponry',
-	gun: 'dex,firearms',
+	ranged: 'dex,firearms',
 	thrown: 'dex,athletics',
 	brawlFinesse: 'dex,brawl',
 	meleeFinesse: 'dex,weaponry',
 };
 
 class ActorCoD extends Actor {
+	// Define global roll function
 	rollPool(attribute, skill, modifier) {
 		let pool = 0;
 		if (attribute != 'none') {
@@ -130,17 +131,17 @@ class ActorCoD extends Actor {
 			});
 		}
 	}
+
+	// All new function to represent code spliced from below.
 }
 
 CONFIG.Actor.entityClass = ActorCoD;
 
-/**
- * Extend the basic ActorSheet with some very simple modifications
- */
+//Extend the basic ActorSheet with some very simple modifications
+
 class ActorSheetCoD extends ActorSheet {
-	/**
-	 * Extend and override the default options used by the 5e Actor Sheet
-	 */
+	//Extend and override the default options
+
 	static get defaultOptions() {
 		const options = super.defaultOptions;
 		options.classes = options.classes.concat(['cod', 'actor-sheet']);
@@ -153,7 +154,6 @@ class ActorSheetCoD extends ActorSheet {
 	getData() {
 		const sheetData = super.getData();
 		this._prepareItems(sheetData.actor);
-		sheetData.attributes = this.sortAttrGroups();
 		return sheetData;
 	}
 
@@ -168,6 +168,7 @@ class ActorSheetCoD extends ActorSheet {
 		actorData.service = [];
 		actorData.tilt = [];
 		actorData.vehicle = [];
+
 		for (let i of actorData.items) {
 			if (i.type == 'discipline') {
 				actorData.disciplines.push(i);
@@ -204,19 +205,21 @@ class ActorSheetCoD extends ActorSheet {
 	}
 
 	sortAttrGroups() {
-		let stats = duplicate(CONFIG.skills);
+		let skills = duplicate(CONFIG.skills);
 		let attributes = duplicate(CONFIG.attributes);
 		let skillGroups = duplicate(CONFIG.groups);
 		let attrGroups = duplicate(CONFIG.groups);
+
+		console.log(attributes);
 
 		for (let g in skillGroups) {
 			skillGroups[g] = {};
 			attrGroups[g] = {};
 		}
 
-		for (let s in stats) {
+		for (let s in skills) {
 			let skillGroup = CONFIG.groupMapping[s];
-			skillGroups[skillGroup][s] = stats[s];
+			skillGroups[skillGroup][s] = skills[s];
 		}
 		for (let a in attributes) {
 			let attrGroup = CONFIG.groupMapping[a];
@@ -226,33 +229,34 @@ class ActorSheetCoD extends ActorSheet {
 		let displayAttrGroups = Object.keys(attrGroups)
 			.map((key) => {
 				const newKey = CONFIG.groups[key];
-				return { [newKey]: attrGroups[key] };
+				return {[newKey]: attrGroups[key]};
 			})
 			.reduce((a, b) => Object.assign({}, a, b));
 
 		for (let g in displayAttrGroups) {
 			for (let a in displayAttrGroups[g]) {
-				displayAttrGroups[g][a] +=
-					' (' + this.actor.data.data.attributes[a].current + ')';
+				displayAttrGroups[g][a] += ' (' + this.actor.data.data.attributes[a].current + ')';
 			}
 		}
 		return displayAttrGroups;
 	}
 
 	sortSkillGroups() {
-		let stats = duplicate(CONFIG.skills);
+		let skills = duplicate(CONFIG.skills);
 		let attributes = duplicate(CONFIG.attributes);
 		let skillGroups = duplicate(CONFIG.groups);
 		let attrGroups = duplicate(CONFIG.groups);
+
+		console.log(skills);
 
 		for (let g in skillGroups) {
 			skillGroups[g] = {};
 			attrGroups[g] = {};
 		}
 
-		for (let s in stats) {
+		for (let s in skills) {
 			let skillGroup = CONFIG.groupMapping[s];
-			skillGroups[skillGroup][s] = stats[s];
+			skillGroups[skillGroup][s] = skills[s];
 		}
 		for (let a in attributes) {
 			let attrGroup = CONFIG.groupMapping[a];
@@ -262,14 +266,13 @@ class ActorSheetCoD extends ActorSheet {
 		let displaySkillGroups = Object.keys(skillGroups)
 			.map((key) => {
 				const newKey = CONFIG.groups[key];
-				return { [newKey]: skillGroups[key] };
+				return {[newKey]: skillGroups[key]};
 			})
 			.reduce((a, b) => Object.assign({}, a, b));
 
 		for (let g in displaySkillGroups) {
 			for (let s in displaySkillGroups[g]) {
-				displaySkillGroups[g][s] +=
-					' (' + this.actor.data.data.skills[s].current + ')';
+				displaySkillGroups[g][s] += ' (' + this.actor.data.data.skills[s].current + ')';
 			}
 		}
 		return displaySkillGroups;
@@ -277,24 +280,78 @@ class ActorSheetCoD extends ActorSheet {
 
 	/* -------------------------------------------- */
 
-	/**
-	 * Activate event listeners using the prepared sheet HTML
-	 * @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
-	 */
+	// Activate event listeners using the prepared sheet HTML
+
 	activateListeners(html) {
 		super.activateListeners(html);
 
 		html.find('.roll-pool').click((event) => {
 			let defaultSelection = $(event.currentTarget).attr('data-skill');
+			console.log(`Default selection: ${defaultSelection}`);
 
 			let dialogData = {
-				defaultSelection: defaultSelection,
+				defaultSelectionAtt: defaultSelection,
+				defaultSelectionSkill: defaultSelection,
 				skills: this.sortSkillGroups(),
 				attributes: this.sortAttrGroups(),
 				groups: CONFIG.groups,
 			};
-			renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then(
-				(html) => {
+			renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then((html) => {
+				new Dialog({
+					title: 'Roll Dice Pool',
+					content: html,
+					buttons: {
+						Yes: {
+							icon: '<i class="fa fa-check"></i>',
+							label: 'Yes',
+							callback: (html) => {
+								let attributeSelected = html.find('[name="attributeSelector"]').val();
+								let poolModifier = html.find('[name="modifier"]').val();
+								let skillSelected = html.find('[name="skillSelector"]').val();
+								console.log(`Attribute: ${attributeSelected}, Skill: ${skillSelected}, Mod: ${poolModifier}`);
+								this.actor.rollPool(attributeSelected, skillSelected, poolModifier);
+							},
+						},
+						cancel: {
+							icon: '<i class="fas fa-times"></i>',
+							label: 'Cancel',
+						},
+					},
+					default: 'Yes',
+				}).render(true);
+			});
+		});
+
+		html.find('.weapon-roll').click((event) => {
+			let itemId = $(event.currentTarget).parents('.item').attr('data-item-id');
+			let item = this.actor.getEmbeddedEntity('OwnedItem', itemId);
+			let attackType = item.data.attack.value;
+			let formula = CONFIG.attackSkills[attackType];
+			formula = formula.split(',');
+			// Formula[0] = attribute, Formula[1] = skill (e.g., str, brawl)
+			let targetDef = 0;
+
+			let defaultSelectionAtt = formula[0];
+			let defaultSelectionSkill = formula[1];
+			console.log(`Default selections: ${defaultSelectionAtt}, ${defaultSelectionSkill}`);
+
+			let dialogData = {
+				defaultSelectionAtt: defaultSelectionAtt,
+				defaultSelectionSkill: defaultSelectionSkill,
+				skills: this.sortSkillGroups(),
+				attributes: this.sortAttrGroups(),
+				groups: CONFIG.groups,
+			};
+
+			if (game.user.targets.size == 1) {
+				targetDef = -1 * game.user.targets.values().next().value.actor.data.data.attributes.def.current;
+				this.actor.rollPool(formula[0], formula[1], targetDef);
+				console.log(`Formula is ${formula[0]} + ${formula[1]}`);
+				console.log(`Target's defense is: ${targetDef}`);
+			} else {
+				// Create popup dialogue if no target selected (or multiple targets selected)
+
+				renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then((html) => {
 					new Dialog({
 						title: 'Roll Dice Pool',
 						content: html,
@@ -303,16 +360,11 @@ class ActorSheetCoD extends ActorSheet {
 								icon: '<i class="fa fa-check"></i>',
 								label: 'Yes',
 								callback: (html) => {
-									let attributeSelected = html
-										.find('[name="attributeSelector"]')
-										.val();
+									let attributeSelected = html.find('[name="attributeSelector"]').val();
 									let poolModifier = html.find('[name="modifier"]').val();
 									let skillSelected = html.find('[name="skillSelector"]').val();
-									this.actor.rollPool(
-										attributeSelected,
-										skillSelected,
-										poolModifier
-									);
+									console.log(`Attribute: ${attributeSelected}, Skill: ${skillSelected}, Mod: ${poolModifier}`);
+									this.actor.rollPool(attributeSelected, skillSelected, poolModifier);
 								},
 							},
 							cancel: {
@@ -322,26 +374,8 @@ class ActorSheetCoD extends ActorSheet {
 						},
 						default: 'Yes',
 					}).render(true);
-				}
-			);
-		});
-
-		html.find('.weapon-roll').click((event) => {
-			let itemId = $(event.currentTarget).parents('.item').attr('data-item-id');
-			let item = this.actor.getEmbeddedEntity('OwnedItem', itemId);
-			let attackType = item.data.attack.value;
-			let formula = CONFIG.attackSkills[attackType];
-			formula = formula.split(',');
-			let targetDef = 0;
-			if (game.user.targets.size == 1) {
-				targetDef =
-					-1 *
-					game.user.targets.values().next().value.actor.data.data.attributes.def
-						.current;
+				});
 			}
-			this.actor.rollPool(formula[0], formula[1], targetDef);
-			console.log(`Formula is ${formula[0]} + ${formula[1]}`);
-			console.log(`Target's defense is: ${targetDef}`);
 		});
 
 		// Activate tabs
@@ -349,8 +383,7 @@ class ActorSheetCoD extends ActorSheet {
 		let initial = this.actor.data.flags['_sheetTab'];
 		new Tabs(tabs, {
 			initial: initial,
-			callback: (clicked) =>
-				(this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
+			callback: (clicked) => (this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
 		});
 
 		// Everything below here is only needed if the sheet is editable
@@ -359,9 +392,7 @@ class ActorSheetCoD extends ActorSheet {
 		// Update Inventory Item
 		html.find('.item-edit').click((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.items.find(
-				(i) => i.id == li.attr('data-item-id')
-			);
+			const item = this.actor.items.find((i) => i.id == li.attr('data-item-id'));
 			item.sheet.render(true);
 		});
 
@@ -382,8 +413,8 @@ class ActorSheetCoD extends ActorSheet {
 				});
 			else {
 				let rolls = duplicate(this.actor.data.data.rolls);
-				rolls.push({ name: 'New Roll' });
-				this.actor.update({ 'data.rolls': rolls });
+				rolls.push({name: 'New Roll'});
+				this.actor.update({'data.rolls': rolls});
 			}
 		});
 
@@ -393,45 +424,37 @@ class ActorSheetCoD extends ActorSheet {
 			let newName = ev.target.value;
 			let rollList = duplicate(this.actor.data.data.rolls);
 			rollList[rollIndex].name = newName;
-			this.actor.update({ 'data.rolls': rollList });
+			this.actor.update({'data.rolls': rollList});
 		});
 
 		// Delete roll
 		html.find('.roll-delete').click((ev) => {
-			let rollIndex = Number(
-				$(ev.currentTarget).parents('.rolls').attr('data-index')
-			);
+			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
 			let rollList = duplicate(this.actor.data.data.rolls);
 			rollList.splice(rollIndex, 1);
-			this.actor.update({ 'data.rolls': rollList });
+			this.actor.update({'data.rolls': rollList});
 		});
 
 		// Select roll attributes
 		html.find('.roll.attribute-selector').change((ev) => {
-			let rollIndex = Number(
-				$(ev.currentTarget).parents('.rolls').attr('data-index')
-			);
+			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
 			let primary = $(ev.currentTarget).hasClass('primary');
 			let rollList = duplicate(this.actor.data.data.rolls);
 
 			if (primary) rollList[rollIndex].primary = ev.target.value;
 			else rollList[rollIndex].secondary = ev.target.value;
 
-			this.actor.update({ 'data.rolls': rollList });
+			this.actor.update({'data.rolls': rollList});
 		});
 
 		// Delete Inventory Item
 		html.find('.roll-button').click((ev) => {
-			let rollIndex = Number(
-				$(ev.currentTarget).parents('.rolls').attr('data-index')
-			);
+			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
 			this.actor.data.data.rolls;
 			this.actor.rollPool(
 				this.actor.data.data.rolls[rollIndex].primary,
 				'none',
-				this.actor.data.data.attributes[
-					this.actor.data.data.rolls[rollIndex].secondary
-				].current
+				this.actor.data.data.attributes[this.actor.data.data.rolls[rollIndex].secondary].current
 			);
 		});
 	}
