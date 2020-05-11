@@ -2,7 +2,7 @@
 	"name": "cod",
 	"title": "Chronicles of Darkness",
 	"description": "A system for playing Chronicles of Darkness within FVTT.",
-	"version": 0.23,
+	"version": 0.24,
 	"minimumCoreVersion": "0.5.2",
 	"compatibleCoreVersion": "0.5.5",
 	"templateVersion": 2,

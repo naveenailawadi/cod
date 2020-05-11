@@ -460,7 +460,8 @@
 						"proficient": 0
 					}
 				},
-				"rolls": []
+				"rolls": [],
+				"exploder": true
 			}
 		},
 
@@ -481,17 +482,7 @@
 	},
 
 	"Item": {
-		"types": [
-			"armor",
-			"condition",
-			"dread",
-			"equipment",
-			"merit",
-			"discipline",
-			"service",
-			"tilt",
-			"weapon"
-		],
+		"types": ["armor", "condition", "dread", "equipment", "merit", "discipline", "service", "tilt", "weapon"],
 		"data": {
 			"description": {
 				"type": "String",
