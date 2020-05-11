@@ -104,7 +104,7 @@ CONFIG.attackSkills = {
 };
 
 class ActorCoD extends Actor {
-	rollPool(attribute, skill, modifier) {
+	rollPool(attribute, skill, modifier, exploder) {
 		// Define global roll pool, assume valid int & skill sent even if 0 or negative value
 
 		let pool = 0;
@@ -114,7 +114,8 @@ class ActorCoD extends Actor {
 		let skillGroup = CONFIG.groupMapping[skill];
 		let modVal = parseInt(modifier) || 0;
 		let penalty = 0;
-		let penaltyStr = ``;
+		let penaltyStr = '';
+		let explodeStr = '';
 
 		// Determine if inadequate skill
 		if (skillVal < 1) {
@@ -123,8 +124,25 @@ class ActorCoD extends Actor {
 		}
 		if (penalty < 0) penaltyStr = `<br> Insufficient skill! Penalty of ${penalty}`;
 
+		// Determine exploder
+		switch (exploder) {
+			case 'none':
+				explodeStr = '';
+				break;
+			case 'ten':
+				explodeStr = 'x10';
+				break;
+			case 'nine':
+				explodeStr = 'x>=9';
+				break;
+			case 'eight':
+				explodeStr = 'x>=8';
+				break;
+		}
+
 		console.log(`Initial roll pool: ${attribute} : ${attVal}, ${skill} : ${skillVal}, Mod : ${modVal}`);
 		console.log(`Att: ${attGroup}, Skill: ${skillGroup}`);
+		console.log(`Exploder: ${exploder}`);
 		if (penalty < 0) console.log(`Penalty assessed: ${penalty}`);
 
 		// Determine final roll pool
@@ -132,7 +150,7 @@ class ActorCoD extends Actor {
 
 		if (pool > 0) {
 			// Regular roll
-			let roll = new Roll(`${pool}d10x10cs>=8`).roll();
+			let roll = new Roll(`${pool}d10${explodeStr}cs>=8`).roll();
 			roll.toMessage({flavor: `${attribute}: ${attVal}, ${skill}: ${skillVal}, mod: ${modVal}${penaltyStr}`});
 		} else {
 			// Chance roll
@@ -315,8 +333,10 @@ class ActorSheetCoD extends ActorSheet {
 								let attributeSelected = html.find('[name="attributeSelector"]').val();
 								let poolModifier = html.find('[name="modifier"]').val();
 								let skillSelected = html.find('[name="skillSelector"]').val();
+								let exploderSelected = html.find('[name="exploderSelector"]').val();
 								if (attributeSelected === 'none' || skillSelected === 'none') console.log(`Invalid pool selected.`);
-								else this.actor.rollPool(attributeSelected, skillSelected, poolModifier);
+								else this.actor.rollPool(attributeSelected, skillSelected, poolModifier, exploderSelected);
+								console.log(``);
 							},
 						},
 						cancel: {
@@ -356,15 +376,15 @@ class ActorSheetCoD extends ActorSheet {
 				targetDef = -1 * game.user.targets.values().next().value.actor.data.data.attributes.def.current;
 
 				if (attackType === 'ranged') {
-					this.actor.rollPool(formula[0], formula[1], 0);
+					this.actor.rollPool(formula[0], formula[1], 0, 'ten');
 					console.log(`Target's defense not applied`);
 					console.log(``);
 				} else {
-					this.actor.rollPool(formula[0], formula[1], targetDef);
+					this.actor.rollPool(formula[0], formula[1], targetDef, 'ten');
 					console.log(``);
 				}
 			} else {
-				// Create popup dialogue if no target selected (or multiple targets selected)
+				// If no target selected, create popup dialogue
 				renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then((html) => {
 					new Dialog({
 						title: 'Roll Dice Pool',
@@ -377,8 +397,10 @@ class ActorSheetCoD extends ActorSheet {
 									let attributeSelected = html.find('[name="attributeSelector"]').val();
 									let poolModifier = html.find('[name="modifier"]').val();
 									let skillSelected = html.find('[name="skillSelector"]').val();
+									let exploderSelected = html.find('[name="exploderSelector"]').val();
 									if (attributeSelected === 'none' || skillSelected === 'none') console.log(`Invalid pool selected.`);
-									else this.actor.rollPool(attributeSelected, skillSelected, poolModifier);
+									else this.actor.rollPool(attributeSelected, skillSelected, poolModifier, exploderSelected);
+									console.log(``);
 								},
 							},
 							cancel: {
@@ -478,9 +500,8 @@ Actors.registerSheet('core', ActorSheetCoD, {
 
 /* -------------------------------------------- */
 
-/**
- * Extend the basic ItemSheet with some very simple modifications
- */
+// Extend the basic ItemSheet with some very simple modifications
+
 class CoDItemSheet extends ItemSheet {
 	// Extend and override the default options
 
