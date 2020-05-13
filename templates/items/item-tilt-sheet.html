@@ -6,11 +6,34 @@
 		</div>
 	</header>
 
+	{{!-- Sheet Tab Navigation --}}
+	<nav class="sheet-tabs tabs" data-group="primary">
+		<a class="item" data-tab="description">Description</a>
+		<a class="item" data-tab="effect">Effect</a>
+		<a class="item" data-tab="cause">Cause</a>
+		<a class="item" data-tab="resolution">Resolution</a>
+	</nav>
+
 	{{!-- Sheet Body --}}
 	<section class="sheet-body">
-		<div class="tab">
-			{{editor content=data.description.value target="data.description.value" button=true owner=owner
-			editable=editable}}
+		{{!-- Description Tab --}}
+		<div class="tab" data-group="primary" data-tab="description">
+			{{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+		</div>
+
+		{{!-- Effect Tab --}}
+		<div class="tab" data-group="primary" data-tab="effect">
+			{{editor content=data.effect.value target="data.effect.value" button=true owner=owner editable=editable}}
+		</div>
+
+		{{!-- Cause Tab --}}
+		<div class="tab" data-group="primary" data-tab="cause">
+			{{editor content=data.cause.value target="data.cause.value" button=true owner=owner editable=editable}}
+		</div>
+
+		{{!-- Resolution Tab --}}
+		<div class="tab" data-group="primary" data-tab="resolution">
+			{{editor content=data.resolution.value target="data.resolution.value" button=true owner=owner editable=editable}}
 		</div>
 	</section>
 </form>

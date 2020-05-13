@@ -182,52 +182,57 @@ class ActorSheetCoD extends ActorSheet {
 	getData() {
 		const sheetData = super.getData();
 		this._prepareItems(sheetData.actor);
+		sheetData.attributes = this.sortAttrGroups();
+		sheetData.skills = this.sortSkillGroups();
 		return sheetData;
 	}
 
 	_prepareItems(actorData) {
-		actorData.merits = [];
-		actorData.disciplines = [];
 		actorData.weapons = [];
-		actorData.armor = [];
-		actorData.condition = [];
-		actorData.dread = [];
-		actorData.equipment = [];
-		actorData.service = [];
-		actorData.tilt = [];
-		actorData.vehicle = [];
+		actorData.armors = [];
+		actorData.equipments = [];
+		actorData.vehicles = [];
+		actorData.merits = [];
+		actorData.services = [];
+		actorData.conditions = [];
+		actorData.tilts = [];
+		actorData.dreads = [];
+		actorData.numinas = [];
+		actorData.disciplines = [];
 
 		for (let i of actorData.items) {
-			if (i.type == 'discipline') {
-				actorData.disciplines.push(i);
-			}
-
-			if (i.type == 'merit') {
-				actorData.merits.push(i);
-			}
 			if (i.type == 'weapon') {
 				actorData.weapons.push(i);
 			}
 			if (i.type == 'armor') {
-				actorData.armor.push(i);
-			}
-			if (i.type == 'condition') {
-				actorData.condition.push(i);
-			}
-			if (i.type == 'dread') {
-				actorData.dread.push(i);
+				actorData.armors.push(i);
 			}
 			if (i.type == 'equipment') {
-				actorData.equipment.push(i);
-			}
-			if (i.type == 'service') {
-				actorData.service.push(i);
-			}
-			if (i.type == 'tilt') {
-				actorData.tilt.push(i);
+				actorData.equipments.push(i);
 			}
 			if (i.type == 'vehicle') {
-				actorData.vehicle.push(i);
+				actorData.vehicles.push(i);
+			}
+			if (i.type == 'merit') {
+				actorData.merits.push(i);
+			}
+			if (i.type == 'service') {
+				actorData.services.push(i);
+			}
+			if (i.type == 'condition') {
+				actorData.conditions.push(i);
+			}
+			if (i.type == 'tilt') {
+				actorData.tilts.push(i);
+			}
+			if (i.type == 'dread') {
+				actorData.dreads.push(i);
+			}
+			if (i.type == 'numina') {
+				actorData.numinas.push(i);
+			}
+			if (i.type == 'discipline') {
+				actorData.disciplines.push(i);
 			}
 		}
 	}
@@ -471,32 +476,29 @@ class ActorSheetCoD extends ActorSheet {
 			this.actor.update({'data.rolls': rollList});
 		});
 
-		// Select roll attributes
+		// Change custom roll attribute
 		html.find('.roll.attribute-selector').change((ev) => {
 			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
 			let primary = $(ev.currentTarget).hasClass('primary');
+			let secondary = $(ev.currentTarget).hasClass('secondary');
+			let modifier = $(ev.currentTarget).hasClass('modifier');
 			let rollList = duplicate(this.actor.data.data.rolls);
 
 			if (primary) rollList[rollIndex].primary = ev.target.value;
-			else rollList[rollIndex].secondary = ev.target.value;
+			if (secondary) rollList[rollIndex].secondary = ev.target.value;
+			if (modifier) rollList[rollIndex].modifier = ev.target.value;
 
 			this.actor.update({'data.rolls': rollList});
 		});
 
-		// Delete Inventory Item
+		// Click roll button
 		html.find('.roll-button').click((ev) => {
 			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
 			this.actor.data.data.rolls;
-			this.actor.rollPool(this.actor.data.data.rolls[rollIndex].primary, 'none', this.actor.data.data.attributes[this.actor.data.data.rolls[rollIndex].secondary].current);
+			this.actor.rollPool(this.actor.data.data.rolls[rollIndex].primary, this.actor.data.data.rolls[rollIndex].secondary, this.actor.data.data.rolls[rollIndex].modifier);
 		});
 	}
 }
-
-Actors.unregisterSheet('core', ActorSheet);
-Actors.registerSheet('core', ActorSheetCoD, {
-	types: [],
-	makeDefault: true,
-});
 
 /* -------------------------------------------- */
 
@@ -508,7 +510,7 @@ class CoDItemSheet extends ItemSheet {
 	static get defaultOptions() {
 		const options = super.defaultOptions;
 		options.classes = options.classes.concat(['cod', 'item-sheet']);
-		options.template = 'systems/cod/templates/item-sheet.html';
+		options.template = 'systems/cod/templates/items/item-sheet.html';
 		options.height = 440;
 		return options;
 	}
@@ -544,27 +546,26 @@ class CoDItemSheet extends ItemSheet {
 	}
 }
 
+Actors.unregisterSheet('core', ActorSheet);
+Actors.registerSheet('cod', ActorSheetCoD, {types: [], makeDefault: true});
 Items.unregisterSheet('core', ItemSheet);
 Items.registerSheet('core', CoDItemSheet, {
 	types: [],
 	makeDefault: true,
 });
 
-/**
- * Set an initiative formula for the system
- * @type {String}
- */
+//Set initiative formula
 CONFIG.initiative.formula = '1d20';
 
 Hooks.once('init', () => {
 	loadTemplates([
-		'systems/cod/templates/actor/actor-display.html',
-		'systems/cod/templates/actor/actor-main.html',
 		'systems/cod/templates/actor/actor-disciplines.html',
-		'systems/cod/templates/actor/actor-merits.html',
-		'systems/cod/templates/actor/actor-skills.html',
+		'systems/cod/templates/actor/actor-display.html',
 		'systems/cod/templates/actor/actor-equipment.html',
 		'systems/cod/templates/actor/actor-extra.html',
+		'systems/cod/templates/actor/actor-main.html',
+		'systems/cod/templates/actor/actor-merits.html',
 		'systems/cod/templates/actor/actor-rolls.html',
+		'systems/cod/templates/actor/actor-skills.html',
 	]);
 });

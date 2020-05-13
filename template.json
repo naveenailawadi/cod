@@ -93,7 +93,7 @@
 						"min": 1,
 						"proficient": 0
 					},
-					"moral": {
+					"integ": {
 						"type": "Number",
 						"label": "Integrity",
 						"current": 7,
@@ -460,60 +460,160 @@
 						"proficient": 0
 					}
 				},
-				"rolls": []
+				"rolls": [],
+				"vamp-bg": {
+					"virtue": 0,
+					"vice": 0,
+					"clan": 0,
+					"bloodline": 0,
+					"covenant": 0,
+					"concept": 0,
+					"willpower_current": 0,
+					"willpower_max": 0,
+					"blood_potency": 0
+				}
 			}
 		},
 
 		"character": {
-			"templates": ["data"],
-			"vamp-bg": {
-				"virtue": 0,
-				"vice": 0,
-				"clan": 0,
-				"bloodline": 0,
-				"covenant": 0,
-				"concept": 0,
-				"willpower_current": 0,
-				"willpower_max": 0,
-				"blood_potency": 0
-			}
+			"templates": ["data"]
 		}
 	},
 
 	"Item": {
-		"types": ["armor", "condition", "dread", "equipment", "merit", "discipline", "service", "tilt", "weapon"],
-		"data": {
+		"types": ["weapon", "armor", "equipment", "vehicle", "merit", "service", "condition", "tilt", "dread", "numina", "discipline"],
+
+		"templates": {
+			"quantity": {
+				"quantity": 1
+			},
+			"weight": {
+				"weight": ""
+			},
 			"description": {
+				"description": {
+					"type": "String",
+					"label": "Description",
+					"value": ""
+				}
+			},
+			"attack": {
+				"attack": {
+					"type": "String",
+					"label": "Attack",
+					"value": ""
+				}
+			},
+			"damage": {
+				"damage": {
+					"type": "Number",
+					"label": "Damage",
+					"value": 0
+				}
+			},
+			"strength": {
+				"strength": {
+					"type": "Number",
+					"label": "Strength",
+					"value": 0
+				}
+			},
+			"size": {
+				"size": {
+					"type": "Number",
+					"label": "Size",
+					"value": 0
+				}
+			},
+			"availability": {
+				"availability": {
+					"type": "String",
+					"label": "Availability",
+					"value": ""
+				}
+			},
+			"speed": {
+				"speed": {
+					"type": "Number",
+					"label": "Speed",
+					"value": 0
+				}
+			},
+			"bonus": {
+				"bonus": {
+					"type": "Number",
+					"label": "Dice Bonus",
+					"value": 0
+				}
+			},
+			"durability": {
+				"durability": {
+					"type": "Number",
+					"label": "Durability",
+					"value": 0
+				}
+			},
+			"structure": {
+				"structure": {
+					"type": "Number",
+					"label": "Structure",
+					"value": 0
+				}
+			},
+			"initiative": {
+				"initiative": {
+					"type": "Number",
+					"label": "Initiative",
+					"value": 0
+				}
+			},
+			"rank": {
+				"rank": {
+					"type": "Number",
+					"label": "Rank",
+					"value": 1
+				}
+			},
+			"cause": {
+				"cause": {
+					"type": "String",
+					"label": "Cause",
+					"value": ""
+				}
+			},
+			"resolution": {
+				"resolution": {
+					"type": "String",
+					"label": "Resolution",
+					"value": ""
+				}
+			}
+		},
+
+		"weapon": {
+			"templates": ["quantity", "weight", "description", "attack", "damage", "initiative", "strength", "size", "availability"],
+			"range": {
 				"type": "String",
-				"label": "Description",
+				"label": "Range",
+				"value": ""
+			},
+			"ammunition": {
+				"type": "String",
+				"label": "Ammunition",
 				"value": ""
 			}
 		},
 		"armor": {
+			"templates": ["quantity", "weight", "description", "strength", "availability", "speed"],
 			"rating": {
 				"type": "String",
 				"label": "Rating",
 				"value": ""
 			},
-			"str": {
-				"type": "String",
-				"label": "Strength",
-				"value": ""
-			},
 			"def": {
-				"type": "String",
+				"type": "Number",
 				"label": "Defense",
-				"value": ""
-			},
-			"speed": {
-				"type": "String",
-				"label": "Speed",
-				"value": ""
-			},
-			"availability": {
-				"type": "String",
-				"label": "Availability",
-				"value": ""
+				"value": 0
 			},
 			"coverage": {
 				"type": "String",
@@ -521,118 +621,47 @@
 				"value": ""
 			}
 		},
-		"condition": {},
-		"dread": {},
 		"equipment": {
-			"bonus": {
-				"type": "String",
-				"label": "Dice Bonus",
-				"value": ""
-			},
-			"durability": {
-				"type": "String",
-				"label": "Durability",
-				"value": ""
-			},
-			"size": {
-				"type": "String",
-				"label": "Size",
-				"value": ""
-			},
-			"structure": {
-				"type": "String",
-				"label": "Structure",
-				"value": ""
-			},
-			"availability": {
-				"type": "String",
-				"label": "Availability",
-				"value": ""
-			}
+			"templates": ["quantity", "weight", "description", "size", "availability", "bonus", "durability", "structure"]
 		},
-		"merit": {},
-		"discipline": {},
-		"service": {
-			"availability": {
-				"type": "String",
-				"label": "Availability",
-				"value": ""
-			},
-			"bonus": {
-				"type": "String",
-				"label": "Dice Bonus",
-				"value": ""
-			}
-		},
-		"tilt": {},
 		"vehicle": {
+			"templates": ["description", "size", "speed", "durability", "structure"],
 			"modifier": {
-				"type": "String",
+				"type": "Number",
 				"label": "Dice Modifier",
-				"value": ""
-			},
-			"size": {
+				"value": 0
+			}
+		},
+		"merit": {
+			"templates": ["description", "rank"]
+		},
+		"service": {
+			"templates": ["description", "bonus", "availability"]
+		},
+		"condition": {
+			"templates": ["description", "cause", "resolution"]
+		},
+		"tilt": {
+			"templates": ["description", "cause", "resolution"],
+			"effect": {
 				"type": "String",
-				"label": "Size",
-				"value": ""
-			},
-			"durability": {
-				"type": "String",
-				"label": "Durability/Structure",
-				"value": ""
-			},
-			"speed": {
-				"type": "String",
-				"label": "Speed",
+				"label": "Effect",
 				"value": ""
 			}
 		},
-		"weapon": {
-			"attack": {
-				"type": "String",
-				"label": "Attack",
-				"value": ""
-			},
-			"damage": {
-				"type": "String",
-				"label": "Damage",
-				"value": ""
-			},
-			"range": {
-				"type": "String",
-				"label": "Range",
-				"value": ""
-			},
-			"capacity": {
-				"type": "String",
-				"label": "Capacity",
-				"value": ""
-			},
-			"initiative": {
-				"type": "String",
-				"label": "Initiative",
-				"value": ""
-			},
-			"str": {
-				"type": "String",
-				"label": "Strength",
-				"value": ""
-			},
-			"size": {
-				"type": "String",
-				"label": "Size",
-				"value": ""
-			},
-			"availability": {
-				"type": "String",
-				"label": "Availability",
-				"value": ""
-			},
-			"tags": {
-				"type": "String",
-				"label": "Tags",
-				"value": ""
+		"dread": {
+			"templates": ["description", "rank"]
+		},
+		"numina": {
+			"templates": ["description"],
+			"cost": {
+				"type": "Number",
+				"label": "Essence Cost",
+				"value": 1
 			}
+		},
+		"discipline": {
+			"templates": ["description"]
 		}
 	}
 }

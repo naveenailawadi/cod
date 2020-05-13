@@ -4,6 +4,10 @@
 		<div class="header-fields">
 			<h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
 			<div class="resource">
+				<label>Quantity</label>
+				<input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number" />
+			</div>
+			<div class="resource">
 				<label>Weight</label>
 				<input type="text" name="data.weight" value="{{data.weight}}" data-dtype="String" />
 			</div>
@@ -23,68 +27,42 @@
 			<div class="form-group">
 				<label class="label-text">{{data.bonus.label}}</label>
 				<div class="input-box">
-					<input
-						class="input-text"
-						name="data.bonus.value"
-						value="{{data.bonus.value}}"
-						data-dtype="{{data.bonus.type}}"
-					/>
+					<input class="input-text" name="data.bonus.value" value="{{data.bonus.value}}" data-dtype="{{data.bonus.type}}" />
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="label-text">{{data.durability.label}}</label>
 				<div class="input-box">
-					<input
-						class="input-text"
-						name="data.durability.value"
-						value="{{data.durability.value}}"
-						data-dtype="{{data.durability.type}}"
-					/>
+					<input class="input-text" name="data.durability.value" value="{{data.durability.value}}" data-dtype="{{data.durability.type}}" />
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="label-text">{{data.size.label}}</label>
 				<div class="input-box">
-					<input
-						class="input-text"
-						name="data.size.value"
-						value="{{data.size.value}}"
-						data-dtype="{{data.size.type}}"
-					/>
+					<input class="input-text" name="data.size.value" value="{{data.size.value}}" data-dtype="{{data.size.type}}" />
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="label-text">{{data.structure.label}}</label>
 				<div class="input-box">
-					<input
-						class="input-text"
-						name="data.structure.value"
-						value="{{data.structure.value}}"
-						data-dtype="{{data.structure.type}}"
-					/>
+					<input class="input-text" name="data.structure.value" value="{{data.structure.value}}" data-dtype="{{data.structure.type}}" />
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="label-text">{{data.availability.label}}</label>
 				<div class="input-box">
-					<input
-						class="input-text"
-						name="data.availability.value"
-						value="{{data.availability.value}}"
-						data-dtype="{{data.availability.type}}"
-					/>
+					<input class="input-text" name="data.availability.value" value="{{data.availability.value}}" data-dtype="{{data.availability.type}}" />
 				</div>
 			</div>
 		</div>
 
 		{{!-- Description Tab --}}
 		<div class="tab" data-group="primary" data-tab="description">
-			{{editor content=data.description.value target="data.description.value" button=true owner=owner
-			editable=editable}}
+			{{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
 		</div>
 	</section>
 </form>
