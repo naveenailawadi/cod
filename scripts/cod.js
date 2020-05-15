@@ -108,11 +108,11 @@ class ActorCoD extends Actor {
 		// Ex: 'int', 'animalken', 'ten'. Define global roll pool, assume valid int & skill sent even if 0 or negative value.
 
 		let pool = 0;
-		let attVal = parseInt(this.data.data.attributes[attribute].value);
-		let skillVal = parseInt(this.data.data.skills[skill].value);
+		let attVal = parseInt(this.data.data.attributes[attribute].value, 10);
+		let skillVal = parseInt(this.data.data.skills[skill].value, 10);
 		let attGroup = CONFIG.groupMapping[attribute];
 		let skillGroup = CONFIG.groupMapping[skill];
-		let modVal = parseInt(modifier) || 0;
+		let modVal = parseInt(modifier, 10) || 0;
 		let penalty = 0;
 		let penaltyStr = '';
 		let explodeStr = 'x10';

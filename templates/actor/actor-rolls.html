@@ -12,7 +12,7 @@
 				</div>
 				<div class="attribute-selector roll primary">
 					<label>Attribute</label>
-					<select name="attributeSelector">
+					<select>
 						{{#select roll.primary}}
 						<option value="none">None</option>
 						{{#each ../attributes as |group key|}}
@@ -27,7 +27,7 @@
 
 				<div class="attribute-selector roll secondary">
 					<label>Skill</label>
-					<select name="skillSelector">
+					<select>
 						{{#select roll.secondary}}
 						<option value="none">None</option>
 						{{#each ../skills as |group key|}}
