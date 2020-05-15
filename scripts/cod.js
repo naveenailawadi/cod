@@ -141,6 +141,7 @@ class ActorCoD extends Actor {
 				break;
 		}
 
+		console.log(`--------------`);
 		console.log(
 			`Initial roll pool: ${attribute} : ${attVal}, ${skill} : ${skillVal}, Mod : ${modVal}`
 		);
@@ -152,6 +153,7 @@ class ActorCoD extends Actor {
 		// Determine final roll pool
 		pool = pool + attVal + skillVal + modVal + penalty;
 		console.log(`Final roll pool: ${pool}`);
+		console.log(`--------------`);
 
 		if (pool > 0) {
 			// Regular roll
@@ -466,11 +468,14 @@ class ActorSheetCoD extends ActorSheet {
 				$(ev.currentTarget).parents('.rolls').attr('data-index')
 			);
 			this.actor.data.data.rolls;
+			if (this.actor.data.data.rolls[rollIndex].exploder === undefined) {
+				this.actor.data.data.rolls[rollIndex].exploder = 'ten';
+			}
 			this.actor.rollPool(
 				this.actor.data.data.rolls[rollIndex].primary,
 				this.actor.data.data.rolls[rollIndex].secondary,
 				this.actor.data.data.rolls[rollIndex].modifier,
-				'ten'
+				this.actor.data.data.rolls[rollIndex].exploder
 			);
 		});
 
@@ -544,11 +549,13 @@ class ActorSheetCoD extends ActorSheet {
 			let primary = $(ev.currentTarget).hasClass('primary');
 			let secondary = $(ev.currentTarget).hasClass('secondary');
 			let modifier = $(ev.currentTarget).hasClass('modifier');
+			let exploder = $(ev.currentTarget).hasClass('exploder');
 			let rollList = duplicate(this.actor.data.data.rolls);
 
 			if (primary) rollList[rollIndex].primary = ev.target.value;
 			if (secondary) rollList[rollIndex].secondary = ev.target.value;
 			if (modifier) rollList[rollIndex].modifier = Number(ev.target.value);
+			if (exploder) rollList[rollIndex].exploder = ev.target.value;
 
 			this.actor.update({'data.rolls': rollList});
 		});

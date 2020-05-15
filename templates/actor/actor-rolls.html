@@ -10,6 +10,7 @@
 					<label>Name</label>
 					<input class="roll-name" type="text" value="{{roll.name}}" />
 				</div>
+
 				<div class="attribute-selector roll primary">
 					<label>Attribute</label>
 					<select>
@@ -39,10 +40,24 @@
 						{{/each}} {{/select}}
 					</select>
 				</div>
+
 				<div class="attribute-selector roll modifier">
 					<label>Modifier</label>
 					<input type="text" value="{{roll.modifier}}" data-dtype="Number" />
 				</div>
+
+				<div class="attribute-selector roll exploder">
+					<label>Explode</label>
+					<select>
+						{{#select roll.exploder}}
+						<option value="none">None</option>
+						<option value="ten" selected>10 Again</option>
+						<option value="nine">9 Again</option>
+						<option value="eight">8 Again</option>
+						{{/select}}
+					</select>
+				</div>
+
 				<button class="roll-button">Roll</button>
 				<div class="item-controls">
 					<a class="item-control roll-delete" title="Delete Roll"
