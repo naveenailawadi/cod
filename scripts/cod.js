@@ -534,13 +534,13 @@ class ActorSheetCoD extends ActorSheet {
 
 			if (primary) rollList[rollIndex].primary = ev.target.value;
 			if (secondary) rollList[rollIndex].secondary = ev.target.value;
-			if (modifier) rollList[rollIndex].modifier = ev.target.value;
+			if (modifier) rollList[rollIndex].modifier = Number(ev.target.value);
 
 			this.actor.update({'data.rolls': rollList});
 		});
 
 		// Click roll button
-		html.find('.roll-button').click((ev) => {
+		html.find('.roll-button').mousedown((ev) => {
 			let rollIndex = Number(
 				$(ev.currentTarget).parents('.rolls').attr('data-index')
 			);
