@@ -486,6 +486,13 @@
 					"value": ""
 				}
 			},
+			"tags": {
+				"tags": {
+					"type": "String",
+					"label": "Tags",
+					"value": ""
+				}
+			},
 			"speed": {
 				"speed": {
 					"type": "Number",
@@ -554,7 +561,8 @@
 				"initiative",
 				"strength",
 				"size",
-				"availability"
+				"availability",
+				"tags"
 			],
 			"range": {
 				"type": "String",
@@ -574,7 +582,8 @@
 				"description",
 				"strength",
 				"availability",
-				"speed"
+				"speed",
+				"tags"
 			],
 			"rating": {
 				"type": "String",

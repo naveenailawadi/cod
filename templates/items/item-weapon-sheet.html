@@ -1,15 +1,37 @@
 <form class="{{cssClass}}" autocomplete="off">
 	<header class="sheet-header">
-		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+		<img
+			class="profile-img"
+			src="{{item.img}}"
+			data-edit="img"
+			title="{{item.name}}"
+		/>
 		<div class="header-fields">
-			<h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+			<h1 class="charname">
+				<input
+					name="name"
+					type="text"
+					value="{{item.name}}"
+					placeholder="Name"
+				/>
+			</h1>
 			<div class="resource">
 				<label>Quantity</label>
-				<input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number" />
+				<input
+					type="text"
+					name="data.quantity"
+					value="{{data.quantity}}"
+					data-dtype="Number"
+				/>
 			</div>
 			<div class="resource">
 				<label>Weight</label>
-				<input type="text" name="data.weight" value="{{data.weight}}" data-dtype="String" />
+				<input
+					type="text"
+					name="data.weight"
+					value="{{data.weight}}"
+					data-dtype="String"
+				/>
 			</div>
 		</div>
 	</header>
@@ -37,50 +59,97 @@
 			<div class="form-group">
 				<label class="label-text">{{data.damage.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.damage.value" value="{{data.damage.value}}" data-dtype="{{data.damage.type}}" />
+					<input
+						class="input-text"
+						name="data.damage.value"
+						value="{{data.damage.value}}"
+						data-dtype="{{data.damage.type}}"
+					/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="label-text">{{data.range.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.range.value" value="{{data.range.value}}" data-dtype="{{data.range.type}}" />
+					<input
+						class="input-text"
+						name="data.range.value"
+						value="{{data.range.value}}"
+						data-dtype="{{data.range.type}}"
+					/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="label-text">{{data.ammunition.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.ammunition.value" value="{{data.ammunition.value}}" data-dtype="{{data.ammunition.type}}" />
+					<input
+						class="input-text"
+						name="data.ammunition.value"
+						value="{{data.ammunition.value}}"
+						data-dtype="{{data.ammunition.type}}"
+					/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="label-text">{{data.initiative.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.initiative.value" value="{{data.initiative.value}}" data-dtype="{{data.initiative.type}}" />
+					<input
+						class="input-text"
+						name="data.initiative.value"
+						value="{{data.initiative.value}}"
+						data-dtype="{{data.initiative.type}}"
+					/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="label-text">{{data.strength.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.strength.value" value="{{data.strength.value}}" data-dtype="{{data.strength.type}}" />
+					<input
+						class="input-text"
+						name="data.strength.value"
+						value="{{data.strength.value}}"
+						data-dtype="{{data.strength.type}}"
+					/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="label-text">{{data.size.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.size.value" value="{{data.size.value}}" data-dtype="{{data.size.type}}" />
+					<input
+						class="input-text"
+						name="data.size.value"
+						value="{{data.size.value}}"
+						data-dtype="{{data.size.type}}"
+					/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="label-text">{{data.availability.label}}</label>
 				<div class="input-box">
-					<input class="input-text" name="data.availability.value" value="{{data.availability.value}}" data-dtype="{{data.availability.type}}" />
+					<input
+						class="input-text"
+						name="data.availability.value"
+						value="{{data.availability.value}}"
+						data-dtype="{{data.availability.type}}"
+					/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="label-text">{{data.tags.label}}</label>
+				<div class="input-box">
+					<input
+						class="input-text"
+						name="data.tags.value"
+						value="{{data.tags.value}}"
+						data-dtype="{{data.tags.type}}"
+					/>
 				</div>
 			</div>
 		</div>
 
 		{{!-- Description Tab --}}
 		<div class="tab" data-group="primary" data-tab="description">
-			{{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+			{{editor content=data.description.value target="data.description.value"
+			button=true owner=owner editable=editable}}
 		</div>
 	</section>
 </form>
