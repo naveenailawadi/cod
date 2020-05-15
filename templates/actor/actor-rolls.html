@@ -27,7 +27,7 @@
 
 				<div class="attribute-selector roll secondary">
 					<label>Skill</label>
-					<select name="attributeSelector">
+					<select name="skillSelector">
 						{{#select roll.secondary}}
 						<option value="none">None</option>
 						{{#each ../skills as |group key|}}
@@ -45,7 +45,9 @@
 				</div>
 				<button class="roll-button">Roll</button>
 				<div class="item-controls">
-					<a class="item-control roll-delete" title="Delete Roll"><i class="fas fa-trash"></i></a>
+					<a class="item-control roll-delete" title="Delete Roll"
+						><i class="fas fa-trash"></i
+					></a>
 				</div>
 			</li>
 			{{/each}}

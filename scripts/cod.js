@@ -115,7 +115,7 @@ class ActorCoD extends Actor {
 		let modVal = parseInt(modifier) || 0;
 		let penalty = 0;
 		let penaltyStr = '';
-		let explodeStr = '';
+		let explodeStr = 'x10';
 
 		// Determine if inadequate skill
 		if (skillVal < 1) {
@@ -460,6 +460,20 @@ class ActorSheetCoD extends ActorSheet {
 			}
 		});
 
+		// Click custom roll 'Roll' button
+		html.find('.roll-button').mousedown((ev) => {
+			let rollIndex = Number(
+				$(ev.currentTarget).parents('.rolls').attr('data-index')
+			);
+			this.actor.data.data.rolls;
+			this.actor.rollPool(
+				this.actor.data.data.rolls[rollIndex].primary,
+				this.actor.data.data.rolls[rollIndex].secondary,
+				this.actor.data.data.rolls[rollIndex].modifier,
+				'ten'
+			);
+		});
+
 		// Activate tabs
 		let tabs = html.find('.tabs');
 		let initial = this.actor.data.flags['_sheetTab'];
@@ -537,19 +551,6 @@ class ActorSheetCoD extends ActorSheet {
 			if (modifier) rollList[rollIndex].modifier = Number(ev.target.value);
 
 			this.actor.update({'data.rolls': rollList});
-		});
-
-		// Click roll button
-		html.find('.roll-button').mousedown((ev) => {
-			let rollIndex = Number(
-				$(ev.currentTarget).parents('.rolls').attr('data-index')
-			);
-			this.actor.data.data.rolls;
-			this.actor.rollPool(
-				this.actor.data.data.rolls[rollIndex].primary,
-				this.actor.data.data.rolls[rollIndex].secondary,
-				this.actor.data.data.rolls[rollIndex].modifier
-			);
 		});
 	}
 }
