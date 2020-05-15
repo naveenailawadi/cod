@@ -105,11 +105,11 @@ CONFIG.attackSkills = {
 
 class ActorCoD extends Actor {
 	rollPool(attribute, skill, modifier, exploder) {
-		// Define global roll pool, assume valid int & skill sent even if 0 or negative value
+		// Ex: 'int', 'animalken', 'ten'. Define global roll pool, assume valid int & skill sent even if 0 or negative value.
 
 		let pool = 0;
-		let attVal = this.data.data.attributes[attribute].current;
-		let skillVal = this.data.data.skills[skill].current;
+		let attVal = parseInt(this.data.data.attributes[attribute].value);
+		let skillVal = parseInt(this.data.data.skills[skill].value);
 		let attGroup = CONFIG.groupMapping[attribute];
 		let skillGroup = CONFIG.groupMapping[skill];
 		let modVal = parseInt(modifier) || 0;
@@ -122,7 +122,8 @@ class ActorCoD extends Actor {
 			if (skillGroup === 'mental') penalty = -3;
 			else penalty = -1;
 		}
-		if (penalty < 0) penaltyStr = `<br> Insufficient skill! Penalty of ${penalty}`;
+		if (penalty < 0)
+			penaltyStr = `<br> Insufficient skill! Penalty of ${penalty}`;
 
 		// Determine exploder
 		switch (exploder) {
@@ -140,18 +141,24 @@ class ActorCoD extends Actor {
 				break;
 		}
 
-		console.log(`Initial roll pool: ${attribute} : ${attVal}, ${skill} : ${skillVal}, Mod : ${modVal}`);
+		console.log(
+			`Initial roll pool: ${attribute} : ${attVal}, ${skill} : ${skillVal}, Mod : ${modVal}`
+		);
 		console.log(`Att: ${attGroup}, Skill: ${skillGroup}`);
 		console.log(`Exploder: ${exploder}`);
 		if (penalty < 0) console.log(`Penalty assessed: ${penalty}`);
+		console.log(`--------------`);
 
 		// Determine final roll pool
-		pool += attVal + skillVal + modVal + penalty;
+		pool = pool + attVal + skillVal + modVal + penalty;
+		console.log(`Final roll pool: ${pool}`);
 
 		if (pool > 0) {
 			// Regular roll
 			let roll = new Roll(`${pool}d10${explodeStr}cs>=8`).roll();
-			roll.toMessage({flavor: `${attribute}: ${attVal}, ${skill}: ${skillVal}, mod: ${modVal}${penaltyStr}`});
+			roll.toMessage({
+				flavor: `${attribute}: ${attVal}, ${skill}: ${skillVal}, mod: ${modVal}${penaltyStr}`,
+			});
 		} else {
 			// Chance roll
 			let roll = new Roll(`1d10cs=10`).roll();
@@ -266,7 +273,8 @@ class ActorSheetCoD extends ActorSheet {
 
 		for (let g in displayAttrGroups) {
 			for (let a in displayAttrGroups[g]) {
-				displayAttrGroups[g][a] += ' (' + this.actor.data.data.attributes[a].current + ')';
+				displayAttrGroups[g][a] +=
+					' (' + this.actor.data.data.attributes[a].value + ')';
 			}
 		}
 		return displayAttrGroups;
@@ -301,7 +309,8 @@ class ActorSheetCoD extends ActorSheet {
 
 		for (let g in displaySkillGroups) {
 			for (let s in displaySkillGroups[g]) {
-				displaySkillGroups[g][s] += ' (' + this.actor.data.data.skills[s].current + ')';
+				displaySkillGroups[g][s] +=
+					' (' + this.actor.data.data.skills[s].value + ')';
 			}
 		}
 		return displaySkillGroups;
@@ -326,32 +335,45 @@ class ActorSheetCoD extends ActorSheet {
 				attributes: this.sortAttrGroups(),
 				groups: CONFIG.groups,
 			};
-			renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then((html) => {
-				new Dialog({
-					title: 'Roll Dice Pool',
-					content: html,
-					buttons: {
-						Yes: {
-							icon: '<i class="fa fa-check"></i>',
-							label: 'Yes',
-							callback: (html) => {
-								let attributeSelected = html.find('[name="attributeSelector"]').val();
-								let poolModifier = html.find('[name="modifier"]').val();
-								let skillSelected = html.find('[name="skillSelector"]').val();
-								let exploderSelected = html.find('[name="exploderSelector"]').val();
-								if (attributeSelected === 'none' || skillSelected === 'none') console.log(`Invalid pool selected.`);
-								else this.actor.rollPool(attributeSelected, skillSelected, poolModifier, exploderSelected);
-								console.log(``);
+			renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then(
+				(html) => {
+					new Dialog({
+						title: 'Roll Dice Pool',
+						content: html,
+						buttons: {
+							Yes: {
+								icon: '<i class="fa fa-check"></i>',
+								label: 'Yes',
+								callback: (html) => {
+									let attributeSelected = html
+										.find('[name="attributeSelector"]')
+										.val();
+									let poolModifier = html.find('[name="modifier"]').val();
+									let skillSelected = html.find('[name="skillSelector"]').val();
+									let exploderSelected = html
+										.find('[name="exploderSelector"]')
+										.val();
+									if (attributeSelected === 'none' || skillSelected === 'none')
+										console.log(`Invalid pool selected.`);
+									else
+										this.actor.rollPool(
+											attributeSelected,
+											skillSelected,
+											poolModifier,
+											exploderSelected
+										);
+									console.log(``);
+								},
+							},
+							cancel: {
+								icon: '<i class="fas fa-times"></i>',
+								label: 'Cancel',
 							},
 						},
-						cancel: {
-							icon: '<i class="fas fa-times"></i>',
-							label: 'Cancel',
-						},
-					},
-					default: 'Yes',
-				}).render(true);
-			});
+						default: 'Yes',
+					}).render(true);
+				}
+			);
 		});
 
 		// Click weapon roll
@@ -361,12 +383,14 @@ class ActorSheetCoD extends ActorSheet {
 			let attackType = item.data.attack.value;
 			let formula = CONFIG.attackSkills[attackType];
 			formula = formula.split(',');
-			// Formula[0] = attribute, Formula[1] = skill (e.g., str, brawl)
+			// Formula[0] = attribute, Formula[1] = skill (e.g., 'str', 'brawl')
 			let targetDef = 0;
 
 			let defaultSelectionAtt = formula[0];
 			let defaultSelectionSkill = formula[1];
-			console.log(`Weapon roll: ${defaultSelectionAtt}, ${defaultSelectionSkill}`);
+			console.log(
+				`Weapon roll: ${defaultSelectionAtt}, ${defaultSelectionSkill}`
+			);
 
 			let dialogData = {
 				defaultSelectionAtt: defaultSelectionAtt,
@@ -378,11 +402,14 @@ class ActorSheetCoD extends ActorSheet {
 
 			// If a target is selected
 			if (game.user.targets.size == 1) {
-				targetDef = -1 * game.user.targets.values().next().value.actor.data.data.attributes.def.current;
+				targetDef =
+					-1 *
+					game.user.targets.values().next().value.actor.data.data.advantages.def
+						.value;
 
 				if (attackType === 'ranged') {
-					this.actor.rollPool(formula[0], formula[1], 0, 'ten');
 					console.log(`Target's defense not applied`);
+					this.actor.rollPool(formula[0], formula[1], 0, 'ten');
 					console.log(``);
 				} else {
 					this.actor.rollPool(formula[0], formula[1], targetDef, 'ten');
@@ -390,7 +417,10 @@ class ActorSheetCoD extends ActorSheet {
 				}
 			} else {
 				// If no target selected, create popup dialogue
-				renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then((html) => {
+				renderTemplate(
+					'systems/cod/templates/pool-dialog.html',
+					dialogData
+				).then((html) => {
 					new Dialog({
 						title: 'Roll Dice Pool',
 						content: html,
@@ -399,12 +429,23 @@ class ActorSheetCoD extends ActorSheet {
 								icon: '<i class="fa fa-check"></i>',
 								label: 'Yes',
 								callback: (html) => {
-									let attributeSelected = html.find('[name="attributeSelector"]').val();
+									let attributeSelected = html
+										.find('[name="attributeSelector"]')
+										.val();
 									let poolModifier = html.find('[name="modifier"]').val();
 									let skillSelected = html.find('[name="skillSelector"]').val();
-									let exploderSelected = html.find('[name="exploderSelector"]').val();
-									if (attributeSelected === 'none' || skillSelected === 'none') console.log(`Invalid pool selected.`);
-									else this.actor.rollPool(attributeSelected, skillSelected, poolModifier, exploderSelected);
+									let exploderSelected = html
+										.find('[name="exploderSelector"]')
+										.val();
+									if (attributeSelected === 'none' || skillSelected === 'none')
+										console.log(`Invalid pool selected.`);
+									else
+										this.actor.rollPool(
+											attributeSelected,
+											skillSelected,
+											poolModifier,
+											exploderSelected
+										);
 									console.log(``);
 								},
 							},
@@ -424,7 +465,8 @@ class ActorSheetCoD extends ActorSheet {
 		let initial = this.actor.data.flags['_sheetTab'];
 		new Tabs(tabs, {
 			initial: initial,
-			callback: (clicked) => (this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
+			callback: (clicked) =>
+				(this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
 		});
 
 		// Everything below here is only needed if the sheet is editable
@@ -433,7 +475,9 @@ class ActorSheetCoD extends ActorSheet {
 		// Update Inventory Item
 		html.find('.item-edit').click((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.items.find((i) => i.id == li.attr('data-item-id'));
+			const item = this.actor.items.find(
+				(i) => i.id == li.attr('data-item-id')
+			);
 			item.sheet.render(true);
 		});
 
@@ -470,7 +514,9 @@ class ActorSheetCoD extends ActorSheet {
 
 		// Delete roll
 		html.find('.roll-delete').click((ev) => {
-			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
+			let rollIndex = Number(
+				$(ev.currentTarget).parents('.rolls').attr('data-index')
+			);
 			let rollList = duplicate(this.actor.data.data.rolls);
 			rollList.splice(rollIndex, 1);
 			this.actor.update({'data.rolls': rollList});
@@ -478,7 +524,9 @@ class ActorSheetCoD extends ActorSheet {
 
 		// Change custom roll attribute
 		html.find('.roll.attribute-selector').change((ev) => {
-			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
+			let rollIndex = Number(
+				$(ev.currentTarget).parents('.rolls').attr('data-index')
+			);
 			let primary = $(ev.currentTarget).hasClass('primary');
 			let secondary = $(ev.currentTarget).hasClass('secondary');
 			let modifier = $(ev.currentTarget).hasClass('modifier');
@@ -493,9 +541,15 @@ class ActorSheetCoD extends ActorSheet {
 
 		// Click roll button
 		html.find('.roll-button').click((ev) => {
-			let rollIndex = Number($(ev.currentTarget).parents('.rolls').attr('data-index'));
+			let rollIndex = Number(
+				$(ev.currentTarget).parents('.rolls').attr('data-index')
+			);
 			this.actor.data.data.rolls;
-			this.actor.rollPool(this.actor.data.data.rolls[rollIndex].primary, this.actor.data.data.rolls[rollIndex].secondary, this.actor.data.data.rolls[rollIndex].modifier);
+			this.actor.rollPool(
+				this.actor.data.data.rolls[rollIndex].primary,
+				this.actor.data.data.rolls[rollIndex].secondary,
+				this.actor.data.data.rolls[rollIndex].modifier
+			);
 		});
 	}
 }
@@ -555,7 +609,7 @@ Items.registerSheet('core', CoDItemSheet, {
 });
 
 //Set initiative formula
-CONFIG.initiative.formula = '1d20';
+CONFIG.initiative.formula = '1d10';
 
 Hooks.once('init', () => {
 	loadTemplates([
