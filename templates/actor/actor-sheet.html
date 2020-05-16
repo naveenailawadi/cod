@@ -1,85 +1,143 @@
 <form class="{{cssClass}}" autocomplete="off">
-   <header class="sheet-header">
-      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
-      <div class="header-fields">
-         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-         <div class="labels">
-            <span class="label-details">Age</span>
-            <span class="label-details">Concept</span>
-            <span class="label-details">Faction</span>
-            <span class="label-details">Virtue</span>
-            <span class="label-details">Vice</span>
-         </div>
-         <div class="details">
-            <input type="text" name="data.details.age.value" placeholder="Age" value="{{data.details.age.value}}" data-dtype="data.details.age.type" />
-            <input type="text" name="data.details.concept.value" placeholder="Concept" value="{{data.details.concept.value}}" data-dtype="data.details.concept.type" />
-            <input type="text" name="data.details.faction.value" placeholder="Faction" value="{{data.details.faction.value}}" data-dtype="data.details.faction.type" />
-            <input type="text" name="data.details.anchor1.value" placeholder="Virtue" value="{{data.details.anchor1.value}}" data-dtype="data.details.anchor1.type" />
-            <input type="text" name="data.details.anchor2.value" placeholder="Vice" value="{{data.details.anchor2.value}}" data-dtype="data.details.anchor2.type" />
-         </div>
-         <div style="clear: both;"></div>
+	<div class="mortal">
+		<div class="sheet-logo"></div>
 
-         <div class="vamp-bg-block">
-            <label> Clan: </label>      <label>{{data.vamp-bg.clan.value}}</label>
-            <label> Virtue: </label>    <label>{{data.vamp-bg.virtue.value}}</label>
-            <label> Vice: </label>      <label>{{data.vamp-bg.vice.value}}</label>
-            <label> Bloodline: </label> <label>{{data.vamp-bg.bloodline.value}}</label>
-            <label> Covenant: </label>  <label>{{data.vamp-bg.convenant.value}}</label>
-         </div>
-         <div style="clear: both;"></div>
+		<header class="sheet-header">
+			<img
+				class="profile-img"
+				src="{{actor.img}}"
+				data-edit="img"
+				title="{{actor.name}}"
+				height="100"
+				width="100"
+			/>
+			<div class="header-fields">
+				<h1 class="charname">
+					<input
+						name="name"
+						type="text"
+						value="{{actor.name}}"
+						placeholder="Name"
+					/>
+				</h1>
+				<div class="labels">
+					<span class="label-details">Age</span>
+					<span class="label-details">Concept</span>
+					<span class="label-details">Faction</span>
+					<span class="label-details">Virtue</span>
+					<span class="label-details">Vice</span>
+				</div>
+				<div class="details">
+					<input
+						type="text"
+						name="data.details.age.value"
+						placeholder="Age"
+						value="{{data.details.age.value}}"
+						data-dtype="data.details.age.type"
+					/>
+					<input
+						type="text"
+						name="data.details.concept.value"
+						placeholder="Concept"
+						value="{{data.details.concept.value}}"
+						data-dtype="data.details.concept.type"
+					/>
+					<input
+						type="text"
+						name="data.details.faction.value"
+						placeholder="Faction"
+						value="{{data.details.faction.value}}"
+						data-dtype="data.details.faction.type"
+					/>
+					<input
+						type="text"
+						name="data.details.anchor1.value"
+						placeholder="Virtue"
+						value="{{data.details.anchor1.value}}"
+						data-dtype="data.details.anchor1.type"
+					/>
+					<input
+						type="text"
+						name="data.details.anchor2.value"
+						placeholder="Vice"
+						value="{{data.details.anchor2.value}}"
+						data-dtype="data.details.anchor2.type"
+					/>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="splatSelect">
+					<label class="label-text">{{data.splatSelect.label}}</label>
+					<select name="data.splatSelect.value" data-dtype="String">
+						{{#select data.splatSelect.value}} {{#each splats as |name key|}}
+						<option value="{{key}}">{{name}}</option>
+						{{/each}} {{/select}}
+					</select>
+				</div>
+				<div class="vamp-bg-block">
+					<label> Clan: </label> <label>{{data.vamp-bg.clan.value}}</label>
+					<label> Virtue: </label> <label>{{data.vamp-bg.virtue.value}}</label>
+					<label> Vice: </label> <label>{{data.vamp-bg.vice.value}}</label>
+					<label> Bloodline: </label>
+					<label>{{data.vamp-bg.bloodline.value}}</label>
+					<label> Covenant: </label>
+					<label>{{data.vamp-bg.convenant.value}}</label>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</header>
 
-</div>
+		<!--Tabs-->
+		<section id="tab-sections">
+			<nav id="codprimarytabs" class="sheet-tabs tabs" data-group="primary">
+				<!-- Working Tabs v1  <nav id="codprimarytabs" class="sheet-tabs tabs" data-group="primary"> -->
+				<a class="item active" data-tab="display">Display</a>
+				<a class="item" data-tab="main">Main</a>
+				<a class="item" data-tab="skills">Skills</a>
+				<a class="item" data-tab="disciplines">Disciplines</a>
+				<a class="item" data-tab="merits">Merits</a>
+				<a class="item" data-tab="equipment">Equipment</a>
+				<a class="item" data-tab="customrolls">Custom Rolls</a>
+				<a class="item" data-tab="extra">Extra</a>
+			</nav>
 
+			<!-- Tab Contents -->
+			<div class="tab main" data-group="primary" data-tab="display">
+				{{> systems/cod/templates/actor/actor-display.html }}
+			</div>
+			<div class="tab main" data-group="primary" data-tab="main">
+				{{> systems/cod/templates/actor/actor-main.html }}
+			</div>
+			<div class="tab skills" data-group="primary" data-tab="skills">
+				{{> systems/cod/templates/actor/actor-skills.html }}
+			</div>
+			<div class="tab merits" data-group="primary" data-tab="merits">
+				{{> systems/cod/templates/actor/actor-merits.html }}
+			</div>
+			<div class="tab disciplines" data-group="primary" data-tab="disciplines">
+				{{> systems/cod/templates/actor/actor-disciplines.html }}
+			</div>
+			<div class="tab equipment" data-group="primary" data-tab="equipment">
+				{{> systems/cod/templates/actor/actor-equipment.html }}
+			</div>
+			<div class="tab customrolls" data-group="primary" data-tab="customrolls">
+				{{> systems/cod/templates/actor/actor-rolls.html }}
+			</div>
+			<div class="tab extra" data-group="primary" data-tab="extra">
+				{{> systems/cod/templates/actor/actor-extra.html }}
+			</div>
+		</section>
 
-
-      </div>
-   </header>
-   <!--Tabs-->
-   <section id="tab-sections">
-
-
-      <nav id="codprimarytabs" class="sheet-tabs tabs" data-group="primary">
-     <!-- Working Tabs v1  <nav id="codprimarytabs" class="sheet-tabs tabs" data-group="primary"> -->
-         <a class="item active" data-tab="display">Display</a>
-         <a class="item " data-tab="main">Main</a>
-         <a class="item" data-tab="skills">Skills</a>
-         <a class="item" data-tab="disciplines">Disciplines</a>
-         <a class="item" data-tab="merits">Merits</a>
-         <a class="item" data-tab="equipment">Equipment</a>
-         <a class="item" data-tab="customrolls">Custom Rolls</a>
-         <a class="item" data-tab="extra">Extra</a>
-     </nav>
- 
-
-      <!-- Tab Contents -->
-      <div class="tab main" data-group="primary" data-tab="display">
-         {{> systems/cod/templates/actor/actor-display.html }}
-      </div>
-      <div class="tab main" data-group="primary" data-tab="main">
-         {{> systems/cod/templates/actor/actor-main.html }}
-      </div>
-      <div class="tab skills" data-group="primary" data-tab="skills">
-         {{> systems/cod/templates/actor/actor-skills.html }}
-      </div>
-      <div class="tab merits" data-group="primary" data-tab="merits">
-         {{> systems/cod/templates/actor/actor-merits.html }}
-      </div>
-      <div class="tab disciplines" data-group="primary" data-tab="disciplines">
-         {{> systems/cod/templates/actor/actor-disciplines.html }}
-      </div>
-      <div class="tab equipment" data-group="primary" data-tab="equipment">
-         {{> systems/cod/templates/actor/actor-equipment.html }}
-      </div>
-      <div class="tab customrolls" data-group="primary" data-tab="customrolls">
-            {{> systems/cod/templates/actor/actor-rolls.html }}         
-      </div>
-      <div class="tab extra" data-group="primary" data-tab="extra">
-         {{> systems/cod/templates/actor/actor-extra.html }}
-      </div>
-   </section>
-   <div class="footer">
-      <div class="guide">
-         <span>Attributes 5/4/3 • Skills 11/7/4 (+3 Specialties) • Merits 7 • Health = Stamina + Size • Willpower = Resolve + Composure • Size = 5 for adult humans <br> Defense = Lowest of Dexterity or Wits + Athletics • Initiative Mod = Dexterity + Composure • Speed = Strength + Dexterity + 5 • Starting Integrity = 7</span>
-      </div>
-   </div>
+		<div class="footer">
+			<div class="guide">
+				<span
+					>Attributes 5/4/3 • Skills 11/7/4 (+3 Specialties) • Merits 7 • Health
+					= Stamina + Size • Willpower = Resolve + Composure • Size = 5 for
+					adult humans <br />
+					Defense = Lowest of Dexterity or Wits + Athletics • Initiative Mod =
+					Dexterity + Composure • Speed = Strength + Dexterity + 5 • Starting
+					Integrity = 7</span
+				>
+			</div>
+		</div>
+	</div>
 </form>

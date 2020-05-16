@@ -403,6 +403,12 @@
 
 				"rolls": [],
 
+				"splatSelect": {
+					"type": "String",
+					"label": "Character Type",
+					"value": "mortal"
+				},
+
 				"vamp-bg": {
 					"virtue": 0,
 					"vice": 0,

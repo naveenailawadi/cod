@@ -103,6 +103,15 @@ CONFIG.attackSkills = {
 	meleeFinesse: 'dex,weaponry',
 };
 
+// Character Types
+CONFIG.splats = {
+	mortal: 'Mortal',
+	vampire: 'Vampire',
+	werewolf: 'Werewolf',
+	mage: 'Mage',
+	changeling: 'Changeling',
+};
+
 class ActorCoD extends Actor {
 	rollPool(attribute, skill, modifier, exploder) {
 		// Ex: 'int', 'animalken', 'ten'. Define global roll pool, assume valid att & skill sent even if 0 or negative value.
@@ -249,6 +258,7 @@ class ActorSheetCoD extends ActorSheet {
 		this._prepareItems(sheetData.actor);
 		sheetData.attributes = this.sortAttrGroups();
 		sheetData.skills = this.sortSkillGroups();
+		sheetData.splats = CONFIG.splats;
 		return sheetData;
 	}
 
@@ -610,7 +620,7 @@ class ActorSheetCoD extends ActorSheet {
 				});
 			else {
 				let rolls = duplicate(this.actor.data.data.rolls);
-				rolls.push({name: 'New Roll'});
+				rolls.push({name: 'New Roll', exploder: 'ten'});
 				this.actor.update({'data.rolls': rolls});
 			}
 		});
