@@ -506,51 +506,75 @@ height: 67%
 
 /* ------------------------  Precisi's CSS --------------------------- */
 
-.cod.sheet .skills .skill-column .skill > input {
-	width: 40px;
-	height: 20px;
-	margin-top: 4px;
-	text-align: center;
-	font-family: inherit;
+.actor-sheet {
+    width: 900px !important;
 }
 
-.attribute input {
-	width: 50px !important;
-	height: 20px;
-	margin-top: 4px;
-}
+
+/* --------------- Header --------------- */
+
+.sheet-layout {
+	padding-left: 60px;
+	padding-right: 60px;
+	margin: -5px;
+  }
 
 .mortal {
 	background: url('mortal-border.jpg');
 	background-repeat: repeat-y;
 	background-size: cover;
-	padding-left: 40px;
-	padding-right: 40px;
-	margin: -5px;
   }
-  
-  .window-app .window-content {
-	display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-/*background: url(../../../ui/parchment.jpg) repeat;*/
-	background: #fff;
-	padding: 0px;
-	color: #191813;
-	overflow-y: auto;
-	overflow-x: hidden;*/
-  }
-  
-  .mortal .sheet-logo {
+
+.vampire {
+	background: url('vampire-border.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}  
+ 
+.sheet-logo {
 	  display: block;
-	  background: url('mortal-logo.png');
-	  background-repeat: no-repeat;
 	  background-size: 245px 100px;
 	  width: 245px;
 	  height: 100px;
 	  margin-left: auto;
 	  margin-right: auto;
   }
+
+.mortal .sheet-logo { background: url('mortal-logo.png'); background-repeat: no-repeat; }
+.vampire .sheet-logo { background: url('vampire-logo.png'); background-repeat: no-repeat; }
+
+
+
+/* --------------- Tab Navigation --------------- */
+
+
+.cod.sheet .tabs {
+    flex: 0 0 40px;
+    border-top: 1px solid #191813;
+    border-bottom: 1px solid #191813;
+	color: #fff;
+    height: 28px;
+}
+
+.mortal nav#codprimarytabs.sheet-tabs.tabs { background: #5d6e8a; }
+.vampire nav#codprimarytabs.sheet-tabs.tabs { background: #782e22; }
+
+.cod.sheet .tabs .item.active {
+    text-decoration: underline;
+    text-shadow: none;
+}
+
+.mortal nav#codprimarytabs.sheet-tabs.tabs .item.active {color: #b0daf7;}
+.vampire nav#codprimarytabs.sheet-tabs.tabs .item.active { color: #dadada;}
+
+.cod.sheet .tabs .item {
+    line-height: 28px;
+    font-weight: normal;
+}
+
+
+/* --------------- Display Page -- Attributes --------------- */
+/* Note: Bubbles styles are their own section */
 
 .attribute-type {
 	   display: block;
@@ -570,9 +594,9 @@ height: 67%
 .attribute-task {
 	line-height: 12px;
 	display: block;
-	padding: 2px;
-	background: yellow;
-	border: 1px solid #000;
+	padding: 1px;
+	background: #f0f0e0;
+	border: 1px solid #7a7971;
 	width: 60px;
 }
 
@@ -580,19 +604,14 @@ height: 67%
 	display: block;
 	float: left;
 	width: 8%;
-	padding-top: 2px;
+
 }
 
 .attribute_column2, .attribute_column3, .attribute_column4 {
 	display: block;
 	float: left;
 	width: 30%;
-	background: #888;
 	margin-left: 1%;
-}
-
-.actor-sheet {
-    width: 900px !important;
 }
 
 .cod.sheet .main .attribute-section .attribute-categories {
@@ -610,61 +629,8 @@ height: 67%
     margin-top: 0px;
 }
  
-.cod.sheet .tabs {
-    flex: 0 0 40px;
-    border-top: 1px solid #191813;
-    border-bottom: 1px solid #191813;
-	color: #fff;
-    background: #5d6e8a;
-    height: 28px;
-}
+/* --------------- Display Page -- Mid Columns --------------- */
 
-.cod.sheet .tabs .item {
-    line-height: 28px;
-    font-weight: normal;
-}
-
-.cod.sheet .tabs .item.active {
-    text-decoration: underline;
-    text-shadow: none;
-    color: rgb(163, 192, 255);
-}
-
-.sheet-bubbles, .skill-bubbles, .sheet-squares {
-	position: relative;
-	top: -5px;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-  }
-  
-  .sheet-bubbles::before {
-	content: "●●●●● ‎●●●●●"; /* Insert content that looks like bullets */
-	font-size: 20px;
-	background: #191813;
-	background: linear-gradient(90deg, #000 var(--percent), #00000020 var(--percent));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-  }
-  
-  .skill-bubbles::before {
-    content: "●●●●●";
-	font-size: 20px;
-	background: #191813;
-	background: linear-gradient(90deg, #000 var(--percent), #ffffff50 var(--percent));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-  }
-
-   .sheet-squares::before {
-	content: "■■■■■ ‎■■■■■"; /* Insert content that looks like bullets */
-	font-size: 20px;
-	background: #191813;
-	background: linear-gradient(90deg, #782e22 var(--percent), #00000020 var(--percent));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-  }
-
-/* Display Page Styles */
 
 .mid_column1 {
 	display: block;
@@ -707,16 +673,7 @@ height: 67%
     line-height: 13px;
   }
 
-.display-skills .skill-bubbles { top: 0px; }
-  
-.display-skills .skill-bubbles::before {
-    content: "●●●●●";
-	font-size: 18px;
-	line-height: 13px;
-	background: linear-gradient(90deg, #782e22 var(--percent), #00000010 var(--percent));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-  }
+
 
 .cod.sheet .display-skills .skills .skill-column .skill-type {
 	display: block;
@@ -728,13 +685,15 @@ height: 67%
     bottom: 0px;
 }
 
-.display-disciplines .display-merits {
-	display: block;
+.display-disciplines, .display-merits {
 	float: left;
-    margin: 5px;
+	width: 100%;
     padding: 5px;
     background: #00000020;
 }
+
+.display-disciplines { display: none;}
+.vampire .display-disciplines { display: block;}
 
 .display-disciplines h3, .display-merits h3, .display-willpower h3 {
 	background: #444; 
@@ -751,8 +710,13 @@ height: 67%
     border-bottom: 1px solid #782e2250;
 }
 
-.vamp_bloodpotency { line-height: 50px;}
+.vamp_bloodpotency {
+	display: none;
+	line-height: 50px;
+	}
 .vamp_bloodpotency input { width: 10%;}
+.vampire .vamp_bloodpotency {display: block;}
+
 
 .display-willpower .sheet-bubbles {width:50%;}
 .display-willpower input {width: 10%; font-size: 12px; height: 18px; margin-top: -2px}
@@ -766,3 +730,84 @@ height: 67%
   .resource input {
 	width: 100px;
   }
+
+/* --------------- Sheet Bubbles --------------- */
+/* ●●●●●●●●●●●●●●● Sheet Bubbles ●●●●●●●●●●●●●●● */
+/* --------------- Sheet Bubbles --------------- */
+
+
+  .sheet-bubbles, .skill-bubbles, .sheet-squares {
+	position: relative;
+	top: -5px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+  
+  .sheet-bubbles::before {
+	content: "●●●●● ‎●●●●●"; /* Insert content that looks like bullets */
+	font-size: 20px;
+	background: #191813;
+	background: linear-gradient(90deg, #000 var(--percent), #00000020 var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+  
+  .skill-bubbles::before {
+    content: "●●●●●";
+	font-size: 20px;
+	background: #191813;
+	background: linear-gradient(90deg, #000 var(--percent), #ffffff50 var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+
+   .sheet-squares::before {
+	content: "■■■■■ ‎■■■■■"; /* Insert content that looks like bullets */
+	font-size: 20px;
+	background: #191813;
+	background: linear-gradient(90deg, rgb(100, 123, 173) var(--percent), #00000020 var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+
+.vampire .sheet-squares::before {
+	background: linear-gradient(90deg, #782e22 var(--percent), #00000020 var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+
+.display-skills .skill-bubbles { top: 0px; }
+
+.display-skills .skill-bubbles::before {
+    content: "●●●●●";
+	font-size: 18px;
+	line-height: 13px;
+	background: linear-gradient(90deg, rgb(64, 86, 134) var(--percent), #00000010 var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+
+.vampire .display-skills .skill-bubbles::before {
+	background: linear-gradient(90deg, #782e22 var(--percent), #00000010 var(--percent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+
+
+
+
+/* --------------- Edit Sheet Tabs --------------- */
+
+.cod.sheet .skills .skill-column .skill > input {
+	width: 40px;
+	height: 20px;
+	margin-top: 4px;
+	text-align: center;
+	font-family: inherit;
+}
+
+.attribute input {
+	width: 50px !important;
+	height: 20px;
+	margin-top: 4px;
+}

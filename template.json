@@ -628,7 +628,18 @@
 			}
 		},
 		"merit": {
-			"templates": ["description", "rank"]
+			"templates": ["description", "rank"],
+			"category": {
+				"type": "String",
+				"label": "Merit Group",
+				"value": ""
+			},
+			"group": {
+				"type": "String",
+				"label": "Merit Group",
+				"value": ""
+			},
+			"frontPage": false
 		},
 		"service": {
 			"templates": ["description", "bonus", "availability"]

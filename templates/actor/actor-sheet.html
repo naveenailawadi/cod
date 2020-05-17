@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-	<div class="mortal">
+	<div class="{{data.splatSelect.value}} sheet-layout">
 		<div class="sheet-logo"></div>
 
 		<header class="sheet-header">
@@ -72,6 +72,7 @@
 						<option value="{{key}}">{{name}}</option>
 						{{/each}} {{/select}}
 					</select>
+					
 				</div>
 				<div class="vamp-bg-block">
 					<label> Clan: </label> <label>{{data.vamp-bg.clan.value}}</label>
