@@ -1,0 +1,46 @@
+/**
+ * Extend the basic ItemSheet
+ * @extends {ItemSheet}
+ */
+
+export class CoDItemSheet extends ItemSheet {
+	// Extend and override the default options
+
+	static get defaultOptions() {
+		const options = super.defaultOptions;
+		options.classes = options.classes.concat(['cod', 'item-sheet']);
+		options.template = 'systems/cod/templates/items/item-sheet.html';
+		options.height = 440;
+		return options;
+	}
+
+	//Use a type-specific template for each different item type
+
+	get template() {
+		let type = this.item.type;
+		return `systems/cod/templates/items/item-${type}-sheet.html`;
+	}
+
+	getData() {
+		const data = super.getData();
+		if (this.item.type == 'weapon') {
+			data['attacks'] = CONFIG.attacks;
+		}
+		return data;
+	}
+
+	// Activate event listeners using the prepared sheet HTML
+	//* @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
+
+	activateListeners(html) {
+		super.activateListeners(html);
+
+		// Activate tabs
+		let tabs = html.find('.tabs');
+		let initial = this._sheetTab;
+		new Tabs(tabs, {
+			initial: initial,
+			callback: (clicked) => (this._sheetTab = clicked.data('tab')),
+		});
+	}
+}
