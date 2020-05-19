@@ -215,8 +215,6 @@ export class ActorSheetCoD extends ActorSheet {
 			let formula = CONFIG.attackSkills[attackType];
 			formula = formula.split(',');
 			// Formula[0] = attribute, Formula[1] = skill (e.g., 'str', 'brawl')
-			let target;
-			let targetDef = 0;
 
 			let defaultSelectionAtt = formula[0];
 			let defaultSelectionSkill = formula[1];
@@ -231,8 +229,8 @@ export class ActorSheetCoD extends ActorSheet {
 
 			// If a target is selected
 			if (game.user.targets.size == 1) {
-				target = game.user.targets.values().next().value.actor.data.name;
-				targetDef =
+				let target = game.user.targets.values().next().value.actor.data.name;
+				let targetDef =
 					-1 *
 					game.user.targets.values().next().value.actor.data.data.advantages.def
 						.value;
@@ -367,14 +365,15 @@ export class ActorSheetCoD extends ActorSheet {
 				$(ev.currentTarget).parents('.rolls').attr('data-index')
 			);
 			this.actor.data.data.rolls;
-			if (this.actor.data.data.rolls[rollIndex].exploder === undefined) {
-				this.actor.data.data.rolls[rollIndex].exploder = 'ten';
+			let thisRoll = this.actor.data.data.rolls[rollIndex];
+			if (thisRoll.exploder === undefined) {
+				thisRoll.exploder = 'ten';
 			}
 			this.actor.rollPool(
-				this.actor.data.data.rolls[rollIndex].primary,
-				this.actor.data.data.rolls[rollIndex].secondary,
-				this.actor.data.data.rolls[rollIndex].modifier,
-				this.actor.data.data.rolls[rollIndex].exploder
+				thisRoll.primary,
+				thisRoll.secondary,
+				thisRoll.modifier,
+				thisRoll.exploder
 			);
 		});
 
