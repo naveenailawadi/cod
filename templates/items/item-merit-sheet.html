@@ -1,20 +1,60 @@
 <form class="{{cssClass}}" autocomplete="off">
 	<header class="sheet-header">
-		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+		<img
+			class="profile-img"
+			src="{{item.img}}"
+			data-edit="img"
+			title="{{item.name}}"
+		/>
 		<div class="header-fields">
-			<h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+			<h1 class="charname">
+				<input
+					name="name"
+					type="text"
+					value="{{item.name}}"
+					placeholder="Name"
+				/>
+			</h1>
 			<div class="resource">
 				<label>Rank</label>
-				<input type="text" name="data.rank.value" value="{{data.rank.value}}" data-dtype="{{data.rank.type}}" />
+				<input
+					type="text"
+					name="data.rank.value"
+					value="{{data.rank.value}}"
+					data-dtype="{{data.rank.type}}"
+				/>
+			</div>
+
+			<div>
+				<p>Show on front page?</p>
+				<input
+					name="data.frontPage.value"
+					type="checkbox"
+					value="{{data.frontPage.value}}"
+					data-dtype="{{data.frontPage.type}}"
+					{{checked
+					data.frontPage.value}}
+				/>
 			</div>
 		</div>
 	</header>
 
 	{{!-- Sheet Body --}}
 	<section class="sheet-body">
+		<div class="form-group">
+			<label class="label-text">{{data.group.label}}</label>
+			<select name="data.group.value" data-dtype="data.group.type">
+				{{#select data.group.value}}
+				<option value=""></option>
+				{{#each meritGroups as |name key|}}
+				<option value="{{key}}">{{name}}</option>
+				{{/each}} {{/select}}
+			</select>
+		</div>
 		{{!-- Description Tab --}}
 		<div class="tab">
-			{{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+			{{editor content=data.description.value target="data.description.value"
+			button=true owner=owner editable=editable}}
 		</div>
 	</section>
 </form>

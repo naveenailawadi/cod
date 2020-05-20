@@ -629,17 +629,16 @@
 		},
 		"merit": {
 			"templates": ["description", "rank"],
-			"category": {
-				"type": "String",
-				"label": "Merit Group",
-				"value": ""
-			},
 			"group": {
 				"type": "String",
-				"label": "Merit Group",
+				"label": "Group",
 				"value": ""
 			},
-			"frontPage": false
+			"frontPage": {
+				"type": "Boolean",
+				"label": "Show on front page?",
+				"value": false
+			}
 		},
 		"service": {
 			"templates": ["description", "bonus", "availability"]

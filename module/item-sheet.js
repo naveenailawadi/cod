@@ -23,9 +23,9 @@ export class CoDItemSheet extends ItemSheet {
 
 	getData() {
 		const data = super.getData();
-		if (this.item.type == 'weapon') {
-			data['attacks'] = CONFIG.attacks;
-		}
+		if (this.item.type == 'weapon') data['attacks'] = CONFIG.attacks;
+		if (this.item.type == 'merit')
+			data['meritGroups'] = CONFIG.universalMeritGroups;
 		return data;
 	}
 

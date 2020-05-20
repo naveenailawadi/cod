@@ -2,7 +2,7 @@
 	"name": "cod",
 	"title": "Chronicles of Darkness",
 	"description": "A system for playing Chronicles of Darkness within Foundry Virtual Tabletop.",
-	"version": 0.34,
+	"version": 0.35,
 	"minimumCoreVersion": "0.5.2",
 	"compatibleCoreVersion": "0.5.7",
 	"templateVersion": 2,

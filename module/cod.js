@@ -11,7 +11,27 @@ import {ActorSheetCoD} from './actor-sheet.js';
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
-Hooks.once('init', () => {
+Hooks.once('init', async function () {
+	// Place our classes in their own namespace for later reference.
+	game.cod = {
+		ActorCoD,
+	};
+
+	/**
+	 * Set an initiative formula for the system
+	 * @type {String}
+	 */
+	CONFIG.initiative.formula = '1d10';
+
+	// Define custom Entity classes
+	CONFIG.Actor.entityClass = ActorCoD;
+
+	// Register sheet application classes
+	Actors.unregisterSheet('core', ActorSheet);
+	Actors.registerSheet('cod', ActorSheetCoD, {types: [], makeDefault: true});
+	Items.unregisterSheet('core', ItemSheet);
+	Items.registerSheet('core', CoDItemSheet, {types: [], makeDefault: true});
+
 	loadTemplates([
 		'systems/cod/templates/actor/actor-disciplines.html',
 		'systems/cod/templates/actor/actor-display.html',
@@ -23,21 +43,6 @@ Hooks.once('init', () => {
 		'systems/cod/templates/actor/actor-skills.html',
 	]);
 });
-
-/**
- * Set an initiative formula for the system
- * @type {String}
- */
-CONFIG.initiative.formula = '1d10';
-
-// Define custom Entity classes
-CONFIG.Actor.entityClass = ActorCoD;
-
-// Register sheet application classes
-Actors.unregisterSheet('core', ActorSheet);
-Actors.registerSheet('cod', ActorSheetCoD, {types: [], makeDefault: true});
-Items.unregisterSheet('core', ItemSheet);
-Items.registerSheet('core', CoDItemSheet, {types: [], makeDefault: true});
 
 // Characteristic Names
 CONFIG.attributes = {
@@ -157,4 +162,39 @@ CONFIG.splats = {
 	demon: 'Demon',
 	beast: 'Beast',
 	deviant: 'Deviant',
+};
+
+// Merit Groups
+CONFIG.universalMeritGroups = {
+	mental: '-- Mental (general) --',
+	areaOfExpertise: 'Area of Expertise',
+	encyclopedicKnowledge: 'Encyclopedic Knowledge',
+	interSpecialty: 'Interdisciplinary Specialty',
+	investigativeAide: 'Investigative Aide',
+	language: 'Language',
+	library: 'Library',
+	objectFetishism: 'Object Fetishism',
+	scarred: 'Scarred',
+	professionalTraining: 'Professional Training',
+	physical: '-- Physical (general) --',
+	parkour: 'Parkour',
+	stuntDriver: 'Stunt Driver',
+	social: '-- Social (general) --',
+	allies: 'Allies',
+	alternateIdentity: 'Alternate Identity',
+	contacts: 'Contacts',
+	hobbyistClique: 'Hobbyist Clique',
+	mentor: 'Mentor',
+	mysteryCult: 'Mystery Cult',
+	retainer: 'Retainer',
+	safePlace: 'Safe Place',
+	staff: 'Staff',
+	status: 'Status',
+	supportNetwork: 'Support Network',
+	fighting: '-- Fighting (general) --',
+	supernatural: '-- Supernatural (general) --',
+	animalSpeech: 'Animal Speech',
+	phantomLimb: 'Phantom Limb',
+	psychokinesis: 'Psychokinesis',
+	unseenSense: 'Unseen Sense',
 };
