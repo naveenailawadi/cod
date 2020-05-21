@@ -1,11 +1,28 @@
 <form class="{{cssClass}}" autocomplete="off">
 	<header class="sheet-header">
-		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+		<img
+			class="profile-img"
+			src="./systems/cod/images/numina-symbol.png"
+			data-edit="img"
+			title="{{item.name}}"
+		/>
 		<div class="header-fields">
-			<h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+			<h1 class="charname">
+				<input
+					name="name"
+					type="text"
+					value="{{item.name}}"
+					placeholder="Name"
+				/>
+			</h1>
 			<div class="resource">
 				<label>Essence Cost</label>
-				<input type="text" name="data.cost.value" value="{{data.cost.value}}" data-dtype="{{data.cost.type}}" />
+				<input
+					type="text"
+					name="data.cost.value"
+					value="{{data.cost.value}}"
+					data-dtype="{{data.cost.type}}"
+				/>
 			</div>
 		</div>
 	</header>
@@ -14,7 +31,8 @@
 	<section class="sheet-body">
 		{{!-- Description Tab --}}
 		<div class="tab">
-			{{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+			{{editor content=data.description.value target="data.description.value"
+			button=true owner=owner editable=editable}}
 		</div>
 	</section>
 </form>
