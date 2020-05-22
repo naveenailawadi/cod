@@ -386,6 +386,19 @@ export class ActorSheetCoD extends ActorSheet {
 				(this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
 		});
 
+		// Drag events for macros.
+		if (this.actor.owner) {
+			let handler = (ev) => this._onDragItemStart(ev);
+			// Find all items on the character sheet.
+			html.find('li.item').each((i, li) => {
+				// Ignore for the header row.
+				if (li.classList.contains('item-header')) return;
+				// Add draggable attribute and dragstart listener.
+				li.setAttribute('draggable', true);
+				li.addEventListener('dragstart', handler, false);
+			});
+		}
+
 		// Everything below here is only needed if the sheet is editable
 		if (!this.options.editable) return;
 
