@@ -24,7 +24,7 @@ Hooks.once('init', async function () {
 	 * Set an initiative formula for the system
 	 * @type {String}
 	 */
-	CONFIG.initiative.formula = `1d10 + @advantages.init.value`;
+	CONFIG.Combat.initiative.formula = `1d10 + @advantages.init.value`;
 
 	// Define custom Entity classes
 	CONFIG.Actor.entityClass = ActorCoD;

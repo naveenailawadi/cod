@@ -28,9 +28,8 @@ export class CoDItem extends Item {
 		const attributes = this.actor.sortAttrGroups();
 		const skills = this.actor.sortSkillGroups();
 		console.log(attributes);
-		console.log(
-			skills
-		); /*
+		console.log(skills);
+		/*
 		let weaponName = item.name;
 		let attackType = item.data.attack.value;
 		let formula = CONFIG.attackSkills[attackType];

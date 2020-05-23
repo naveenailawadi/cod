@@ -1,155 +1,210 @@
 <h2>Attributes</h2>
 <div class="attribute-section">
-   <div class="attribute-column attribute-categories">
-      <span>Power</span>
-      <span>Finesse</span>
-      <span>Resistance</span>
-   </div>
-   <div class="attribute-column">
-      <span class="attribute-type">Mental</span>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "int">Intelligence</a></span>
-         <input type="number" name="data.attributes.int.value" value="{{data.attributes.int.value}}" data-dtype="data.attributes.int.type" />
-      </div>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "wits">Wits</a></span>
-         <input type="number" name="data.attributes.wits.value" value="{{data.attributes.wits.value}}" data-dtype="data.attributes.wits.type" />
-      </div>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "res">Resolve</a></span>
-         <input type="number" name="data.attributes.res.value" value="{{data.attributes.res.value}}" data-dtype="data.attributes.res.type" />
-      </div>
-   </div>
-   <div class="attribute-column">
-      <span class="attribute-type">Physical</span>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "str">Strength</a></span>
-         <input type="number" name="data.attributes.str.value" value="{{data.attributes.str.value}}" data-dtype="data.attributes.str.type" />
-      </div>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "dex">Dexterity</a></span>
-         <input type="number" name="data.attributes.dex.value" value="{{data.attributes.dex.value}}" data-dtype="data.attributes.dex.type" />
-      </div>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "sta">Stamina</a></span>
-         <input type="number" name="data.attributes.sta.value" value="{{data.attributes.sta.value}}" data-dtype="data.attributes.sta.type" />
-      </div>
-   </div>
-   <div class="attribute-column">
-      <span class="attribute-type">Social</span>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "pre">Presence</a></span>
-         <input type="number" name="data.attributes.pre.value" value="{{data.attributes.pre.value}}" data-dtype="data.attributes.pre.type" />
-      </div>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "man">Manipulation</a></span>
-         <input type="number" name="data.attributes.man.value" value="{{data.attributes.man.value}}" data-dtype="data.attributes.man.type" />
-      </div>
-      <div class="attribute">
-         <span><a class="roll-pool" data-skill = "com">Composure</a></span>
-         <input type="number" name="data.attributes.com.value" value="{{data.attributes.com.value}}" data-dtype="data.attributes.com.type" />
-      </div>
-   </div>
+	<div class="attribute-column attribute-categories">
+		<span>Power</span>
+		<span>Finesse</span>
+		<span>Resistance</span>
+	</div>
+	<div class="attribute-column">
+		<span class="attribute-type">Mental</span>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="int">Intelligence</a></span>
+			<input
+				type="number"
+				name="data.attributes.int.value"
+				value="{{data.attributes.int.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="wits">Wits</a></span>
+			<input
+				type="number"
+				name="data.attributes.wits.value"
+				value="{{data.attributes.wits.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="res">Resolve</a></span>
+			<input
+				type="number"
+				name="data.attributes.res.value"
+				value="{{data.attributes.res.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+	</div>
+	<div class="attribute-column">
+		<span class="attribute-type">Physical</span>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="str">Strength</a></span>
+			<input
+				type="number"
+				name="data.attributes.str.value"
+				value="{{data.attributes.str.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="dex">Dexterity</a></span>
+			<input
+				type="number"
+				name="data.attributes.dex.value"
+				value="{{data.attributes.dex.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="sta">Stamina</a></span>
+			<input
+				type="number"
+				name="data.attributes.sta.value"
+				value="{{data.attributes.sta.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+	</div>
+	<div class="attribute-column">
+		<span class="attribute-type">Social</span>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="pre">Presence</a></span>
+			<input
+				type="number"
+				name="data.attributes.pre.value"
+				value="{{data.attributes.pre.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="man">Manipulation</a></span>
+			<input
+				type="number"
+				name="data.attributes.man.value"
+				value="{{data.attributes.man.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div class="attribute">
+			<span><a class="roll-pool" data-skill="com">Composure</a></span>
+			<input
+				type="number"
+				name="data.attributes.com.value"
+				value="{{data.attributes.com.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+	</div>
 </div>
-<div class="resources">
-   <div class="resources-type">
-      <span>Health</span>
-      <div class="circles">
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-      </div>
-      <div class="squares">
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-      </div>
-   </div>
-   <div class="resources-type">
-      <span>Willpower</span>
-      <div class="circles">
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-      </div>
-      <div class="squares">
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-      </div>
-   </div>
-   <div class="resources-type">
-      <span>Integrity</span>
-      <div class="circles">
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-         <i class="fas fa-circle"></i>
-      </div>
-      <div class="squares">
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-         <a><i class="far fa-square"></i></a>
-      </div>
-   </div>
-</div>
+
 <div class="extra">
-   <div class="conditions">
-      <div class="conditions-title">
-         <span>Conditions</span>
-      </div>
-      <input type="text" name="data.status.conditions.condition1.value" value="{{data.status.conditions.condition1.value}}" data-dtype="data.status.conditions.condition1.type" />
-      <input type="text" name="data.status.conditions.condition2.value" value="{{data.status.conditions.condition2.value}}" data-dtype="data.status.conditions.condition2.type" />
-      <input type="text" name="data.status.conditions.condition3.value" value="{{data.status.conditions.condition3.value}}" data-dtype="data.status.conditions.condition3.type" />
-   </div>
-   <div class="aspirations">
-      <div class="aspirations-title">
-         <span>Aspirations</span>
-      </div>
-      <input type="text" name="data.details.aspirations.aspiration1.value" value="{{data.details.aspirations.aspiration1.value}}" data-dtype="data.details.aspirations.aspiration1.type" />
-      <input type="text" name="data.details.aspirations.aspiration2.value" value="{{data.details.aspirations.aspiration2.value}}" data-dtype="data.details.aspirations.aspiration2.type" />
-      <input type="text" name="data.details.aspirations.aspiration3.value" value="{{data.details.aspirations.aspiration3.value}}" data-dtype="data.details.aspirations.aspiration3.type" />
-   </div>
+	<div class="conditions">
+		<div class="conditions-title">
+			<span>Conditions</span>
+		</div>
+		<input
+			type="text"
+			name="data.status.conditions.condition1.value"
+			value="{{data.status.conditions.condition1.value}}"
+			data-dtype="String"
+		/>
+		<input
+			type="text"
+			name="data.status.conditions.condition2.value"
+			value="{{data.status.conditions.condition2.value}}"
+			data-dtype="String"
+		/>
+		<input
+			type="text"
+			name="data.status.conditions.condition3.value"
+			value="{{data.status.conditions.condition3.value}}"
+			data-dtype="String"
+		/>
+	</div>
+
+	<div class="aspirations">
+		<div class="aspirations-title">
+			<span>Aspirations</span>
+		</div>
+		<input
+			type="text"
+			name="data.details.aspirations.aspiration1.value"
+			value="{{data.details.aspirations.aspiration1.value}}"
+			data-dtype="String"
+		/>
+		<input
+			type="text"
+			name="data.details.aspirations.aspiration2.value"
+			value="{{data.details.aspirations.aspiration2.value}}"
+			data-dtype="String"
+		/>
+		<input
+			type="text"
+			name="data.details.aspirations.aspiration3.value"
+			value="{{data.details.aspirations.aspiration3.value}}"
+			data-dtype="String"
+		/>
+	</div>
 </div>
+
 <div class="extra2">
-   <div class="size extra-value">
-      <span>Size</span> <input type="text" name="data.advantages.size.value" placeholder="5" value="{{data.advantages.size.value}}" data-dtype="data.advantages.size.type" />
-   </div>
-   <div class="speed extra-value">
-      <span>Speed</span> <input type="text" name="data.advantages.speed.value" value="{{data.advantages.speed.value}}" data-dtype="data.advantages.speed.type" />
-   </div>
-   <div class="defense extra-value">
-      <span>Defense</span> <input type="text" name="data.advantages.def.value" value="{{data.advantages.def.value}}" data-dtype="data.advantages.def.type" />
-   </div>
-   <div class="initiative extra-value">
-      <span>Initiative</span> <input type="text" name="data.advantages.init.value" value="{{data.advantages.init.value}}" data-dtype="data.advantages.init.type" />
-   </div>
-   <div class="exp extra-value">
-      <span>Experience</span> <input type="text" name="data.advancement.exp.value" value="{{data.advancement.exp.value}}" data-dtype="data.advancement.exp.type" />
-   </div>
-   <div class="beats extra-value">
-      <span>Beats</span> <input type="text" name="data.advancement.beats.value" value="{{data.advancement.beats.value}}" data-dtype="data.advancement.beats.type" />
-   </div>
-</div>
+	<div class="size extra-value">
+		<span>Size</span>
+		<input
+			type="text"
+			name="data.advantages.size.value"
+			value="{{data.advantages.size.value}}"
+			data-dtype="Number"
+		/>
+	</div>
+
+	<div class="speed extra-value">
+		<span>Speed</span>
+		<input
+			type="text"
+			name="data.advantages.speed.value"
+			value="{{data.advantages.speed.value}}"
+			data-dtype="Number"
+		/>
+	</div>
+
+	<div class="defense extra-value">
+		<span>Defense</span>
+		<input
+			type="text"
+			name="data.advantages.def.value"
+			value="{{data.advantages.def.value}}"
+			data-dtype="Number"
+		/>
+	</div>
+
+	<div class="initiative extra-value">
+		<span>Initiative</span>
+		<input
+			type="text"
+			name="data.advantages.init.value"
+			value="{{data.advantages.init.value}}"
+			data-dtype="Number"
+		/>
+	</div>
+
+	<div class="exp extra-value">
+		<span>Experience</span>
+		<input
+			type="text"
+			name="data.advancement.exp.value"
+			value="{{data.advancement.exp.value}}"
+			data-dtype="Number"
+		/>
+	</div>
+
+	<div class="beats extra-value">
+		<span>Beats</span>
+		<input
+			type="text"
+			name="data.advancement.beats.value"
+			value="{{data.advancement.beats.value}}"
+			data-dtype="Number"
+		/>
+	</div>
 </div>

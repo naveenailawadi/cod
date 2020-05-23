@@ -594,7 +594,7 @@
 			"rating": {
 				"type": "String",
 				"label": "Rating",
-				"value": ""
+				"value": "General / Ballistic"
 			},
 			"def": {
 				"type": "Number",

@@ -19,8 +19,8 @@
 	</header>
 
 	<!-- Tabs V2-->
-	<section id="condition-tab-sections">
-		<nav class="sheet-tabs tabs" data-group="primary">
+	<section id="condition-tab-sections" class="sheet-body">
+		<nav id="condition-primarytabs" class="sheet-tabs tabs">
 			<a class="item active" data-tab="description"
 				>{{localize "Description"}}</a
 			>
@@ -30,19 +30,19 @@
 
 		<section class="content">
 			{{!-- Description Tab --}}
-			<div class="tab" data-group="primary" data-tab="description">
+			<div class="tab description" data-tab="description">
 				{{editor content=data.description.value target="data.description.value"
 				button=true owner=owner editable=editable}}
 			</div>
 
 			{{!-- Cause Tab --}}
-			<div class="tab" data-group="primary" data-tab="cause">
+			<div class="tab cause" data-tab="cause">
 				{{editor content=data.cause.value target="data.cause.value" button=true
 				owner=owner editable=editable}}
 			</div>
 
 			{{!-- Resolution Tab --}}
-			<div class="tab" data-group="primary" data-tab="resolution">
+			<div class="tab resolution" data-tab="resolution">
 				{{editor content=data.resolution.value target="data.resolution.value"
 				button=true owner=owner editable=editable}}
 			</div>

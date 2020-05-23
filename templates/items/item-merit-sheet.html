@@ -21,7 +21,7 @@
 					type="text"
 					name="data.rank.value"
 					value="{{data.rank.value}}"
-					data-dtype="{{data.rank.type}}"
+					data-dtype="Number"
 				/>
 			</div>
 
@@ -31,7 +31,7 @@
 					name="data.frontPage.value"
 					type="checkbox"
 					value="{{data.frontPage.value}}"
-					data-dtype="{{data.frontPage.type}}"
+					data-dtype="Boolean"
 					{{checked
 					data.frontPage.value}}
 				/>
@@ -43,7 +43,7 @@
 	<section class="sheet-body">
 		<div class="form-group">
 			<label class="label-text">{{data.group.label}}</label>
-			<select name="data.group.value" data-dtype="data.group.type">
+			<select name="data.group.value" data-dtype="String">
 				{{#select data.group.value}}
 				<option value=""></option>
 				{{#each meritGroups as |name key|}}
@@ -51,7 +51,7 @@
 				{{/each}} {{/select}}
 			</select>
 		</div>
-		<div>
+		<div class="tab description">
 			{{editor content=data.description.value target="data.description.value"
 			button=true owner=owner editable=editable}}
 		</div>

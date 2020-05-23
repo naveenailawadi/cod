@@ -21,7 +21,7 @@
 					type="text"
 					name="data.rank.value"
 					value="{{data.rank.value}}"
-					data-dtype="{{data.rank.type}}"
+					data-dtype="Number"
 				/>
 			</div>
 		</div>
@@ -29,8 +29,7 @@
 
 	{{!-- Sheet Body --}}
 	<section class="sheet-body">
-		{{!-- Description Tab --}}
-		<div class="tab">
+		<div class="tab description">
 			{{editor content=data.description.value target="data.description.value"
 			button=true owner=owner editable=editable}}
 		</div>

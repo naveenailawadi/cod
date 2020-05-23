@@ -37,15 +37,15 @@
 	</header>
 
 	<!-- Tabs V2-->
-	<section id="equipment-tab-sections">
-		<nav class="sheet-tabs tabs" data-group="primary">
+	<section id="equipment-tab-sections" class="sheet-body">
+		<nav id="equipment-primarytabs" class="sheet-tabs tabs">
 			<a class="item active" data-tab="attributes">{{localize "Attributes"}}</a>
 			<a class="item" data-tab="description">{{localize "Description"}}</a>
 		</nav>
 
 		<section class="content">
 			{{!-- Attributes Tab --}}
-			<div class="tab attributes" data-group="primary" data-tab="attributes">
+			<div class="tab attributes" data-tab="attributes">
 				<div class="form-group">
 					<label class="label-text">{{data.bonus.label}}</label>
 					<div class="input-box">
@@ -53,7 +53,7 @@
 							class="input-text"
 							name="data.bonus.value"
 							value="{{data.bonus.value}}"
-							data-dtype="{{data.bonus.type}}"
+							data-dtype="Number"
 						/>
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 							class="input-text"
 							name="data.durability.value"
 							value="{{data.durability.value}}"
-							data-dtype="{{data.durability.type}}"
+							data-dtype="Number"
 						/>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 							class="input-text"
 							name="data.size.value"
 							value="{{data.size.value}}"
-							data-dtype="{{data.size.type}}"
+							data-dtype="Number"
 						/>
 					</div>
 				</div>
@@ -100,15 +100,16 @@
 						<input
 							class="input-text"
 							name="data.availability.value"
+							placeholder="[# dots]"
 							value="{{data.availability.value}}"
-							data-dtype="{{data.availability.type}}"
+							data-dtype="String"
 						/>
 					</div>
 				</div>
 			</div>
 
 			{{!-- Description Tab --}}
-			<div class="tab" data-group="primary" data-tab="description">
+			<div class="tab description" data-tab="description">
 				{{editor content=data.description.value target="data.description.value"
 				button=true owner=owner editable=editable}}
 			</div>

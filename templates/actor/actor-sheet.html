@@ -33,35 +33,35 @@
 						name="data.details.age.value"
 						placeholder="Age"
 						value="{{data.details.age.value}}"
-						data-dtype="data.details.age.type"
+						data-dtype="Number"
 					/>
 					<input
 						type="text"
 						name="data.details.concept.value"
 						placeholder="Concept"
 						value="{{data.details.concept.value}}"
-						data-dtype="data.details.concept.type"
+						data-dtype="String"
 					/>
 					<input
 						type="text"
 						name="data.details.faction.value"
 						placeholder="Faction"
 						value="{{data.details.faction.value}}"
-						data-dtype="data.details.faction.type"
+						data-dtype="String"
 					/>
 					<input
 						type="text"
 						name="data.details.anchor1.value"
 						placeholder="Virtue"
 						value="{{data.details.anchor1.value}}"
-						data-dtype="data.details.anchor1.type"
+						data-dtype="String"
 					/>
 					<input
 						type="text"
 						name="data.details.anchor2.value"
 						placeholder="Vice"
 						value="{{data.details.anchor2.value}}"
-						data-dtype="data.details.anchor2.type"
+						data-dtype="String"
 					/>
 				</div>
 				<div style="clear: both;"></div>
@@ -87,7 +87,7 @@
 		</header>
 
 		<!-- Tabs v2 -->
-		<section id="tab-sections">
+		<section id="actor-tab-sections" class="sheet-body">
 			<nav
 				id="codprimarytabs"
 				class="sheet-tabs tabs"
@@ -100,41 +100,33 @@
 				<a class="item" data-tab="disciplines">{{localize "Disciplines"}}</a>
 				<a class="item" data-tab="merits">{{localize "Merits"}}</a>
 				<a class="item" data-tab="equipment">{{localize "Equipment"}}</a>
-				<a class="item" data-tab="customrolls">{{localize "Custom Rolls"</a>
+				<a class="item" data-tab="customrolls">{{localize "Custom Rolls"}}</a>
 				<a class="item" data-tab="extra">{{localize "Extra"}}</a>
 			</nav>
 
 			<section class="content">
-				<div class="tab main" data-group="primary" data-tab="display">
+				<div class="tab main" data-tab="display">
 					{{> systems/cod/templates/actor/actor-display.html }}
 				</div>
-				<div class="tab main" data-group="primary" data-tab="main">
+				<div class="tab main" data-tab="main">
 					{{> systems/cod/templates/actor/actor-main.html }}
 				</div>
-				<div class="tab skills" data-group="primary" data-tab="skills">
+				<div class="tab skills" data-tab="skills">
 					{{> systems/cod/templates/actor/actor-skills.html }}
 				</div>
-				<div class="tab merits" data-group="primary" data-tab="merits">
-					{{> systems/cod/templates/actor/actor-merits.html }}
-				</div>
-				<div
-					class="tab disciplines"
-					data-group="primary"
-					data-tab="disciplines"
-				>
+				<div class="tab disciplines" data-tab="disciplines">
 					{{> systems/cod/templates/actor/actor-disciplines.html }}
 				</div>
-				<div class="tab equipment" data-group="primary" data-tab="equipment">
+				<div class="tab merits" data-tab="merits">
+					{{> systems/cod/templates/actor/actor-merits.html }}
+				</div>
+				<div class="tab equipment" data-tab="equipment">
 					{{> systems/cod/templates/actor/actor-equipment.html }}
 				</div>
-				<div
-					class="tab customrolls"
-					data-group="primary"
-					data-tab="customrolls"
-				>
+				<div class="tab customrolls" data-tab="customrolls">
 					{{> systems/cod/templates/actor/actor-rolls.html }}
 				</div>
-				<div class="tab extra" data-group="primary" data-tab="extra">
+				<div class="tab extra" data-tab="extra">
 					{{> systems/cod/templates/actor/actor-extra.html }}
 				</div>
 			</section>
@@ -142,10 +134,10 @@
 
 		<div class="footer">
 			<div class="guide">
-				<span
-					>Attributes 5/4/3 • Skills 11/7/4 (+3 Specialties) • Merits 7 • Health
+				<span>
+					Attributes 5/4/3 • Skills 11/7/4 (+3 Specialties) • Merits 7 • Health
 					= Stamina + Size • Willpower = Resolve + Composure • Size = 5 for
-					adult humans <br />
+					adult humans<br />
 					Defense = Lowest of Dexterity or Wits + Athletics • Initiative Mod =
 					Dexterity + Composure • Speed = Strength + Dexterity + 5 • Starting
 					Integrity = 7</span
