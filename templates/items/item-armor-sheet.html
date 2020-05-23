@@ -47,13 +47,24 @@
 			{{!-- Attributes Tab --}}
 			<div class="tab attributes" data-tab="attributes">
 				<div class="form-group">
-					<label class="label-text">{{data.rating.label}}</label>
+					<label class="label-text">{{data.grating.label}}</label>
 					<div class="input-box">
 						<input
 							class="input-text"
-							name="data.rating.value"
-							placeholder="General / Ballistic"
-							value="{{data.rating.value}}"
+							name="data.grating.value"
+							value="{{data.grating.value}}"
+							data-dtype="Number"
+						/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="label-text">{{data.brating.label}}</label>
+					<div class="input-box">
+						<input
+							class="input-text"
+							name="data.brating.value"
+							value="{{data.brating.value}}"
 							data-dtype="Number"
 						/>
 					</div>

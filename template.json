@@ -217,9 +217,14 @@
 						"label": "Defense",
 						"value": 0
 					},
-					"armor": {
+					"garmor": {
 						"type": "Number",
-						"label": "Armor",
+						"label": "Armor (Gen.)",
+						"value": 0
+					},
+					"barmor": {
+						"type": "Number",
+						"label": "Armor (Ball.)",
 						"value": 0
 					},
 					"init": {
@@ -591,10 +596,15 @@
 				"speed",
 				"tags"
 			],
-			"rating": {
-				"type": "String",
-				"label": "Rating",
-				"value": "General / Ballistic"
+			"grating": {
+				"type": "Number",
+				"label": "General Rating",
+				"value": 0
+			},
+			"brating": {
+				"type": "Number",
+				"label": "Ballistic Rating",
+				"value": 0
 			},
 			"def": {
 				"type": "Number",

@@ -25,54 +25,64 @@ export class CoDItem extends Item {
 		const item = this.data;
 		const itemData = item.data;
 		const actorData = this.actor ? this.actor.data.data : {};
-		const attributes = this.actor.sortAttrGroups();
-		const skills = this.actor.sortSkillGroups();
+		const attributes = this.actor.sheet.sortAttrGroups();
+		const skills = this.actor.sheet.sortSkillGroups();
 		console.log(attributes);
 		console.log(skills);
-		/*
-		let weaponName = item.name;
-		let attackType = item.data.attack.value;
-		let formula = CONFIG.attackSkills[attackType];
-		formula = formula.split(',');
-		// Formula[0] = attribute, Formula[1] = skill (e.g., 'str', 'brawl')
-		let defaultSelectionAtt = formula[0];
-		let defaultSelectionSkill = formula[1];
 
-		let dialogData = {
-			defaultSelectionAtt: defaultSelectionAtt,
-			defaultSelectionSkill: defaultSelectionSkill,
-			skills: skills,
-			attributes: attributes,
-			groups: CONFIG.groups,
-		};
+		if (item.type === 'weapon') {
+			let weaponName = item.name;
+			let attackType = item.data.attack.value;
+			let formula = CONFIG.attackSkills[attackType];
+			formula = formula.split(',');
+			// Formula[0] = attribute, Formula[1] = skill (e.g., 'str', 'brawl')
+			let defaultSelectionAtt = formula[0];
+			let defaultSelectionSkill = formula[1];
 
-		// If a target is selected
-		if (game.user.targets.size == 1) {
-			let target = game.user.targets.values().next().value.actor.data.name;
-			let targetDef =
-				-1 *
-				game.user.targets.values().next().value.actor.data.data.advantages.def
-					.value;
+			let dialogData = {
+				defaultSelectionAtt: defaultSelectionAtt,
+				defaultSelectionSkill: defaultSelectionSkill,
+				skills: skills,
+				attributes: attributes,
+				groups: CONFIG.groups,
+			};
 
-			if (attackType === 'ranged') {
-				console.log(`Target's defense not applied`);
-				weaponRollPool(formula[0], formula[1], 0, 'ten', weaponName, target);
-				console.log(``);
+			// If a target is selected
+			if (game.user.targets.size == 1) {
+				let target = game.user.targets.values().next().value.actor.data.name;
+				let targetDef =
+					-1 *
+					game.user.targets.values().next().value.actor.data.data.advantages.def
+						.value;
+
+				if (attackType === 'ranged') {
+					console.log(`Target's defense not applied`);
+					this.actor.weaponRollPool(
+						formula[0],
+						formula[1],
+						0,
+						'ten',
+						weaponName,
+						target
+					);
+					console.log(``);
+				} else {
+					this.actor.weaponRollPool(
+						formula[0],
+						formula[1],
+						targetDef,
+						'ten',
+						weaponName,
+						target
+					);
+					console.log(``);
+				}
 			} else {
-				weaponRollPool(
-					formula[0],
-					formula[1],
-					targetDef,
-					'ten',
-					weaponName,
-					target
-				);
-				console.log(``);
-			}
-		} else {
-			// If no target selected, create popup dialogue
-			renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then(
-				(html) => {
+				// If no target selected, create popup dialogue
+				renderTemplate(
+					'systems/cod/templates/pool-dialog.html',
+					dialogData
+				).then((html) => {
 					new Dialog({
 						title: 'Roll Dice Pool',
 						content: html,
@@ -92,7 +102,7 @@ export class CoDItem extends Item {
 									if (attributeSelected === 'none' || skillSelected === 'none')
 										console.log(`Invalid pool selected.`);
 									else
-										weaponRollPool(
+										this.actor.weaponRollPool(
 											attributeSelected,
 											skillSelected,
 											poolModifier,
@@ -110,8 +120,8 @@ export class CoDItem extends Item {
 						},
 						default: 'Yes',
 					}).render(true);
-				}
-			);
-		}*/
+				});
+			}
+		} else return;
 	}
 }

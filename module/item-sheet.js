@@ -41,13 +41,5 @@ export class CoDItemSheet extends ItemSheet {
 
 	activateListeners(html) {
 		super.activateListeners(html);
-
-		// Activate tabs
-		let tabs = html.find('.tabs');
-		let initial = this._sheetTab;
-		new Tabs(tabs, {
-			initial: initial,
-			callback: (clicked) => (this._sheetTab = clicked.data('tab')),
-		});
 	}
 }

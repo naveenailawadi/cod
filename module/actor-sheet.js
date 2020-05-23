@@ -380,15 +380,6 @@ export class ActorSheetCoD extends ActorSheet {
 			);
 		});
 
-		/*// Activate tabs
-		let tabs = html.find('.tabs');
-		let initial = this.actor.data.flags['_sheetTab'];
-		new Tabs(tabs, {
-			initial: initial,
-			callback: (clicked) =>
-				(this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
-		});*/
-
 		// Drag events for macros.
 		if (this.actor.owner) {
 			let handler = (ev) => this._onDragItemStart(ev);
