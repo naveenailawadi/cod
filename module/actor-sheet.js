@@ -8,6 +8,9 @@ export class ActorSheetCoD extends ActorSheet {
 
 	static get defaultOptions() {
 		const options = super.defaultOptions;
+		options.tabs = [
+			{navSelector: '.tabs', contentSelector: '.content', initial: 'display'},
+		];
 		options.classes = options.classes.concat(['cod', 'actor-sheet']);
 		options.template = 'systems/cod/templates/actor/actor-sheet.html';
 		options.width = 610;
@@ -377,14 +380,14 @@ export class ActorSheetCoD extends ActorSheet {
 			);
 		});
 
-		// Activate tabs
+		/*// Activate tabs
 		let tabs = html.find('.tabs');
 		let initial = this.actor.data.flags['_sheetTab'];
 		new Tabs(tabs, {
 			initial: initial,
 			callback: (clicked) =>
 				(this.actor.data.flags['_sheetTab'] = clicked.attr('data-tab')),
-		});
+		});*/
 
 		// Drag events for macros.
 		if (this.actor.owner) {

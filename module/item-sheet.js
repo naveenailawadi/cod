@@ -8,6 +8,13 @@ export class CoDItemSheet extends ItemSheet {
 
 	static get defaultOptions() {
 		const options = super.defaultOptions;
+		options.tabs = [
+			{
+				navSelector: '.tabs',
+				contentSelector: '.content',
+				initial: 'attributes',
+			},
+		];
 		options.classes = options.classes.concat(['cod', 'item-sheet']);
 		options.template = 'systems/cod/templates/items/item-sheet.html';
 		options.height = 440;
