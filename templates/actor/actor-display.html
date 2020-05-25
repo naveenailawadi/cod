@@ -15,11 +15,11 @@
 			<span class="attribute-type">Mental</span>
 			<div class="attribute">
 				<span><a class="roll-pool" data-skill="int">Intelligence</a></span>
-				<span
-					class="sheet-bubbles"
-					style="--percent: calc({{data.attributes.int.value}} / 10 * 100%);"
-					>{{data.attributes.int.value}}</span
-				>
+					<ol>
+						{{#each data.attributes.int.value}}
+						<li class="attribute-bubbles">●</li>
+						{{/each}}
+					</ol>
 			</div>
 			<div class="attribute">
 				<span><a class="roll-pool" data-skill="wits">Wits</a></span>

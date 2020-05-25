@@ -765,6 +765,11 @@ height: 67%
 /* ●●●●●●●●●●●●●●● Sheet Bubbles ●●●●●●●●●●●●●●● */
 /* --------------- Sheet Bubbles --------------- */
 
+.attribute-bubbles {
+	font-size: 20px;
+	color: #191813;
+}
+
 .sheet-bubbles,
 .skill-bubbles,
 .sheet-squares {
