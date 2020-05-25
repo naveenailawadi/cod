@@ -559,6 +559,20 @@
 					"label": "Resolution",
 					"value": ""
 				}
+			},
+			"prereq": {
+				"prereq": {
+					"type": "String",
+					"label": "Prerequisites",
+					"value": ""
+				}
+			},
+			"reference": {
+				"reference": {
+					"type": "String",
+					"label": "Reference",
+					"value": ""
+				}
 			}
 		},
 
@@ -573,7 +587,8 @@
 				"strength",
 				"size",
 				"availability",
-				"tags"
+				"tags",
+				"reference"
 			],
 			"range": {
 				"type": "String",
@@ -594,7 +609,8 @@
 				"strength",
 				"availability",
 				"speed",
-				"tags"
+				"tags",
+				"reference"
 			],
 			"grating": {
 				"type": "Number",
@@ -626,11 +642,19 @@
 				"availability",
 				"bonus",
 				"durability",
-				"structure"
+				"structure",
+				"reference"
 			]
 		},
 		"vehicle": {
-			"templates": ["description", "size", "speed", "durability", "structure"],
+			"templates": [
+				"description",
+				"size",
+				"speed",
+				"durability",
+				"structure",
+				"reference"
+			],
 			"modifier": {
 				"type": "Number",
 				"label": "Dice Modifier",
@@ -638,7 +662,7 @@
 			}
 		},
 		"merit": {
-			"templates": ["description", "rank"],
+			"templates": ["description", "rank", "prereq", "reference"],
 			"group": {
 				"type": "String",
 				"label": "Group",
@@ -651,13 +675,18 @@
 			}
 		},
 		"service": {
-			"templates": ["description", "bonus", "availability"]
+			"templates": ["description", "bonus", "availability", "reference"],
+			"skill": {
+				"type": "String",
+				"label": "Skill",
+				"value": ""
+			}
 		},
 		"condition": {
-			"templates": ["description", "cause", "resolution"]
+			"templates": ["description", "cause", "resolution", "reference"]
 		},
 		"tilt": {
-			"templates": ["description", "cause", "resolution"],
+			"templates": ["description", "cause", "resolution", "reference"],
 			"effect": {
 				"type": "String",
 				"label": "Effect",
@@ -665,10 +694,10 @@
 			}
 		},
 		"dread": {
-			"templates": ["description", "rank"]
+			"templates": ["description", "rank", "reference"]
 		},
 		"numina": {
-			"templates": ["description"],
+			"templates": ["description", "prereq", "reference"],
 			"cost": {
 				"type": "Number",
 				"label": "Essence Cost",

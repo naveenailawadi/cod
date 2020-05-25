@@ -33,6 +33,7 @@ export class CoDItem extends Item {
 		if (item.type === 'weapon') {
 			let weaponName = item.name;
 			let attackType = item.data.attack.value;
+			let damage = item.data.damage.value;
 			let formula = CONFIG.attackSkills[attackType];
 			formula = formula.split(',');
 			// Formula[0] = attribute, Formula[1] = skill (e.g., 'str', 'brawl')
@@ -63,6 +64,7 @@ export class CoDItem extends Item {
 						0,
 						'ten',
 						weaponName,
+						damage,
 						target
 					);
 					console.log(``);
@@ -73,6 +75,7 @@ export class CoDItem extends Item {
 						targetDef,
 						'ten',
 						weaponName,
+						damage,
 						target
 					);
 					console.log(``);
@@ -108,6 +111,7 @@ export class CoDItem extends Item {
 											poolModifier,
 											exploderSelected,
 											weaponName,
+											damage,
 											'none'
 										);
 									console.log(``);

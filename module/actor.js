@@ -4,8 +4,38 @@
  */
 
 export class ActorCoD extends Actor {
+	prepareData() {
+		super.prepareData();
+
+		const actorData = this.data;
+		const data = actorData.data;
+		const flags = actorData.flags;
+
+		// Make separate methods for each Actor type (character, npc, etc.) to keep
+		// things organized.
+		if (actorData.type === 'character') this._prepareCharacterData(actorData);
+	}
+
+	// Prepare character data
+	_prepareCharacterData(actorData) {
+		const data = actorData.data;
+		const attributes = data.attributes;
+		const skills = data.skills;
+		const advantages = data.advantages;
+
+		// Define derived character values
+		advantages.wp.max = attributes.res.value + attributes.com.value;
+		advantages.speed.value = attributes.str.value + attributes.dex.value + 5;
+		advantages.hp.max = advantages.size.value + attributes.sta.value;
+		advantages.init.value = attributes.dex.value + attributes.com.value;
+		advantages.def.value =
+			Math.min(attributes.wits.value, attributes.dex.value) +
+			skills.athletics.value;
+	}
+
 	rollPool(attribute, skill, modifier, exploder) {
-		// Ex: 'int', 'animalken', 'ten'. Define global roll pool, assume valid att & skill sent even if 0 or negative value.
+		// Ex: 'int', 'animalken', 'ten'. Define global roll pool, assume valid att
+		// & skill sent even if 0 or negative value.
 		let name = this.name;
 		let pool = 0;
 		let attVal = parseInt(this.data.data.attributes[attribute].value, 10);
@@ -160,7 +190,7 @@ export class ActorCoD extends Actor {
 		}
 	}
 
-	weaponRollPool(attribute, skill, modifier, exploder, weapon, target) {
+	weaponRollPool(attribute, skill, modifier, exploder, weapon, damage, target) {
 		// Ex: 'int', 'animalken', -1, 'ten', 'Axe', 'Ben'. Define global roll pool, assume valid att & skill sent even if 0 or negative value.
 		let name = this.name;
 		let pool = 0;
@@ -200,9 +230,9 @@ export class ActorCoD extends Actor {
 		console.log(`Weapon roll: ${attribute}, ${skill}`);
 		console.log(`Target: ${target}`);
 		if (target == 'none')
-			rollString = `<b>${name}</b> attacks with <b>${weapon}</b>!`;
+			rollString = `<b>${name}</b> attacks with <b>${weapon}</b>! (${damage} dmg)`;
 		else
-			rollString = `<b>${name}</b> attacks <b>${target}</b> with <b>${weapon}</b>!`;
+			rollString = `<b>${name}</b> attacks <b>${target}</b> with <b>${weapon}</b>! (${damage} dmg)`;
 
 		console.log(`--------------`);
 		console.log(

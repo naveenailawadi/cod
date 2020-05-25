@@ -41,6 +41,19 @@
 				</div>
 
 				<div class="form-group">
+					<label class="label-text">{{data.skill.label}}</label>
+					<div class="input-box">
+						<input
+							class="input-text"
+							name="data.skill.value"
+							placeholder="[skill]"
+							value="{{data.skill.value}}"
+							data-dtype="String"
+						/>
+					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="label-text">{{data.availability.label}}</label>
 					<div class="input-box">
 						<input
@@ -48,6 +61,19 @@
 							name="data.availability.value"
 							placeholder="[# dots]"
 							value="{{data.availability.value}}"
+							data-dtype="String"
+						/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="label-text">{{data.reference.label}}</label>
+					<div class="input-box">
+						<input
+							class="input-text"
+							name="data.reference.value"
+							placeholder="[book] [pg(s)]"
+							value="{{data.reference.value}}"
 							data-dtype="String"
 						/>
 					</div>

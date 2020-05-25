@@ -11,7 +11,7 @@ export class ActorSheetCoD extends ActorSheet {
 		options.tabs = [
 			{navSelector: '.tabs', contentSelector: '.content', initial: 'display'},
 		];
-		options.classes = options.classes.concat(['cod', 'actor-sheet']);
+		options.classes = options.classes.concat(['cod', 'mortal', 'actor-sheet']);
 		options.template = 'systems/cod/templates/actor/actor-sheet.html';
 		options.width = 610;
 		options.height = 610;
@@ -215,6 +215,7 @@ export class ActorSheetCoD extends ActorSheet {
 			let item = this.actor.getEmbeddedEntity('OwnedItem', itemId);
 			let weaponName = item.name;
 			let attackType = item.data.attack.value;
+			let damage = item.data.damage.value;
 			let formula = CONFIG.attackSkills[attackType];
 			formula = formula.split(',');
 			// Formula[0] = attribute, Formula[1] = skill (e.g., 'str', 'brawl')
@@ -246,6 +247,7 @@ export class ActorSheetCoD extends ActorSheet {
 						0,
 						'ten',
 						weaponName,
+						damage,
 						target
 					);
 					console.log(``);
@@ -256,6 +258,7 @@ export class ActorSheetCoD extends ActorSheet {
 						targetDef,
 						'ten',
 						weaponName,
+						damage,
 						target
 					);
 					console.log(``);
@@ -291,6 +294,7 @@ export class ActorSheetCoD extends ActorSheet {
 											poolModifier,
 											exploderSelected,
 											weaponName,
+											damage,
 											'none'
 										);
 									console.log(``);
@@ -367,7 +371,6 @@ export class ActorSheetCoD extends ActorSheet {
 			let rollIndex = Number(
 				$(ev.currentTarget).parents('.rolls').attr('data-index')
 			);
-			this.actor.data.data.rolls;
 			let thisRoll = this.actor.data.data.rolls[rollIndex];
 			if (thisRoll.exploder === undefined) {
 				thisRoll.exploder = 'ten';
@@ -434,7 +437,7 @@ export class ActorSheetCoD extends ActorSheet {
 								label: 'Cancel',
 							},
 						},
-						default: 'cancel',
+						default: 'Yes',
 					}).render(true);
 				}
 			);
