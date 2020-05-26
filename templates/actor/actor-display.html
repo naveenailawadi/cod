@@ -380,7 +380,7 @@
 		<div class="display-other">
 			<div class="resource">
 				<h3>Health</h3>
-				<div style="align: center;">
+				<div class="resource">
 					{{#each actor.data.dots.hpCurrentDots as |item id|}}
 					<span>⚫</span>
 					{{/each}}<br />
@@ -390,14 +390,14 @@
 				</div>
 				<br />
 				<input
-					type="text"
+					type="number"
 					name="data.advantages.hp.value"
 					value="{{data.advantages.hp.value}}"
 					data-dtype="Number"
 				/>
 				<span> / </span>
 				<input
-					type="text"
+					type="number"
 					name="data.advantages.hp.max"
 					value="{{data.advantages.hp.max}}"
 					data-dtype="Number"
@@ -414,16 +414,37 @@
 				{{/each}}
 				<br />
 				<input
-					type="text"
+					type="number"
 					name="data.advantages.wp.value"
 					value="{{data.advantages.wp.value}}"
 					data-dtype="Number"
 				/>
 				<span> / </span>
 				<input
-					type="text"
+					type="number"
 					name="data.advantages.wp.max"
 					value="{{data.advantages.wp.max}}"
+					data-dtype="Number"
+				/>
+			</div>
+
+			<div class="resource">
+				<h3>Integrity</h3>
+				{{#each actor.data.dots.integDots as |item id|}}
+				<span>⚫</span>
+				{{/each}}<br />
+				<br />
+				<input
+					type="number"
+					name="data.advantages.integ.value"
+					value="{{data.advantages.integ.value}}"
+					data-dtype="Number"
+				/>
+				<span> / </span>
+				<input
+					type="number"
+					name="data.advantages.integ.max"
+					value="{{data.advantages.integ.max}}"
 					data-dtype="Number"
 				/>
 			</div>

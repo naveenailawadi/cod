@@ -180,6 +180,7 @@ export class ActorSheetCoD extends ActorSheet {
 			hpCurrentDots: [],
 			wpMaxDots: [],
 			wpCurrentDots: [],
+			integDots: [],
 			attDots: [],
 			skillDots: [],
 		};
@@ -208,6 +209,13 @@ export class ActorSheetCoD extends ActorSheet {
 		// Configure WP current dots
 		for (let i = 0; i < actorData.advantages.wp.value; i++) {
 			actorData.dots.wpCurrentDots.push({
+				full: true,
+			});
+		}
+
+		// Configure Integrity current dots
+		for (let i = 0; i < actorData.advantages.integ.value; i++) {
+			actorData.dots.integDots.push({
 				full: true,
 			});
 		}

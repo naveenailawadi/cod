@@ -19,26 +19,71 @@ export class ActorCoD extends Actor {
 	// Prepare character data
 	_prepareCharacterData(actorData) {
 		const data = actorData.data;
-		const attributes = data.attributes;
-		const skills = data.skills;
-		const advantages = data.advantages;
+		const attributes = duplicate(CONFIG.attributes);
+		const skills = duplicate(CONFIG.skills);
 
-		// Define derived character values
-		advantages.wp.max = attributes.res.value + attributes.com.value;
-		advantages.speed.value = attributes.str.value + attributes.dex.value + 5;
-		advantages.hp.max = advantages.size.value + attributes.sta.value;
-		advantages.init.value = attributes.dex.value + attributes.com.value;
-		advantages.def.value =
-			Math.min(attributes.wits.value, attributes.dex.value) +
-			skills.athletics.value;
+		const hp = data.advantages.hp;
+		const sta = data.attributes.sta;
+		const size = data.advantages.size;
 
-		//Check to see if current HP/WP > max, correct if so
-		if (advantages.hp.value > advantages.hp.max)
-			advantages.hp.value = advantages.hp.max;
-		if (advantages.hp.value < 0) advantages.hp.value = 0;
-		if (advantages.wp.value > advantages.wp.max)
-			advantages.wp.value = advantages.wp.max;
-		if (advantages.wp.value < 0) advantages.wp.value = 0;
+		const wp = data.advantages.wp;
+		const res = data.attributes.res;
+		const com = data.attributes.com;
+
+		const def = data.advantages.def;
+		const dex = data.attributes.dex;
+		const wits = data.attributes.wits;
+		const athletics = data.skills.athletics;
+
+		const init = data.advantages.init;
+		const integ = data.advantages.integ;
+
+		const speed = data.advantages.speed;
+		const str = data.attributes.str;
+		const garmor = data.advantages.garmor;
+		const barmor = data.advantages.barmor;
+		const exp = data.advancement.exp;
+		const beats = data.advancement.beats;
+
+		// Check to see if current HP/WP > max, correct if so
+		if (hp.value > hp.max) hp.value = hp.max;
+		if (hp.value < 0) hp.value = 0;
+		if (wp.value > wp.max) wp.value = wp.max;
+		if (wp.value < 0) wp.value = 0;
+
+		// Ensure Intrgrity is valid
+		if (integ.value < integ.min) integ.value = integ.min;
+		if (integ.value > integ.max) integ.value = integ.max;
+
+		// Ensure Attributes and Skills are appropriate values
+		for (let a in attributes) {
+			if (data.attributes[a].value > data.attributes[a].max)
+				data.attributes[a].value = data.attributes[a].max;
+			if (data.attributes[a].value < data.attributes[a].min)
+				data.attributes[a].value = data.attributes[a].min;
+		}
+
+		for (let s in skills) {
+			if (data.skills[s].value > data.skills[s].max)
+				data.skills[s].value = data.skills[s].max;
+			if (data.skills[s].value < data.skills[s].min)
+				data.skills[s].value = data.skills[s].min;
+		}
+
+		// Ensure others are valid
+		if (size.value < size.min) size.value = size.min;
+		if (garmor.value < garmor.min) garmor.value = garmor.min;
+		if (barmor.value < barmor.min) barmor.value = barmor.min;
+		if (exp.value < exp.min) exp.value = exp.min;
+		if (beats.value < beats.min) beats.value = beats.min;
+
+		// Using correct values, define derived character values
+		hp.max = sta.value + size.value;
+		wp.max = res.value + com.value;
+		def.value = Math.min(wits.value, dex.value) + athletics.value;
+		init.value = dex.value + com.value;
+		speed.value = str.value + dex.value + 5;
+		integ.max = 10;
 	}
 
 	rollPool(attribute, skill, modifier, exploder) {
