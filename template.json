@@ -466,12 +466,14 @@
 					"beats": {
 						"type": "Number",
 						"label": "Beats",
-						"value": 0
+						"value": 0,
+						"min": 0
 					},
 					"exp": {
 						"type": "Number",
 						"label": "Experience",
-						"value": 0
+						"value": 0,
+						"min": 0
 					}
 				},
 

@@ -84,6 +84,10 @@ export class ActorCoD extends Actor {
 		init.value = dex.value + com.value;
 		speed.value = str.value + dex.value + 5;
 		integ.max = 10;
+		if (beats.value >= 5) {
+			exp.value += Math.round(beats.value / 5);
+			beats.value = beats.value % 5;
+		}
 	}
 
 	rollPool(attribute, skill, modifier, exploder) {
