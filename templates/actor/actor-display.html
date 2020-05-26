@@ -15,11 +15,11 @@
 			<span class="attribute-type">Mental</span>
 			<div class="attribute">
 				<span><a class="roll-pool" data-skill="int">Intelligence</a></span>
-				<span
-					class="sheet-bubbles"
-					style="--percent: calc({{data.attributes.int.value}} / 10 * 100%);"
-					>{{data.attributes.int.value}}</span
-				>
+					<ol>
+						{{#each data.attributes.int.value}}
+						<li class="attribute-bubbles">●</li>
+						{{/each}}
+					</ol>
 			</div>
 			<div class="attribute">
 				<span><a class="roll-pool" data-skill="wits">Wits</a></span>
@@ -377,7 +377,12 @@
 	<!-- End Merits/Whatever Column -->
 
 	<div class="mid_column3">
-		<div class="display-other">
+
+		<div class="display-willpower">
+			<h3>Other Traits</h3>
+			<h4>Willpower</h4>
+
+  <div class="display-other">
 			<div class="resource">
 				<h3>Health</h3>
 				<div class="resource">
@@ -402,8 +407,28 @@
 					value="{{data.advantages.hp.max}}"
 					data-dtype="Number"
 				/>
+        		<div class="vamp_bloodpotency">
+			<h4>Blood Potency</h4>
+			<span
+				><a class="roll-pool" data-skill="data.vamp-bg.blood_potency.value"
+					>Blood Potency</a
+				></span
+			>
+			<span
+				class="sheet-bubbles"
+				style="--percent: calc({{data.vamp-bg.blood_potency.value}} / 10 * 100%);"
+				>{{data.vamp-bg.blood_potency.value}}</span
+			>
+			<input
+				type="text"
+				name="data.vamp-bg.blood_potency.value"
+				value="{{data.vamp-bg.blood_potency.value}}"
+				data-dtype="Number"
+			/>
+		</div>
+		<div style="clear: both;"></div>
+        
 			</div>
-
 			<div class="resource">
 				<h3>Willpower</h3>
 				{{#each actor.data.dots.wpCurrentDots as |item id|}}
