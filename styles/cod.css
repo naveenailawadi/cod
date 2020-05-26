@@ -732,7 +732,7 @@ height: 67%
 }
 
 .display-disciplines h3,
-.display-merits h3, .display-willpower h3 {
+.display-merits h3, .display-willpower h3, .display-other h3 {
 	background: #444;
 	color: #fff;
 	text-align: center;
@@ -767,11 +767,11 @@ height: 67%
 	display: block;
 }
 
-.display-willpower .sheet-bubbles {
+.display-other .sheet-bubbles {
 	width: 50%;
 }
-.display-willpower input {
-	width: 10%;
+.display-other input {
+	width: 30px;
 	font-size: 12px;
 	height: 18px;
 	margin-top: -2px;

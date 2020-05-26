@@ -8,47 +8,65 @@
 					"int": {
 						"type": "Number",
 						"label": "Intelligence",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"wits": {
 						"type": "Number",
 						"label": "Wits",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"res": {
 						"type": "Number",
 						"label": "Resolve",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"str": {
 						"type": "Number",
 						"label": "Strength",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"dex": {
 						"type": "Number",
 						"label": "Dexterity",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"sta": {
 						"type": "Number",
 						"label": "Stamina",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"pre": {
 						"type": "Number",
 						"label": "Presence",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"man": {
 						"type": "Number",
 						"label": "Manipulation",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					},
 					"com": {
 						"type": "Number",
 						"label": "Composure",
-						"value": 1
+						"value": 1,
+						"min": 1,
+						"max": 10
 					}
 				},
 
@@ -56,122 +74,170 @@
 					"academics": {
 						"type": "Number",
 						"label": "Academics",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"computer": {
 						"type": "Number",
 						"label": "Computer",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"crafts": {
 						"type": "Number",
 						"label": "Crafts",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"investigation": {
 						"type": "Number",
 						"label": "Investigation",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"medicine": {
 						"type": "Number",
 						"label": "Medicine",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"occult": {
 						"type": "Number",
 						"label": "Occult",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"politics": {
 						"type": "Number",
 						"label": "Politics",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"science": {
 						"type": "Number",
 						"label": "Science",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"athletics": {
 						"type": "Number",
 						"label": "Athletics",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"brawl": {
 						"type": "Number",
 						"label": "Brawl",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"drive": {
 						"type": "Number",
 						"label": "Drive",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"firearms": {
 						"type": "Number",
 						"label": "Firearms",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"larceny": {
 						"type": "Number",
 						"label": "Larceny",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"stealth": {
 						"type": "Number",
 						"label": "Stealth",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"survival": {
 						"type": "Number",
 						"label": "Survival",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"weaponry": {
 						"type": "Number",
 						"label": "Weaponry",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"animalken": {
 						"type": "Number",
 						"label": "Animal Ken",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"empathy": {
 						"type": "Number",
 						"label": "Empathy",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"expression": {
 						"type": "Number",
 						"label": "Expression",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"intimidation": {
 						"type": "Number",
 						"label": "Intimidation",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"persuasion": {
 						"type": "Number",
 						"label": "Persuasion",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"socialize": {
 						"type": "Number",
 						"label": "Socialize",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"streetwise": {
 						"type": "Number",
 						"label": "Streetwise",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					},
 					"subterfuge": {
 						"type": "Number",
 						"label": "Subterfuge",
-						"value": 0
+						"value": 0,
+						"min": 0,
+						"max": 5
 					}
 				},
 
@@ -200,7 +266,8 @@
 					"size": {
 						"type": "Number",
 						"label": "Size",
-						"value": 5
+						"value": 5,
+						"min": 1
 					},
 					"speed": {
 						"type": "Number",
@@ -220,12 +287,14 @@
 					"garmor": {
 						"type": "Number",
 						"label": "Armor (Gen.)",
-						"value": 0
+						"value": 0,
+						"min": 0
 					},
 					"barmor": {
 						"type": "Number",
 						"label": "Armor (Ball.)",
-						"value": 0
+						"value": 0,
+						"min": 0
 					},
 					"init": {
 						"type": "Number",
@@ -397,12 +466,14 @@
 					"beats": {
 						"type": "Number",
 						"label": "Beats",
-						"value": 0
+						"value": 0,
+						"min": 0
 					},
 					"exp": {
 						"type": "Number",
 						"label": "Experience",
-						"value": 0
+						"value": 0,
+						"min": 0
 					}
 				},
 
