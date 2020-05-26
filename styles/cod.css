@@ -14,30 +14,6 @@ h2 {
 }
 
 /* Sheet Header */
-.cod.sheet .sheet-header {
-	overflow: hidden;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	flex: 0 0 100px;
-	margin-bottom: 10px;
-}
-
-.cod.sheet .profile-img {
-	max-width: 100px;
-	height: auto;
-	margin-right: 10px;
-}
-
-.cod.sheet .header-fields {
-	flex: 1;
-	height: 100px;
-}
-.cod.item-sheet .header-fields {
-	height: 64px;
-}
-
 .cod.sheet .charname {
 	height: 45px;
 	padding: 5px 0;
@@ -510,6 +486,10 @@ height: 67%
 	width: 900px !important;
 }
 
+.window-app .window-header {
+    background: #00000080;
+}
+
 /* --------------- Header --------------- */
 
 .sheet-layout {
@@ -531,7 +511,6 @@ height: 67%
 }
 
 .sheet-logo {
-	display: block;
 	background-size: 245px 100px;
 	width: 245px;
 	height: 100px;
@@ -547,6 +526,45 @@ height: 67%
 	background: url('vampire-logo.png');
 	background-repeat: no-repeat;
 }
+
+.character_pic {
+	display: block;
+	float: left;
+	width: 140px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.character_pic .profile-img {
+    width: 140px;
+    height: 120px;
+    object-fit: cover;	
+}
+
+.header-details {
+    display: block;
+    float: left;
+	width: 80%;
+}
+.character-details {
+	width: auto;
+	float: left;
+	padding-right: 15px;
+	margin-right: 5px;
+}
+
+.header-details .concept {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 100%;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.vamp-bg-block {display: none;}
+.vampire .vamp-bg-block {display: block;}
 
 /* --------------- Tab Navigation --------------- */
 
@@ -714,11 +732,19 @@ height: 67%
 }
 
 .display-disciplines h3,
-.display-merits h3,
-.display-willpower h3 {
+.display-merits h3, .display-willpower h3 {
 	background: #444;
 	color: #fff;
 	text-align: center;
+}
+
+.display-willpower, .vamp_bloodpotency {
+	text-align: center;
+	border-bottom: 1px solid #000;
+	padding-bottom: 10px;
+} 
+.display-willpower h4, .vamp_bloodpotency h4 {
+	text-transform: uppercase;
 }
 
 .cod.sheet .display-disciplines .items-list .item,
