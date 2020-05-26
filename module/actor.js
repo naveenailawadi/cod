@@ -31,6 +31,12 @@ export class ActorCoD extends Actor {
 		advantages.def.value =
 			Math.min(attributes.wits.value, attributes.dex.value) +
 			skills.athletics.value;
+
+		//Check to see if current HP/WP > max, correct if so
+		if (advantages.hp.value > advantages.hp.max)
+			advantages.hp.value = advantages.hp.max;
+		if (advantages.wp.value > advantages.wp.max)
+			advantages.wp.value = advantages.wp.max;
 	}
 
 	rollPool(attribute, skill, modifier, exploder) {

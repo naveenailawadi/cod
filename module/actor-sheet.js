@@ -19,14 +19,41 @@ export class ActorSheetCoD extends ActorSheet {
 	}
 
 	getData() {
-		const sheetData = super.getData();
-		this._prepareItems(sheetData.actor);
-		sheetData.attributes = this.sortAttrGroups();
-		sheetData.skills = this.sortSkillGroups();
-		sheetData.splats = CONFIG.splats;
-		return sheetData;
+		const data = super.getData();
+
+		// Assign inventory to item categories
+		this._prepareItems(data.actor);
+
+		// Prepare attributes & skills for dialog selections
+		data.attributes = this.sortAttrGroups();
+		data.skills = this.sortSkillGroups();
+
+		// Prepare health, willpower, attribute, and skill dots
+		/*
+		this._setupHPDots(data.actor.data);
+		this._setupWPDots(data.actor.data);
+		this._setupAttDots(data.actor.data);
+		this._setupSkillDots(data.actor.data);
+		*/
+
+		// Provide splat info to sheet
+		data.splats = CONFIG.splats;
+
+		// Create HTML Strings
+		this._configureHPStrings(data.actor.data);
+		this._configureWPStrings(data.actor.data);
+		this._configureAttStrings(data.actor.data);
+		this._configureSkillStrings(data.actor.data);
+
+		//Output current status
+		console.log(`Current state of data.actor:`);
+		console.log(data.actor.data);
+		console.log(`------------------`);
+
+		return data;
 	}
 
+	// Base preparation
 	_prepareItems(actorData) {
 		actorData.weapons = [];
 		actorData.armors = [];
@@ -76,7 +103,6 @@ export class ActorSheetCoD extends ActorSheet {
 			}
 		}
 	}
-
 	sortAttrGroups() {
 		let skills = duplicate(CONFIG.skills);
 		let attributes = duplicate(CONFIG.attributes);
@@ -112,7 +138,6 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 		return displayAttrGroups;
 	}
-
 	sortSkillGroups() {
 		let skills = duplicate(CONFIG.skills);
 		let attributes = duplicate(CONFIG.attributes);
@@ -147,6 +172,129 @@ export class ActorSheetCoD extends ActorSheet {
 			}
 		}
 		return displaySkillGroups;
+	}
+
+	/*
+	// Set up dot objects
+	_setupHPDots(actorData) {
+		actorData.hpMaxDots = [];
+		actorData.hpCurrentDots = [];
+
+		for (let i = 0; i < actorData.advantages.hp.max; i++) {
+			actorData.hpMaxDots.push({
+				full: true,
+			});
+		}
+
+		for (let i = 0; i < actorData.advantages.hp.value; i++) {
+			actorData.hpCurrentDots.push({
+				full: true,
+			});
+		}
+	}
+	_setupWPDots(actorData) {
+		actorData.wpMaxDots = [];
+		actorData.wpCurrentDots = [];
+
+		for (let i = 0; i < actorData.advantages.wp.max; i++) {
+			actorData.wpMaxDots.push({
+				full: true,
+			});
+		}
+
+		for (let i = 0; i < actorData.advantages.wp.value; i++) {
+			actorData.wpCurrentDots.push({
+				full: true,
+			});
+		}
+	}
+	_setupAttDots(actorData) {
+		let attributes = duplicate(CONFIG.attributes);
+		actorData.attDots = {};
+
+		for (let a in attributes) {
+			actorData.attDots[a] = [];
+		}
+		for (let a in attributes) {
+			for (let i = 0; i < actorData.attributes[a].value; i++) {
+				actorData.attDots[a].push({
+					full: true,
+				});
+			}
+		}
+	}
+	_setupSkillDots(actorData) {
+		let skills = duplicate(CONFIG.skills);
+
+		actorData.skillDots = {};
+
+		for (let s in skills) {
+			actorData.skillDots[s] = [];
+		}
+
+		for (let s in skills) {
+			for (let i = 0; i < actorData.skills[s].value; i++) {
+				actorData.skillDots[s].push({
+					full: true,
+				});
+			}
+		}
+	}
+	*/
+
+	// Set up dot strings
+	_configureHPStrings(actorData) {
+		actorData.hpMaxDots = '';
+		actorData.hpCurrentDots = '';
+
+		for (let i = 0; i < actorData.advantages.hp.max; i++) {
+			actorData.hpMaxDots += '<li>O</li>';
+		}
+
+		for (let i = 0; i < actorData.advantages.hp.value; i++) {
+			actorData.hpCurrentDots += '<li>O</li>';
+		}
+	}
+
+	_configureWPStrings(actorData) {
+		actorData.wpMaxDots = '';
+		actorData.wpCurrentDots = '';
+
+		for (let i = 0; i < actorData.advantages.wp.max; i++) {
+			actorData.wpMaxDots += '<li>O</li>';
+		}
+
+		for (let i = 0; i < actorData.advantages.wp.value; i++) {
+			actorData.wpCurrentDots += '<li>O</li>';
+		}
+	}
+
+	_configureAttStrings(actorData) {
+		let attributes = duplicate(CONFIG.attributes);
+		actorData.attDots = {};
+
+		for (let a in attributes) {
+			actorData.attDots[a] = '';
+		}
+		for (let a in attributes) {
+			for (let i = 0; i < actorData.attributes[a].value; i++) {
+				actorData.attDots[a] += '<li>O</li>';
+			}
+		}
+	}
+
+	_configureSkillStrings(actorData) {
+		let skills = duplicate(CONFIG.skills);
+		actorData.skillDots = {};
+
+		for (let s in skills) {
+			actorData.skillDots[s] = '';
+		}
+		for (let s in skills) {
+			for (let i = 0; i < actorData.skills[s].value; i++) {
+				actorData.skillDots[s] += '<li>O</li>';
+			}
+		}
 	}
 
 	/* -------------------------------------------- */
