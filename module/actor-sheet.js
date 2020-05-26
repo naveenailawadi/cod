@@ -21,7 +21,7 @@ export class ActorSheetCoD extends ActorSheet {
 	getData() {
 		const data = super.getData();
 
-		// Assign inventory to item categories
+		// Prepare inventory
 		this._prepareItems(data.actor);
 
 		// Prepare attributes & skills for dialog selections
@@ -29,80 +29,74 @@ export class ActorSheetCoD extends ActorSheet {
 		data.skills = this.sortSkillGroups();
 
 		// Prepare health, willpower, attribute, and skill dots
-		/*
-		this._setupHPDots(data.actor.data);
-		this._setupWPDots(data.actor.data);
-		this._setupAttDots(data.actor.data);
-		this._setupSkillDots(data.actor.data);
-		*/
+		this._configureDots(data.actor.data);
 
 		// Provide splat info to sheet
 		data.splats = CONFIG.splats;
 
-		// Create HTML Strings
-		this._configureHPStrings(data.actor.data);
-		this._configureWPStrings(data.actor.data);
-		this._configureAttStrings(data.actor.data);
-		this._configureSkillStrings(data.actor.data);
-
 		//Output current status
 		console.log(`Current state of data.actor:`);
-		console.log(data.actor.data);
+		console.log(data.actor);
 		console.log(`------------------`);
 
 		return data;
 	}
 
-	// Base preparation
+	// Prepare Inventory
 	_prepareItems(actorData) {
-		actorData.weapons = [];
-		actorData.armors = [];
-		actorData.equipments = [];
-		actorData.vehicles = [];
-		actorData.merits = [];
-		actorData.services = [];
-		actorData.conditions = [];
-		actorData.tilts = [];
-		actorData.dreads = [];
-		actorData.numinas = [];
-		actorData.disciplines = [];
+		actorData.data.inventory = {
+			weapons: [],
+			armors: [],
+			equipments: [],
+			vehicles: [],
+			merits: [],
+			services: [],
+			conditions: [],
+			tilts: [],
+			dreads: [],
+			numinas: [],
+			disciplines: [],
+		};
+		const inventory = actorData.data.inventory;
 
 		for (let i of actorData.items) {
 			if (i.type == 'weapon') {
-				actorData.weapons.push(i);
+				inventory.weapons.push(i);
 			}
 			if (i.type == 'armor') {
-				actorData.armors.push(i);
+				inventory.armors.push(i);
 			}
 			if (i.type == 'equipment') {
-				actorData.equipments.push(i);
+				inventory.equipments.push(i);
 			}
 			if (i.type == 'vehicle') {
-				actorData.vehicles.push(i);
+				inventory.vehicles.push(i);
 			}
 			if (i.type == 'merit') {
-				actorData.merits.push(i);
+				inventory.merits.push(i);
 			}
 			if (i.type == 'service') {
-				actorData.services.push(i);
+				inventory.services.push(i);
 			}
 			if (i.type == 'condition') {
-				actorData.conditions.push(i);
+				inventory.conditions.push(i);
 			}
 			if (i.type == 'tilt') {
-				actorData.tilts.push(i);
+				inventory.tilts.push(i);
 			}
 			if (i.type == 'dread') {
-				actorData.dreads.push(i);
+				inventory.dreads.push(i);
 			}
 			if (i.type == 'numina') {
-				actorData.numinas.push(i);
+				inventory.numinas.push(i);
 			}
 			if (i.type == 'discipline') {
-				actorData.disciplines.push(i);
+				inventory.disciplines.push(i);
 			}
 		}
 	}
+
+	// Sort Attributes for display on roll pool dialogs
 	sortAttrGroups() {
 		let skills = duplicate(CONFIG.skills);
 		let attributes = duplicate(CONFIG.attributes);
@@ -138,6 +132,8 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 		return displayAttrGroups;
 	}
+
+	// Sort Skills for display on roll pool dialogs
 	sortSkillGroups() {
 		let skills = duplicate(CONFIG.skills);
 		let attributes = duplicate(CONFIG.attributes);
@@ -174,76 +170,77 @@ export class ActorSheetCoD extends ActorSheet {
 		return displaySkillGroups;
 	}
 
-	/*
-	// Set up dot objects
-	_setupHPDots(actorData) {
-		actorData.hpMaxDots = [];
-		actorData.hpCurrentDots = [];
-
-		for (let i = 0; i < actorData.advantages.hp.max; i++) {
-			actorData.hpMaxDots.push({
-				full: true,
-			});
-		}
-
-		for (let i = 0; i < actorData.advantages.hp.value; i++) {
-			actorData.hpCurrentDots.push({
-				full: true,
-			});
-		}
-	}
-	_setupWPDots(actorData) {
-		actorData.wpMaxDots = [];
-		actorData.wpCurrentDots = [];
-
-		for (let i = 0; i < actorData.advantages.wp.max; i++) {
-			actorData.wpMaxDots.push({
-				full: true,
-			});
-		}
-
-		for (let i = 0; i < actorData.advantages.wp.value; i++) {
-			actorData.wpCurrentDots.push({
-				full: true,
-			});
-		}
-	}
-	_setupAttDots(actorData) {
+	// Create HP/WP/Att/Skill dot objects
+	_configureDots(actorData) {
 		let attributes = duplicate(CONFIG.attributes);
-		actorData.attDots = {};
+		let skills = duplicate(CONFIG.skills);
 
+		actorData.dots = {
+			hpMaxDots: [],
+			hpCurrentDots: [],
+			wpMaxDots: [],
+			wpCurrentDots: [],
+			attDots: [],
+			skillDots: [],
+		};
+
+		// Configure HP max dots
+		for (let i = 0; i < actorData.advantages.hp.max; i++) {
+			actorData.dots.hpMaxDots.push({
+				full: true,
+			});
+		}
+
+		// Configure HP current dots
+		for (let i = 0; i < actorData.advantages.hp.value; i++) {
+			actorData.dots.hpCurrentDots.push({
+				full: true,
+			});
+		}
+
+		// Configure WP max dots
+		for (let i = 0; i < actorData.advantages.wp.max; i++) {
+			actorData.dots.wpMaxDots.push({
+				full: true,
+			});
+		}
+
+		// Configure WP current dots
+		for (let i = 0; i < actorData.advantages.wp.value; i++) {
+			actorData.dots.wpCurrentDots.push({
+				full: true,
+			});
+		}
+
+		// Configure Attribute dots
 		for (let a in attributes) {
-			actorData.attDots[a] = [];
+			actorData.dots.attDots[a] = [];
 		}
 		for (let a in attributes) {
 			for (let i = 0; i < actorData.attributes[a].value; i++) {
-				actorData.attDots[a].push({
+				actorData.dots.attDots[a].push({
 					full: true,
 				});
 			}
 		}
-	}
-	_setupSkillDots(actorData) {
-		let skills = duplicate(CONFIG.skills);
 
-		actorData.skillDots = {};
-
+		// Configure Skill dots
 		for (let s in skills) {
-			actorData.skillDots[s] = [];
+			actorData.dots.skillDots[s] = [];
 		}
 
 		for (let s in skills) {
 			for (let i = 0; i < actorData.skills[s].value; i++) {
-				actorData.skillDots[s].push({
+				actorData.dots.skillDots[s].push({
 					full: true,
 				});
 			}
 		}
 	}
-	*/
 
-	// Set up dot strings
-	_configureHPStrings(actorData) {
+	/*
+	// Set up dot strings (String method)
+	_configureHPDots(actorData) {
 		actorData.hpMaxDots = '';
 		actorData.hpCurrentDots = '';
 
@@ -256,7 +253,7 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 	}
 
-	_configureWPStrings(actorData) {
+	_configureWPDots(actorData) {
 		actorData.wpMaxDots = '';
 		actorData.wpCurrentDots = '';
 
@@ -269,7 +266,7 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 	}
 
-	_configureAttStrings(actorData) {
+	_configureAttDots(actorData) {
 		let attributes = duplicate(CONFIG.attributes);
 		actorData.attDots = {};
 
@@ -283,7 +280,7 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 	}
 
-	_configureSkillStrings(actorData) {
+	_configureSkillDots(actorData) {
 		let skills = duplicate(CONFIG.skills);
 		actorData.skillDots = {};
 
@@ -296,6 +293,7 @@ export class ActorSheetCoD extends ActorSheet {
 			}
 		}
 	}
+	*/
 
 	/* -------------------------------------------- */
 

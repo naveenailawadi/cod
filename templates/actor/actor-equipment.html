@@ -2,7 +2,7 @@
 <div class="equipment-section">
 	<div class="item-header">Weapons</div>
 	<ol class="items-list">
-		{{#each actor.weapons as |item id|}}
+		{{#each actor.data.inventory.weapons as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name weapon-roll">{{item.name}}</a>
@@ -23,7 +23,7 @@
 
 	<div class="item-header">Armor</div>
 	<ol class="items-list">
-		{{#each actor.armors as |item id|}}
+		{{#each actor.data.inventory.armors as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -44,7 +44,7 @@
 
 	<div class="item-header">Equipment</div>
 	<ol class="items-list">
-		{{#each actor.equipments as |item id|}}
+		{{#each actor.data.inventory.equipments as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -65,7 +65,7 @@
 
 	<div class="item-header">Vehicles</div>
 	<ol class="items-list">
-		{{#each actor.vehicles as |item id|}}
+		{{#each actor.data.inventory.vehicles as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -86,7 +86,7 @@
 
 	<div class="item-header">Services</div>
 	<ol class="items-list">
-		{{#each actor.services as |item id|}}
+		{{#each actor.data.inventory.services as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -107,7 +107,7 @@
 
 	<div class="item-header">Conditions</div>
 	<ol class="items-list">
-		{{#each actor.conditions as |item id|}}
+		{{#each actor.data.inventory.conditions as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -128,7 +128,7 @@
 
 	<div class="item-header">Tilts</div>
 	<ol class="items-list">
-		{{#each actor.tilts as |item id|}}
+		{{#each actor.data.inventory.tilts as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -149,7 +149,7 @@
 
 	<div class="item-header">Dread Powers</div>
 	<ol class="items-list">
-		{{#each actor.dreads as |item id|}}
+		{{#each actor.data.inventory.dreads as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -170,7 +170,7 @@
 
 	<div class="item-header">Numina</div>
 	<ol class="items-list">
-		{{#each actor.numinas as |item id|}}
+		{{#each actor.data.inventory.numinas as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
@@ -191,7 +191,7 @@
 
 	<div class="item-header">Disciplines</div>
 	<ol class="items-list">
-		{{#each actor.disciplines as |item id|}}
+		{{#each actor.data.inventory.disciplines as |item id|}}
 		<li class="item flexrow" data-item-id="{{item._id}}">
 			<img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
 			<a class="item-name">{{item.name}}</a>
