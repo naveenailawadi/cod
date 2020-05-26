@@ -2,32 +2,80 @@
 	<div class="{{data.splatSelect.value}} sheet-layout">
 		<div class="sheet-logo"></div>
 
-
-		<div class="character_pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/></div>
-
-		<div class="header-details">
-			<h1 class="charname">{{actor.name}}</h1>
-			<div class="character-details">Age: {{data.details.age.value}}</div>
-			<div class="character-details">Faction: {{data.details.faction.value}}</div>
-			<div class="character-details">Virtue: {{data.details.anchor1.value}}</div>
-			<div class="character-details">Vice: {{data.details.anchor2.value}}</div>
-			<br>
-			<div class="character-details concept">Concept: {{data.details.concept.value}}</div>
-			<br>
-			<div class="vamp-bg-block">
-				<div class="character-details"> Clan: </div> <label>{{data.vamp-bg.clan.value}}</label>
-				<div class="character-details"> Virtue: </div> <label>{{data.vamp-bg.virtue.value}}</label>
-				<div class="character-details"> Vice: </div> <label>{{data.vamp-bg.vice.value}}</label>
-				<div class="character-details"> Bloodline: </div>
-				<div class="character-details">{{data.vamp-bg.bloodline.value}}</div>
-				<div class="character-details"> Covenant: </div><label>{{data.vamp-bg.convenant.value}}</label>
-
+		<header class="sheet-header">
+			<img
+				class="profile-img"
+				src="{{actor.img}}"
+				data-edit="img"
+				title="{{actor.name}}"
+				height="100"
+				width="100"
+			/>
+			<div class="header-fields">
+				<h1 class="charname">
+					<input
+						name="name"
+						type="text"
+						value="{{actor.name}}"
+						placeholder="Name"
+					/>
+				</h1>
+				<div class="labels">
+					<span class="label-details">Age</span>
+					<span class="label-details">Concept</span>
+					<span class="label-details">Faction</span>
+					<span class="label-details">Virtue</span>
+					<span class="label-details">Vice</span>
+				</div>
+				<div class="details">
+					<input
+						type="text"
+						name="data.details.age.value"
+						placeholder="Age"
+						value="{{data.details.age.value}}"
+						data-dtype="Number"
+					/>
+					<input
+						type="text"
+						name="data.details.concept.value"
+						placeholder="Concept"
+						value="{{data.details.concept.value}}"
+						data-dtype="String"
+					/>
+					<input
+						type="text"
+						name="data.details.faction.value"
+						placeholder="Faction"
+						value="{{data.details.faction.value}}"
+						data-dtype="String"
+					/>
+					<input
+						type="text"
+						name="data.details.anchor1.value"
+						placeholder="Virtue"
+						value="{{data.details.anchor1.value}}"
+						data-dtype="String"
+					/>
+					<input
+						type="text"
+						name="data.details.anchor2.value"
+						placeholder="Vice"
+						value="{{data.details.anchor2.value}}"
+						data-dtype="String"
+					/>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="splatSelect">
+					<label class="label-text">{{data.splatSelect.label}}</label>
+					<select name="data.splatSelect.value" data-dtype="String">
+						{{#select data.splatSelect.value}} {{#each splats as |name key|}}
+						<option value="{{key}}">{{name}}</option>
+						{{/each}} {{/select}}
+					</select>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
-		</div>
-
-		<div style="clear: both;"></div>
+		</header>
 
 		<!-- Tabs v2 -->
 		<section id="actor-tab-sections" class="sheet-body">

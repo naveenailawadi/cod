@@ -1,29 +1,3 @@
-<br>
-<div class="splatSelect">
-	<label class="label-text">{{data.splatSelect.label}}</label>
-	<select name="data.splatSelect.value" data-dtype="String">
-		{{#select data.splatSelect.value}} {{#each splats as |name key|}}
-		<option value="{{key}}">{{name}}</option>
-		{{/each}} {{/select}}
-	</select>
-</div>
-
-<div class="header-details">
-	<h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
-	<div class="character-details">Mortal Age <input type="text" name="data.details.age.value" placeholder="Age" value="{{data.details.age.value}}"
-	data-dtype="Number" /></div>
-	<div class="character-details">Concept<input type="text" name="data.details.concept.value" placeholder="Concept" value="{{data.details.concept.value}}"
-	data-dtype="String" /></div>
-	<div class="character-details">Faction<input type="text" name="data.details.faction.value" placeholder="Faction" value="{{data.details.faction.value}}"
-	data-dtype="String" /></div>
-	<div class="character-details">Virtue<input type="text" name="data.details.anchor1.value" placeholder="Virtue" value="{{data.details.anchor1.value}}"
-	data-dtype="String" /></div>
-	<div class="character-details">Vice<input type="text" name="data.details.anchor2.value" placeholder="Vice" value="{{data.details.anchor2.value}}"
-	data-dtype="String" /></div>
-</div>
-
-<div style="clear: both;"></div>
-
 <h2>Attributes</h2>
 <div class="attribute-section">
 	<div class="attribute-column attribute-categories">
