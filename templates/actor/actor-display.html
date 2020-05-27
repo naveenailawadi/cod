@@ -365,7 +365,7 @@
 			<h3>Merits</h3>
 			<div class="items">
 				<ol class="items-list">
-					{{#each actor.merits as |item id|}}
+					{{#each actor.data.inventory.merits as |item id|}}
 					<li class="item flexrow" data-item-id="{{item._id}}">
 						<h4 class="item-name">{{item.name}}</h4>
 					</li>
