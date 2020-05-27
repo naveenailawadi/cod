@@ -8,11 +8,12 @@ export class ActorSheetCoD extends ActorSheet {
 
 	static get defaultOptions() {
 		const options = super.defaultOptions;
+		const path = 'systems/cod/templates/actor';
 		options.tabs = [
 			{navSelector: '.tabs', contentSelector: '.content', initial: 'display'},
 		];
 		options.classes = options.classes.concat(['cod', 'mortal', 'actor-sheet']);
-		options.template = 'systems/cod/templates/actor/actor-sheet.html';
+		options.template = `${path}/actor-sheet.html`;
 		options.width = 610;
 		options.height = 610;
 		return options;
@@ -246,69 +247,13 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 	}
 
-	/*
-	// Set up dot strings (String method)
-	_configureHPDots(actorData) {
-		actorData.hpMaxDots = '';
-		actorData.hpCurrentDots = '';
-
-		for (let i = 0; i < actorData.advantages.hp.max; i++) {
-			actorData.hpMaxDots += '<li>O</li>';
-		}
-
-		for (let i = 0; i < actorData.advantages.hp.value; i++) {
-			actorData.hpCurrentDots += '<li>O</li>';
-		}
-	}
-
-	_configureWPDots(actorData) {
-		actorData.wpMaxDots = '';
-		actorData.wpCurrentDots = '';
-
-		for (let i = 0; i < actorData.advantages.wp.max; i++) {
-			actorData.wpMaxDots += '<li>O</li>';
-		}
-
-		for (let i = 0; i < actorData.advantages.wp.value; i++) {
-			actorData.wpCurrentDots += '<li>O</li>';
-		}
-	}
-
-	_configureAttDots(actorData) {
-		let attributes = duplicate(CONFIG.attributes);
-		actorData.attDots = {};
-
-		for (let a in attributes) {
-			actorData.attDots[a] = '';
-		}
-		for (let a in attributes) {
-			for (let i = 0; i < actorData.attributes[a].value; i++) {
-				actorData.attDots[a] += '<li>O</li>';
-			}
-		}
-	}
-
-	_configureSkillDots(actorData) {
-		let skills = duplicate(CONFIG.skills);
-		actorData.skillDots = {};
-
-		for (let s in skills) {
-			actorData.skillDots[s] = '';
-		}
-		for (let s in skills) {
-			for (let i = 0; i < actorData.skills[s].value; i++) {
-				actorData.skillDots[s] += '<li>O</li>';
-			}
-		}
-	}
-	*/
-
 	/* -------------------------------------------- */
 
 	// Activate event listeners using the prepared sheet HTML
 
 	activateListeners(html) {
 		super.activateListeners(html);
+		const path = 'systems/cod/templates';
 
 		// Click attribute/skill roll
 		html.find('.roll-pool').click((event) => {
@@ -322,45 +267,43 @@ export class ActorSheetCoD extends ActorSheet {
 				groups: CONFIG.groups,
 			};
 
-			renderTemplate('systems/cod/templates/pool-dialog.html', dialogData).then(
-				(html) => {
-					new Dialog({
-						title: 'Roll Dice Pool',
-						content: html,
-						buttons: {
-							Yes: {
-								icon: '<i class="fa fa-check"></i>',
-								label: 'Yes',
-								callback: (html) => {
-									let attributeSelected = html
-										.find('[name="attributeSelector"]')
-										.val();
-									let poolModifier = html.find('[name="modifier"]').val();
-									let skillSelected = html.find('[name="skillSelector"]').val();
-									let exploderSelected = html
-										.find('[name="exploderSelector"]')
-										.val();
-									if (attributeSelected === 'none' || skillSelected === 'none')
-										console.log(`Invalid pool selected.`);
-									else
-										this.actor.rollPool(
-											attributeSelected,
-											skillSelected,
-											poolModifier,
-											exploderSelected
-										);
-									console.log(``);
-								},
-							},
-							cancel: {
-								icon: '<i class="fas fa-times"></i>',
-								label: 'Cancel',
+			renderTemplate(`${path}/pool-dialog.html`, dialogData).then((html) => {
+				new Dialog({
+					title: 'Roll Dice Pool',
+					content: html,
+					buttons: {
+						Yes: {
+							icon: '<i class="fa fa-check"></i>',
+							label: 'Yes',
+							callback: (html) => {
+								let attributeSelected = html
+									.find('[name="attributeSelector"]')
+									.val();
+								let poolModifier = html.find('[name="modifier"]').val();
+								let skillSelected = html.find('[name="skillSelector"]').val();
+								let exploderSelected = html
+									.find('[name="exploderSelector"]')
+									.val();
+								if (attributeSelected === 'none' || skillSelected === 'none')
+									console.log(`Invalid pool selected.`);
+								else
+									this.actor.rollPool(
+										attributeSelected,
+										skillSelected,
+										poolModifier,
+										exploderSelected
+									);
+								console.log(``);
 							},
 						},
-						default: 'Yes',
-					}).render(true);
-				}
-			);
+						cancel: {
+							icon: '<i class="fas fa-times"></i>',
+							label: 'Cancel',
+						},
+					},
+					default: 'Yes',
+				}).render(true);
+			});
 		});
 
 		// Click weapon roll
@@ -419,10 +362,7 @@ export class ActorSheetCoD extends ActorSheet {
 				}
 			} else {
 				// If no target selected, create popup dialogue
-				renderTemplate(
-					'systems/cod/templates/pool-dialog.html',
-					dialogData
-				).then((html) => {
+				renderTemplate(`${path}/pool-dialog.html`, dialogData).then((html) => {
 					new Dialog({
 						title: 'Roll Dice Pool',
 						content: html,
@@ -472,52 +412,51 @@ export class ActorSheetCoD extends ActorSheet {
 				groups: CONFIG.groups,
 			};
 
-			renderTemplate(
-				'systems/cod/templates/att-pool-dialog.html',
-				dialogData
-			).then((html) => {
-				new Dialog({
-					title: 'Roll Dice Pool',
-					content: html,
-					buttons: {
-						Yes: {
-							icon: '<i class="fa fa-check"></i>',
-							label: 'Yes',
-							callback: (html) => {
-								let attribute1Selected = html
-									.find('[name="attribute1Selector"]')
-									.val();
-								let attribute2Selected = html
-									.find('[name="attribute2Selector"]')
-									.val();
-								let poolModifier = html.find('[name="modifier"]').val();
+			renderTemplate(`${path}/att-pool-dialog.html`, dialogData).then(
+				(html) => {
+					new Dialog({
+						title: 'Roll Dice Pool',
+						content: html,
+						buttons: {
+							Yes: {
+								icon: '<i class="fa fa-check"></i>',
+								label: 'Yes',
+								callback: (html) => {
+									let attribute1Selected = html
+										.find('[name="attribute1Selector"]')
+										.val();
+									let attribute2Selected = html
+										.find('[name="attribute2Selector"]')
+										.val();
+									let poolModifier = html.find('[name="modifier"]').val();
 
-								let exploderSelected = html
-									.find('[name="exploderSelector"]')
-									.val();
-								if (
-									attribute1Selected === 'none' &&
-									attribute2Selected === 'none'
-								)
-									console.log(`Invalid pool selected.`);
-								else
-									this.actor.attTaskPool(
-										attribute1Selected,
-										attribute2Selected,
-										poolModifier,
-										exploderSelected
-									);
-								console.log(``);
+									let exploderSelected = html
+										.find('[name="exploderSelector"]')
+										.val();
+									if (
+										attribute1Selected === 'none' &&
+										attribute2Selected === 'none'
+									)
+										console.log(`Invalid pool selected.`);
+									else
+										this.actor.attTaskPool(
+											attribute1Selected,
+											attribute2Selected,
+											poolModifier,
+											exploderSelected
+										);
+									console.log(``);
+								},
+							},
+							cancel: {
+								icon: '<i class="fas fa-times"></i>',
+								label: 'Cancel',
 							},
 						},
-						cancel: {
-							icon: '<i class="fas fa-times"></i>',
-							label: 'Cancel',
-						},
-					},
-					default: 'Yes',
-				}).render(true);
-			});
+						default: 'Yes',
+					}).render(true);
+				}
+			);
 		});
 
 		// Click custom roll 'Roll' button
@@ -569,32 +508,27 @@ export class ActorSheetCoD extends ActorSheet {
 			let dialogData = {
 				defaultSelection: defaultSelection,
 			};
-			renderTemplate('systems/cod/templates/del-confirm.html', dialogData).then(
-				(html) => {
-					new Dialog({
-						title: 'Confirm deletion',
-						content: html,
-						buttons: {
-							Yes: {
-								icon: '<i class="fa fa-check"></i>',
-								label: 'Yes',
-								callback: (html) => {
-									this.actor.deleteEmbeddedEntity(
-										'OwnedItem',
-										li.data('itemId')
-									);
-									li.slideUp(200, () => this.render(false));
-								},
-							},
-							cancel: {
-								icon: '<i class="fas fa-times"></i>',
-								label: 'Cancel',
+			renderTemplate(`${path}/del-confirm.html`, dialogData).then((html) => {
+				new Dialog({
+					title: 'Confirm deletion',
+					content: html,
+					buttons: {
+						Yes: {
+							icon: '<i class="fa fa-check"></i>',
+							label: 'Yes',
+							callback: (html) => {
+								this.actor.deleteEmbeddedEntity('OwnedItem', li.data('itemId'));
+								li.slideUp(200, () => this.render(false));
 							},
 						},
-						default: 'Yes',
-					}).render(true);
-				}
-			);
+						cancel: {
+							icon: '<i class="fas fa-times"></i>',
+							label: 'Cancel',
+						},
+					},
+					default: 'Yes',
+				}).render(true);
+			});
 		});
 
 		// Add item

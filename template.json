@@ -624,6 +624,13 @@
 					"value": ""
 				}
 			},
+			"effect": {
+				"effect": {
+					"type": "String",
+					"label": "Effect",
+					"value": ""
+				}
+			},
 			"resolution": {
 				"resolution": {
 					"type": "String",
@@ -635,13 +642,6 @@
 				"prereq": {
 					"type": "String",
 					"label": "Prerequisites",
-					"value": ""
-				}
-			},
-			"reference": {
-				"reference": {
-					"type": "String",
-					"label": "Reference",
 					"value": ""
 				}
 			}
@@ -658,8 +658,7 @@
 				"strength",
 				"size",
 				"availability",
-				"tags",
-				"reference"
+				"tags"
 			],
 			"range": {
 				"type": "String",
@@ -680,8 +679,7 @@
 				"strength",
 				"availability",
 				"speed",
-				"tags",
-				"reference"
+				"tags"
 			],
 			"grating": {
 				"type": "Number",
@@ -713,19 +711,11 @@
 				"availability",
 				"bonus",
 				"durability",
-				"structure",
-				"reference"
+				"structure"
 			]
 		},
 		"vehicle": {
-			"templates": [
-				"description",
-				"size",
-				"speed",
-				"durability",
-				"structure",
-				"reference"
-			],
+			"templates": ["description", "size", "speed", "durability", "structure"],
 			"modifier": {
 				"type": "Number",
 				"label": "Dice Modifier",
@@ -733,7 +723,7 @@
 			}
 		},
 		"merit": {
-			"templates": ["description", "rank", "prereq", "reference"],
+			"templates": ["description", "rank", "prereq"],
 			"group": {
 				"type": "String",
 				"label": "Group",
@@ -746,7 +736,7 @@
 			}
 		},
 		"service": {
-			"templates": ["description", "bonus", "availability", "reference"],
+			"templates": ["description", "bonus", "availability"],
 			"skill": {
 				"type": "String",
 				"label": "Skill",
@@ -754,21 +744,16 @@
 			}
 		},
 		"condition": {
-			"templates": ["description", "cause", "resolution", "reference"]
+			"templates": ["description", "cause", "resolution"]
 		},
 		"tilt": {
-			"templates": ["description", "cause", "resolution", "reference"],
-			"effect": {
-				"type": "String",
-				"label": "Effect",
-				"value": ""
-			}
+			"templates": ["description", "cause", "effect", "resolution"]
 		},
 		"dread": {
-			"templates": ["description", "rank", "reference"]
+			"templates": ["description", "rank"]
 		},
 		"numina": {
-			"templates": ["description", "prereq", "reference"],
+			"templates": ["description", "prereq"],
 			"cost": {
 				"type": "Number",
 				"label": "Essence Cost",

@@ -18,7 +18,7 @@
 			<div class="resource">
 				<label>Quantity</label>
 				<input
-					type="text"
+					type="Number"
 					name="data.quantity"
 					value="{{data.quantity}}"
 					data-dtype="Number"
@@ -37,136 +37,20 @@
 	</header>
 
 	<!-- Tabs V2-->
-	<section id="weapon-tab-sections" class="sheet-body">
-		<nav id="weapon-primarytabs" class="sheet-tabs tabs">
-			<a class="item active" data-tab="attributes">{{localize "Attributes"}}</a>
-			<a class="item" data-tab="description">{{localize "Description"}}</a>
-		</nav>
+	<nav id="weapon-primarytabs" class="sheet-tabs tabs">
+		<a class="item active" data-tab="attributes">{{localize "Attributes"}}</a>
+		<a class="item" data-tab="description">{{localize "Description"}}</a>
+	</nav>
 
-		<section class="content">
-			{{!-- Attributes Tab --}}
-			<div class="tab attributes" data-tab="attributes">
-				<div class="form-group">
-					<label class="label-text">{{data.attack.label}}</label>
-					<select name="data.attack.value" data-dtype="String">
-						{{#select data.attack.value}}
-						<option value=""></option>
-						{{#each attacks as |name key|}}
-						<option value="{{key}}">{{name}}</option>
-						{{/each}} {{/select}}
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.damage.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.damage.value"
-							value="{{data.damage.value}}"
-							data-dtype="Number"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.range.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.range.value"
-							placeholder="[short / med / far]"
-							value="{{data.range.value}}"
-							data-dtype="String"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.ammunition.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.ammunition.value"
-							placeholder="[remaining / clip] [total]"
-							value="{{data.ammunition.value}}"
-							data-dtype="String"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.initiative.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.initiative.value"
-							value="{{data.initiative.value}}"
-							data-dtype="Number"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.strength.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.strength.value"
-							value="{{data.strength.value}}"
-							data-dtype="Number"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.size.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.size.value"
-							value="{{data.size.value}}"
-							data-dtype="Number"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.availability.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.availability.value"
-							placeholder="[# dots]"
-							value="{{data.availability.value}}"
-							data-dtype="String"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.tags.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.tags.value"
-							placeholder="[tags]"
-							value="{{data.tags.value}}"
-							data-dtype="String"
-						/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="label-text">{{data.reference.label}}</label>
-					<div class="input-box">
-						<input
-							class="input-text"
-							name="data.reference.value"
-							placeholder="[book] [pg(s)]"
-							value="{{data.reference.value}}"
-							data-dtype="String"
-						/>
-					</div>
-				</div>
-			</div>
+	<section class="content sheet-body">
+		{{!-- Attributes Tab --}}
+		<div class="tab attributes" data-tab="attributes">
+			{{> "systems/cod/templates/items/parts/weapon-attributes.html"}}
+		</div>
 
-			{{!-- Description Tab --}}
-			<div class="tab description" data-tab="description">
-				{{editor content=data.description.value target="data.description.value"
-				button=true owner=owner editable=editable}}
-			</div>
-		</section>
+		{{!-- Description Tab --}}
+		<div class="tab description" data-tab="description">
+			{{> "systems/cod/templates/items/parts/item-description.html"}}
+		</div>
 	</section>
 </form>

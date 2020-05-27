@@ -19,8 +19,8 @@ export class ActorCoD extends Actor {
 	// Prepare character data
 	_prepareCharacterData(actorData) {
 		const data = actorData.data;
-		const attributes = duplicate(CONFIG.attributes);
-		const skills = duplicate(CONFIG.skills);
+		const attributeList = duplicate(CONFIG.attributes);
+		const skillsList = duplicate(CONFIG.skills);
 
 		const hp = data.advantages.hp;
 		const sta = data.attributes.sta;
@@ -56,14 +56,14 @@ export class ActorCoD extends Actor {
 		if (integ.value > integ.max) integ.value = integ.max;
 
 		// Ensure Attributes and Skills are appropriate values
-		for (let a in attributes) {
+		for (let a in attributeList) {
 			if (data.attributes[a].value > data.attributes[a].max)
 				data.attributes[a].value = data.attributes[a].max;
 			if (data.attributes[a].value < data.attributes[a].min)
 				data.attributes[a].value = data.attributes[a].min;
 		}
 
-		for (let s in skills) {
+		for (let s in skillsList) {
 			if (data.skills[s].value > data.skills[s].max)
 				data.skills[s].value = data.skills[s].max;
 			if (data.skills[s].value < data.skills[s].min)
@@ -84,6 +84,8 @@ export class ActorCoD extends Actor {
 		init.value = dex.value + com.value;
 		speed.value = str.value + dex.value + 5;
 		integ.max = 10;
+
+		// Convert beats to exp as appropriate
 		if (beats.value >= 5) {
 			exp.value += Math.round(beats.value / 5);
 			beats.value = beats.value % 5;

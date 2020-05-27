@@ -7,6 +7,7 @@ import {ActorCoD} from './actor.js';
 import {ActorSheetCoD} from './actor-sheet.js';
 import {CoDItem} from './item.js';
 import {CoDItemSheet} from './item-sheet.js';
+import {preloadHandlebarsTemplates} from './templates.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -36,16 +37,8 @@ Hooks.once('init', async function () {
 	Items.unregisterSheet('core', ItemSheet);
 	Items.registerSheet('core', CoDItemSheet, {types: [], makeDefault: true});
 
-	loadTemplates([
-		'systems/cod/templates/actor/actor-disciplines.html',
-		'systems/cod/templates/actor/actor-display.html',
-		'systems/cod/templates/actor/actor-equipment.html',
-		'systems/cod/templates/actor/actor-extra.html',
-		'systems/cod/templates/actor/actor-main.html',
-		'systems/cod/templates/actor/actor-merits.html',
-		'systems/cod/templates/actor/actor-rolls.html',
-		'systems/cod/templates/actor/actor-skills.html',
-	]);
+	// Preload Handlebars Templates
+	preloadHandlebarsTemplates();
 });
 
 Hooks.once('ready', async function () {
@@ -111,7 +104,7 @@ function rollItemMacro(itemName) {
 	return item.roll();
 }
 
-// Characteristic Names
+// Attribute Names
 CONFIG.attributes = {
 	int: 'Intelligence',
 	wits: 'Wits',
@@ -124,7 +117,7 @@ CONFIG.attributes = {
 	com: 'Composure',
 };
 
-// Skills Names
+// Skill Names
 CONFIG.skills = {
 	academics: 'Academics',
 	computer: 'Computer',

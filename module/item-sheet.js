@@ -8,6 +8,7 @@ export class CoDItemSheet extends ItemSheet {
 
 	static get defaultOptions() {
 		const options = super.defaultOptions;
+		const path = 'systems/cod/templates/items';
 		options.tabs = [
 			{
 				navSelector: '.tabs',
@@ -16,8 +17,7 @@ export class CoDItemSheet extends ItemSheet {
 			},
 		];
 		options.classes = options.classes.concat(['cod', 'item-sheet']);
-		options.template = 'systems/cod/templates/items/item-sheet.html';
-		options.height = 450;
+		options.height = 425;
 		return options;
 	}
 
@@ -25,7 +25,8 @@ export class CoDItemSheet extends ItemSheet {
 
 	get template() {
 		let type = this.item.type;
-		return `systems/cod/templates/items/item-${type}-sheet.html`;
+		const path = 'systems/cod/templates/items';
+		return `${path}/item-${type}-sheet.html`;
 	}
 
 	getData() {
