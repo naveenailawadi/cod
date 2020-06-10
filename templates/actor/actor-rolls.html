@@ -15,7 +15,7 @@
 				<select>
 					{{#select roll.primary}}
 					<option value="none">None</option>
-					{{#each ../attributes as |group key|}}
+					{{#each ../data/sortedAttributes as |group key|}}
 					<optgroup label="{{key}}"
 						>" {{#each group as |attrName attrKey|}}
 						<option value="{{attrKey}}">{{attrName}}</option>
@@ -30,7 +30,7 @@
 				<select>
 					{{#select roll.secondary}}
 					<option value="none">None</option>
-					{{#each ../skills as |group key|}}
+					{{#each ../data/sortedSkills as |group key|}}
 					<optgroup label="{{key}}"
 						>" {{#each group as |skillName skillKey|}}
 						<option value="{{skillKey}}">{{skillName}}</option>

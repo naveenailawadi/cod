@@ -18,9 +18,10 @@
 			<div class="resource">
 				<label>Rank</label>
 				<input
-					type="Number"
+					type="number"
 					name="data.rank.value"
 					value="{{data.rank.value}}"
+					min="{{data.rank.min}}"
 					data-dtype="Number"
 				/>
 			</div>
@@ -29,6 +30,7 @@
 
 	<section class="sheet-body">
 		{{!-- Description Tab --}}
+		<h3>Description</h3>
 		<div class="tab description">
 			{{> "systems/cod/templates/items/parts/item-description.html"}}
 		</div>

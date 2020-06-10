@@ -25,7 +25,7 @@ Hooks.once('init', async function () {
 	 * Set an initiative formula for the system
 	 * @type {String}
 	 */
-	CONFIG.Combat.initiative.formula = `1d10 + @advantages.init.value`;
+	CONFIG.Combat.initiative.formula = `1d10 + @advantages.initiative.value`;
 
 	// Define custom Entity classes
 	CONFIG.Actor.entityClass = ActorCoD;
@@ -41,9 +41,50 @@ Hooks.once('init', async function () {
 	preloadHandlebarsTemplates();
 });
 
+// Register handlebar helpers
+
+// Repetaer
+Handlebars.registerHelper('repeat', (n, block) => {
+	var accum = '';
+	for (var i = 0; i < n; i++) {
+		block.data.index = i;
+		accum += block.fn(this);
+	}
+	return accum;
+});
+
+// If less than
+Handlebars.registerHelper('ifLessThan', (x, y, options) => {
+	return x < y ? options.fn() : options.inverse();
+});
+
+// If greater than
+Handlebars.registerHelper('ifGreaterThan', (x, y, options) => {
+	return x > y ? options.fn() : options.inverse();
+});
+
+// If equal to
+Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
+	return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
+
 Hooks.once('ready', async function () {
 	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
 	Hooks.on('hotbarDrop', (bar, data, slot) => createCoDMacro(data, slot));
+});
+
+// Math
+Handlebars.registerHelper('math', function (lvalue, operator, rvalue, options) {
+	lvalue = parseFloat(lvalue);
+	rvalue = parseFloat(rvalue);
+
+	return {
+		'+': lvalue + rvalue,
+		'-': lvalue - rvalue,
+		'*': lvalue * rvalue,
+		'/': lvalue / rvalue,
+		'%': lvalue % rvalue,
+	}[operator];
 });
 
 /* -------------------------------------------- */
@@ -221,7 +262,6 @@ CONFIG.splats = {
 	mummy: 'Mummy',
 	demon: 'Demon',
 	beast: 'Beast',
-	deviant: 'Deviant',
 };
 
 // Merit Groups

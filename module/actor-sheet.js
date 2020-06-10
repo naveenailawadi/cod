@@ -26,8 +26,8 @@ export class ActorSheetCoD extends ActorSheet {
 		this._prepareItems(data.actor);
 
 		// Prepare attributes & skills for dialog selections
-		data.attributes = this.sortAttrGroups();
-		data.skills = this.sortSkillGroups();
+		data.data.sortedAttributes = this.sortAttrGroups();
+		data.data.sortedSkills = this.sortSkillGroups();
 
 		// Prepare health, willpower, attribute, and skill dots
 		this._configureDots(data.actor.data);
@@ -35,9 +35,63 @@ export class ActorSheetCoD extends ActorSheet {
 		// Provide splat info to sheet
 		data.splats = CONFIG.splats;
 
+		// Prep tabs
+		data.tabs = {
+			display: {
+				data: 'display',
+				class: 'main',
+				template: () => `systems/cod/templates/actor/actor-display.html`,
+			},
+			main: {
+				data: 'main',
+				class: 'main',
+				template: () => `systems/cod/templates/actor/actor-main.html`,
+			},
+			merits: {
+				data: 'merits',
+				class: 'merits',
+				template: () => `systems/cod/templates/actor/actor-merits.html`,
+			},
+			vamptraits: {
+				data: 'vamptraits',
+				class: 'vamptraits',
+				template: () => `systems/cod/templates/actor/actor-vamptraits.html`,
+			},
+			wolftraits: {
+				data: 'wolftraits',
+				class: 'wolftraits',
+				template: () => `systems/cod/templates/actor/actor-wolftraits.html`,
+			},
+			magetraits: {
+				data: 'magetraits',
+				class: 'magetraits',
+				template: () => `systems/cod/templates/actor/actor-magetraits.html`,
+			},
+			equipment: {
+				data: 'equipment',
+				class: 'equipment',
+				template: () => `systems/cod/templates/actor/actor-equipment.html`,
+			},
+			status: {
+				data: 'status',
+				class: 'status',
+				template: () => `systems/cod/templates/actor/actor-status.html`,
+			},
+			rolls: {
+				data: 'customrolls',
+				class: 'customrolls',
+				template: () => `systems/cod/templates/actor/actor-rolls.html`,
+			},
+			extra: {
+				data: 'extra',
+				class: 'extra',
+				template: () => `systems/cod/templates/actor/actor-extra.html`,
+			},
+		};
+
 		//Output current status
-		console.log(`Current state of data.actor:`);
-		console.log(data.actor);
+		console.log(`Current state of actor-sheet data:`);
+		console.log(data);
 		console.log(`------------------`);
 
 		return data;
@@ -50,13 +104,20 @@ export class ActorSheetCoD extends ActorSheet {
 			armors: [],
 			equipments: [],
 			vehicles: [],
-			merits: [],
 			services: [],
+			merits: [],
+			disciplines: [],
+			devotions: [],
+			gifts: [],
+			rites: [],
+			fetishes: [],
+			spells: [],
+			attainments: [],
+			magicaltools: [],
 			conditions: [],
 			tilts: [],
 			dreads: [],
 			numinas: [],
-			disciplines: [],
 		};
 		const inventory = actorData.data.inventory;
 
@@ -73,11 +134,35 @@ export class ActorSheetCoD extends ActorSheet {
 			if (i.type == 'vehicle') {
 				inventory.vehicles.push(i);
 			}
+			if (i.type == 'service') {
+				inventory.services.push(i);
+			}
 			if (i.type == 'merit') {
 				inventory.merits.push(i);
 			}
-			if (i.type == 'service') {
-				inventory.services.push(i);
+			if (i.type == 'discipline') {
+				inventory.disciplines.push(i);
+			}
+			if (i.type == 'devotion') {
+				inventory.devotions.push(i);
+			}
+			if (i.type == 'gift') {
+				inventory.gifts.push(i);
+			}
+			if (i.type == 'rite') {
+				inventory.rites.push(i);
+			}
+			if (i.type == 'fetish') {
+				inventory.fetishes.push(i);
+			}
+			if (i.type == 'spell') {
+				inventory.spells.push(i);
+			}
+			if (i.type == 'attainment') {
+				inventory.attainments.push(i);
+			}
+			if (i.type == 'magical tool') {
+				inventory.magicaltools.push(i);
 			}
 			if (i.type == 'condition') {
 				inventory.conditions.push(i);
@@ -90,9 +175,6 @@ export class ActorSheetCoD extends ActorSheet {
 			}
 			if (i.type == 'numina') {
 				inventory.numinas.push(i);
-			}
-			if (i.type == 'discipline') {
-				inventory.disciplines.push(i);
 			}
 		}
 	}
@@ -215,7 +297,7 @@ export class ActorSheetCoD extends ActorSheet {
 		}
 
 		// Configure Integrity current dots
-		for (let i = 0; i < actorData.advantages.integ.value; i++) {
+		for (let i = 0; i < actorData.advantages.integrity.value; i++) {
 			actorData.dots.integDots.push({
 				full: true,
 			});

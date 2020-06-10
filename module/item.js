@@ -13,6 +13,10 @@ export class CoDItem extends Item {
 		const itemData = this.data;
 		const actorData = this.actor ? this.actor.data : {};
 		const data = itemData.data;
+
+		console.log(`Current state of item data:`);
+		console.log(itemData);
+		console.log(`------------------`);
 	}
 
 	/**

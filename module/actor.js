@@ -14,6 +14,9 @@ export class ActorCoD extends Actor {
 		// Make separate methods for each Actor type (character, npc, etc.) to keep
 		// things organized.
 		if (actorData.type === 'character') this._prepareCharacterData(actorData);
+		console.log(`Current state of actor:`);
+		console.log(actorData);
+		console.log(`------------------`);
 	}
 
 	// Prepare character data
@@ -22,38 +25,37 @@ export class ActorCoD extends Actor {
 		const attributeList = duplicate(CONFIG.attributes);
 		const skillsList = duplicate(CONFIG.skills);
 
-		const hp = data.advantages.hp;
-		const sta = data.attributes.sta;
-		const size = data.advantages.size;
-
-		const wp = data.advantages.wp;
+		const wits = data.attributes.wits;
 		const res = data.attributes.res;
+		const str = data.attributes.str;
+		const dex = data.attributes.dex;
+		const sta = data.attributes.sta;
 		const com = data.attributes.com;
 
-		const def = data.advantages.def;
-		const dex = data.attributes.dex;
-		const wits = data.attributes.wits;
 		const athletics = data.skills.athletics;
 
-		const init = data.advantages.init;
-		const integ = data.advantages.integ;
-
+		const hp = data.advantages.hp;
+		const wp = data.advantages.wp;
+		const integrity = data.advantages.integrity;
+		const size = data.advantages.size;
 		const speed = data.advantages.speed;
-		const str = data.attributes.str;
+		const def = data.advantages.def;
 		const garmor = data.advantages.garmor;
 		const barmor = data.advantages.barmor;
+		const initiative = data.advantages.initiative;
+
 		const exp = data.advancement.exp;
 		const beats = data.advancement.beats;
 
 		// Check to see if current HP/WP > max, correct if so
 		if (hp.value > hp.max) hp.value = hp.max;
-		if (hp.value < 0) hp.value = 0;
+		if (hp.value < hp.min) hp.value = hp.min;
 		if (wp.value > wp.max) wp.value = wp.max;
-		if (wp.value < 0) wp.value = 0;
+		if (wp.value < wp.min) wp.value = wp.min;
 
 		// Ensure Intrgrity is valid
-		if (integ.value < integ.min) integ.value = integ.min;
-		if (integ.value > integ.max) integ.value = integ.max;
+		if (integrity.value < integrity.min) integrity.value = integrity.min;
+		if (integrity.value > integrity.max) integrity.value = integrity.max;
 
 		// Ensure Attributes and Skills are appropriate values
 		for (let a in attributeList) {
@@ -81,9 +83,8 @@ export class ActorCoD extends Actor {
 		hp.max = sta.value + size.value;
 		wp.max = res.value + com.value;
 		def.value = Math.min(wits.value, dex.value) + athletics.value;
-		init.value = dex.value + com.value;
+		initiative.value = dex.value + com.value;
 		speed.value = str.value + dex.value + 5;
-		integ.max = 10;
 
 		// Convert beats to exp as appropriate
 		if (beats.value >= 5) {
@@ -92,6 +93,7 @@ export class ActorCoD extends Actor {
 		}
 	}
 
+	// Standard attribute + skill roll
 	rollPool(attribute, skill, modifier, exploder) {
 		// Ex: 'int', 'animalken', 'ten'. Define global roll pool, assume valid att
 		// & skill sent even if 0 or negative value.
@@ -166,6 +168,7 @@ export class ActorCoD extends Actor {
 		}
 	}
 
+	// Attribute roll
 	attTaskPool(attribute1, attribute2, modifier, exploder) {
 		// Ex: 'wits', 'composure', 'ten'. Define global roll pool, assume 2 valid att's sent even if 0 or negative value.
 		let name = this.name;
@@ -249,6 +252,7 @@ export class ActorCoD extends Actor {
 		}
 	}
 
+	// Attack roll
 	weaponRollPool(attribute, skill, modifier, exploder, weapon, damage, target) {
 		// Ex: 'int', 'animalken', -1, 'ten', 'Axe', 'Ben'. Define global roll pool, assume valid att & skill sent even if 0 or negative value.
 		let name = this.name;

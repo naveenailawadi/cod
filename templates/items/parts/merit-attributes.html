@@ -1,4 +1,15 @@
 <div class="form-group">
+	<label class="label-text">{{data.group.label}}</label>
+	<select name="data.group.value" data-dtype="String">
+		{{#select data.group.value}}
+		<option value=""></option>
+		{{#each meritGroups as |name key|}}
+		<option value="{{key}}">{{name}}</option>
+		{{/each}} {{/select}}
+	</select>
+</div>
+
+<div class="form-group">
 	<label class="label-text">{{data.prereq.label}}</label>
 	<div class="input-box">
 		<input

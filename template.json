@@ -3,7 +3,7 @@
 		"types": ["character"],
 
 		"templates": {
-			"data": {
+			"mortal": {
 				"attributes": {
 					"int": {
 						"type": "Number",
@@ -69,7 +69,6 @@
 						"max": 10
 					}
 				},
-
 				"skills": {
 					"academics": {
 						"type": "Number",
@@ -240,7 +239,6 @@
 						"max": 5
 					}
 				},
-
 				"advantages": {
 					"hp": {
 						"type": "Number",
@@ -256,7 +254,7 @@
 						"max": 10,
 						"min": 0
 					},
-					"integ": {
+					"integrity": {
 						"type": "Number",
 						"label": "Integrity",
 						"value": 7,
@@ -272,12 +270,14 @@
 					"speed": {
 						"type": "Number",
 						"label": "Speed",
-						"value": 7
+						"value": 7,
+						"min": 0
 					},
 					"def": {
 						"type": "Number",
 						"label": "Defense",
-						"value": 1
+						"value": 1,
+						"min": 0
 					},
 					"tempdef": {
 						"type": "Number",
@@ -296,16 +296,16 @@
 						"value": 0,
 						"min": 0
 					},
-					"init": {
+					"initiative": {
 						"type": "Number",
 						"label": "Initiative",
-						"value": 1
+						"value": 1,
+						"min": 0
 					}
 				},
-
 				"details": {
 					"age": {
-						"type": "Number",
+						"type": "String",
 						"label": "Age",
 						"value": ""
 					},
@@ -314,12 +314,12 @@
 						"label": "Player",
 						"value": ""
 					},
-					"anchor1": {
+					"virtue": {
 						"type": "String",
 						"label": "Virtue",
 						"value": ""
 					},
-					"anchor2": {
+					"vice": {
 						"type": "String",
 						"label": "Vice",
 						"value": ""
@@ -441,7 +441,6 @@
 						}
 					}
 				},
-
 				"status": {
 					"conditions": {
 						"condition1": {
@@ -451,17 +450,16 @@
 						},
 						"condition2": {
 							"type": "String",
-							"label": "Condition 1",
+							"label": "Condition 2",
 							"value": ""
 						},
 						"condition3": {
 							"type": "String",
-							"label": "Condition 1",
+							"label": "Condition 3",
 							"value": ""
 						}
 					}
 				},
-
 				"advancement": {
 					"beats": {
 						"type": "Number",
@@ -476,31 +474,822 @@
 						"min": 0
 					}
 				},
-
 				"rolls": [],
-
 				"splatSelect": {
 					"type": "String",
 					"label": "Character Type",
 					"value": "mortal"
 				},
+				"mods": {
+					"attMods": {
+						"intMod": 0,
+						"witsMod": 0,
+						"resMod": 0,
+						"strMod": 0,
+						"dexMod": 0,
+						"staMod": 0,
+						"preMod": 0,
+						"manMod": 0,
+						"comMod": 0
+					},
+					"skillMods": {
+						"academicsMod": 0,
+						"computerMod": 0,
+						"craftsMod": 0,
+						"investigationMod": 0,
+						"medicineMod": 0,
+						"occultMod": 0,
+						"politicsMod": 0,
+						"scienceMod": 0,
+						"athleticsMod": 0,
+						"brawlMod": 0,
+						"driveMod": 0,
+						"firearmsMod": 0,
+						"larcenyMod": 0,
+						"stealthMod": 0,
+						"survivalMod": 0,
+						"weaponryMod": 0,
+						"animalkenMod": 0,
+						"empathyMod": 0,
+						"expressionMod": 0,
+						"intimidationMod": 0,
+						"persuasionMod": 0,
+						"socializeMod": 0,
+						"streetwiseMod": 0,
+						"subterfugeMod": 0
+					},
+					"advMods": {
+						"sizeMod": 0,
+						"initiativeMod": 0,
+						"speedMod": 0,
+						"perceptionMod": 0
+					}
+				}
+			},
 
-				"vamp-bg": {
-					"virtue": 0,
-					"vice": 0,
-					"clan": 0,
-					"bloodline": 0,
-					"covenant": 0,
-					"concept": 0,
-					"willpower_current": 0,
-					"willpower_max": 0,
-					"blood_potency": 0
+			"vampire": {
+				"vamp-attributes": {
+					"int": {
+						"type": "Number",
+						"label": "Intelligence",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"wits": {
+						"type": "Number",
+						"label": "Wits",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"res": {
+						"type": "Number",
+						"label": "Resolve",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"str": {
+						"type": "Number",
+						"label": "Strength",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"dex": {
+						"type": "Number",
+						"label": "Dexterity",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"sta": {
+						"type": "Number",
+						"label": "Stamina",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"pre": {
+						"type": "Number",
+						"label": "Presence",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"man": {
+						"type": "Number",
+						"label": "Manipulation",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					},
+					"com": {
+						"type": "Number",
+						"label": "Composure",
+						"value": 1,
+						"min": 1,
+						"max": 10
+					}
+				},
+				"vamp-advantages": {
+					"hp": {
+						"type": "Number",
+						"label": "Health",
+						"value": 1,
+						"max": 15,
+						"min": 0
+					},
+					"bloodpotency": {
+						"type": "Number",
+						"label": "Blood Potency",
+						"value": 1,
+						"max": 10,
+						"min": 0
+					},
+					"vitae": {
+						"type": "Number",
+						"label": "Vitae",
+						"value": 1,
+						"max": 20,
+						"min": 0
+					},
+					"humanity": {
+						"type": "Number",
+						"label": "Humanity",
+						"value": 7,
+						"max": 10,
+						"min": 0
+					}
+				},
+				"vamp-details": {
+					"apparentage": {
+						"type": "String",
+						"label": "Apparent Age",
+						"value": ""
+					},
+					"rip": {
+						"type": "String",
+						"label": "R.I.P.",
+						"value": ""
+					},
+					"mask": {
+						"type": "String",
+						"label": "Mask",
+						"value": ""
+					},
+					"dirge": {
+						"type": "String",
+						"label": "Dirge",
+						"value": ""
+					},
+					"clan": {
+						"type": "String",
+						"label": "Clan",
+						"value": ""
+					},
+					"bloodline": {
+						"type": "String",
+						"label": "Bloodline",
+						"value": ""
+					},
+					"covenant": {
+						"type": "String",
+						"label": "Covenant",
+						"value": ""
+					},
+					"touchstones": {
+						"ts1": {
+							"type": "String",
+							"label": "Touchstone 1",
+							"value": ""
+						},
+						"ts2": {
+							"type": "String",
+							"label": "Touchstone 2",
+							"value": ""
+						},
+						"ts3": {
+							"type": "String",
+							"label": "Touchstone 3",
+							"value": ""
+						},
+						"ts4": {
+							"type": "String",
+							"label": "Touchstone 4",
+							"value": ""
+						},
+						"ts5": {
+							"type": "String",
+							"label": "Touchstone 5",
+							"value": ""
+						},
+						"ts6": {
+							"type": "String",
+							"label": "Touchstone 6",
+							"value": ""
+						},
+						"ts7": {
+							"type": "String",
+							"label": "Touchstone 7",
+							"value": ""
+						},
+						"ts8": {
+							"type": "String",
+							"label": "Touchstone 8",
+							"value": ""
+						},
+						"ts9": {
+							"type": "String",
+							"label": "Touchstone 9",
+							"value": ""
+						},
+						"ts10": {
+							"type": "String",
+							"label": "Touchstone 10",
+							"value": ""
+						}
+					},
+					"banes": {
+						"bane1": {
+							"type": "String",
+							"label": "Bane 1",
+							"value": ""
+						},
+						"bane2": {
+							"type": "String",
+							"label": "Bane 2",
+							"value": ""
+						},
+						"bane3": {
+							"type": "String",
+							"label": "Bane 3",
+							"value": ""
+						}
+					}
+				},
+				"vamp-status": {
+					"banes": {
+						"bane1": {
+							"type": "String",
+							"label": "Bane 1",
+							"value": ""
+						},
+						"bane2": {
+							"type": "String",
+							"label": "Bane 2",
+							"value": ""
+						},
+						"bane3": {
+							"type": "String",
+							"label": "Bane 3",
+							"value": ""
+						}
+					}
+				}
+			},
+
+			"werewolf": {
+				"wolf-advantages": {
+					"hp": {
+						"type": "Number",
+						"label": "Health",
+						"value": 1,
+						"max": 15,
+						"min": 0
+					},
+					"renown": {
+						"purity": {
+							"type": "Number",
+							"label": "Purity",
+							"value": 0
+						},
+						"glory": {
+							"type": "Number",
+							"label": "Glory",
+							"value": 0
+						},
+						"honor": {
+							"type": "Number",
+							"label": "Honor",
+							"value": 0
+						},
+						"wisdom": {
+							"type": "Number",
+							"label": "Wisdom",
+							"value": 0
+						},
+						"cunning": {
+							"type": "Number",
+							"label": "Cunning",
+							"value": 0
+						}
+					},
+					"primalurge": {
+						"type": "Number",
+						"label": "Primal Urge",
+						"value": 1,
+						"max": 10,
+						"min": 0
+					},
+					"harmony": {
+						"type": "Number",
+						"label": "Harmony",
+						"value": 7,
+						"max": 10,
+						"min": 0
+					},
+					"essence": {
+						"type": "Number",
+						"label": "Essence",
+						"value": 7,
+						"max": 20,
+						"min": 0
+					}
+				},
+				"wolf-details": {
+					"auspice": {
+						"type": "String",
+						"label": "Auspice",
+						"value": ""
+					},
+					"blood": {
+						"type": "String",
+						"label": "Blood",
+						"value": ""
+					},
+					"bone": {
+						"type": "String",
+						"label": "Bone",
+						"value": ""
+					},
+					"tribe": {
+						"type": "String",
+						"label": "Tribe",
+						"value": ""
+					},
+					"pack": {
+						"type": "String",
+						"label": "Pack",
+						"value": ""
+					},
+					"tells": {
+						"tell1": {
+							"type": "String",
+							"label": "Tell 1",
+							"value": ""
+						},
+						"tell2": {
+							"type": "String",
+							"label": "Tell 2",
+							"value": ""
+						}
+					},
+					"touchstones": {
+						"fleshstone": {
+							"type": "String",
+							"label": "Flesh Touchstone",
+							"value": ""
+						},
+						"spiritstone": {
+							"type": "String",
+							"label": "Spirit Touchstone",
+							"value": ""
+						}
+					},
+					"kuruth": {
+						"passive": {
+							"type": "String",
+							"label": "Passive",
+							"value": ""
+						},
+						"common": {
+							"type": "String",
+							"label": "Common",
+							"value": ""
+						},
+						"specific": {
+							"type": "String",
+							"label": "Specific",
+							"value": ""
+						}
+					}
+				},
+				"wolf-currentForm": {
+					"type": "String",
+					"label": "Current Form",
+					"value": ""
+				},
+				"wolf-totem": {
+					"attributes": {
+						"power": {
+							"type": "Number",
+							"label": "Power",
+							"value": 1,
+							"min": 1,
+							"max": 10
+						},
+						"finesse": {
+							"type": "Number",
+							"label": "Finesse",
+							"value": 1,
+							"min": 1,
+							"max": 10
+						},
+						"resistance": {
+							"type": "Number",
+							"label": "Resistance",
+							"value": 1,
+							"min": 1,
+							"max": 10
+						}
+					},
+					"advantages": {
+						"wp": {
+							"type": "Number",
+							"label": "Willpower",
+							"value": 1,
+							"max": 10,
+							"min": 0
+						},
+						"essence": {
+							"type": "Number",
+							"label": "Essence",
+							"value": 1,
+							"max": 10,
+							"min": 0
+						},
+						"initiative": {
+							"type": "Number",
+							"label": "Initiative",
+							"value": 1,
+							"min": 0
+						},
+						"def": {
+							"type": "Number",
+							"label": "Defense",
+							"value": 1,
+							"min": 0
+						},
+						"speed": {
+							"type": "Number",
+							"label": "Speed",
+							"value": 7,
+							"min": 0
+						},
+						"size": {
+							"type": "Number",
+							"label": "Size",
+							"value": 5,
+							"min": 1
+						},
+						"corpus": {
+							"type": "Number",
+							"label": "Corpus",
+							"value": 1,
+							"max": 10,
+							"min": 0
+						}
+					},
+					"details": {
+						"influences": {
+							"influence1": {
+								"type": "String",
+								"label": "Influence 1",
+								"value": ""
+							},
+							"influence2": {
+								"type": "String",
+								"label": "Influence 2",
+								"value": ""
+							},
+							"influence3": {
+								"type": "String",
+								"label": "Influence 3",
+								"value": ""
+							}
+						},
+						"aspirations": {
+							"aspiration1": {
+								"type": "String",
+								"label": "Aspiration 1",
+								"value": ""
+							},
+							"aspiration2": {
+								"type": "String",
+								"label": "Aspiration 2",
+								"value": ""
+							},
+							"aspiration3": {
+								"type": "String",
+								"label": "Aspiration 3",
+								"value": ""
+							}
+						},
+						"ban": {
+							"type": "String",
+							"label": "Ban",
+							"value": ""
+						},
+						"bane": {
+							"type": "String",
+							"label": "Bane",
+							"value": ""
+						}
+					}
+				}
+			},
+
+			"mage": {
+				"mage-arcana": {
+					"death": {
+						"type": "Number",
+						"label": "Death",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"fate": {
+						"type": "Number",
+						"label": "Fate",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"forces": {
+						"type": "Number",
+						"label": "Forces",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"life": {
+						"type": "Number",
+						"label": "Life",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"matter": {
+						"type": "Number",
+						"label": "Matter",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"mind": {
+						"type": "Number",
+						"label": "Mind",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"prime": {
+						"type": "Number",
+						"label": "Prime",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"spirit": {
+						"type": "Number",
+						"label": "Spirit",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"space": {
+						"type": "Number",
+						"label": "Space",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					},
+					"time": {
+						"type": "Number",
+						"label": "Time",
+						"value": 0,
+						"min": 0,
+						"max": 5
+					}
+				},
+				"mage-advantages": {
+					"gnosis": {
+						"type": "Number",
+						"label": "Gnosis",
+						"value": 1,
+						"max": 10,
+						"min": 0
+					},
+					"wisdom": {
+						"type": "Number",
+						"label": "Wisdom",
+						"value": 7,
+						"max": 10,
+						"min": 0
+					}
+				},
+				"mage-details": {
+					"path": {
+						"type": "String",
+						"label": "Path",
+						"value": ""
+					},
+					"order": {
+						"type": "String",
+						"label": "Order",
+						"value": ""
+					},
+					"legacy": {
+						"type": "String",
+						"label": "Legacy",
+						"value": ""
+					},
+					"nimbus": {
+						"longterm": {
+							"type": "String",
+							"label": "Long Term",
+							"value": ""
+						},
+						"immediate": {
+							"type": "String",
+							"label": "Immediate",
+							"value": ""
+						},
+						"signature": {
+							"type": "String",
+							"label": "Signature",
+							"value": ""
+						}
+					},
+					"obsessions": {
+						"obsession1": {
+							"type": "String",
+							"label": "Obsession 1",
+							"value": ""
+						},
+						"obsession2": {
+							"type": "String",
+							"label": "Obsession 2",
+							"value": ""
+						}
+					},
+					"sympname": {
+						"type": "String",
+						"label": "Sympathetic Name",
+						"value": ""
+					},
+					"awakening": {
+						"type": "String",
+						"label": "Age of Awakening",
+						"value": ""
+					}
+				},
+				"mage-advancement": {
+					"arcanebeats": {
+						"type": "Number",
+						"label": "Arcane Beats",
+						"value": 0,
+						"min": 0
+					},
+					"arcaneexp": {
+						"type": "Number",
+						"label": "Arcane Experience",
+						"value": 0,
+						"min": 0
+					}
+				},
+				"mage-familiar": {
+					"attributes": {
+						"power": {
+							"type": "Number",
+							"label": "Power",
+							"value": 1,
+							"min": 1,
+							"max": 10
+						},
+						"finesse": {
+							"type": "Number",
+							"label": "Finesse",
+							"value": 1,
+							"min": 1,
+							"max": 10
+						},
+						"resistance": {
+							"type": "Number",
+							"label": "Resistance",
+							"value": 1,
+							"min": 1,
+							"max": 10
+						}
+					},
+					"advantages": {
+						"wp": {
+							"type": "Number",
+							"label": "Willpower",
+							"value": 1,
+							"max": 10,
+							"min": 0
+						},
+						"essence": {
+							"type": "Number",
+							"label": "Essence",
+							"value": 1,
+							"max": 20,
+							"min": 0
+						},
+						"rank": {
+							"type": "Number",
+							"label": "Rank",
+							"value": 1,
+							"max": 5,
+							"min": 0
+						},
+						"initiative": {
+							"type": "Number",
+							"label": "Initiative",
+							"value": 1,
+							"min": 0
+						},
+						"def": {
+							"type": "Number",
+							"label": "Defense",
+							"value": 1,
+							"min": 0
+						},
+						"speed": {
+							"type": "Number",
+							"label": "Speed",
+							"value": 7,
+							"min": 0
+						},
+						"size": {
+							"type": "Number",
+							"label": "Size",
+							"value": 5,
+							"min": 1
+						},
+						"corpus": {
+							"type": "Number",
+							"label": "Corpus",
+							"value": 1,
+							"max": 10,
+							"min": 0
+						}
+					},
+					"details": {
+						"influences": {
+							"influence1": {
+								"type": "String",
+								"label": "Influence 1",
+								"value": ""
+							},
+							"influence2": {
+								"type": "String",
+								"label": "Influence 2",
+								"value": ""
+							},
+							"influence3": {
+								"type": "String",
+								"label": "Influence 3",
+								"value": ""
+							}
+						},
+						"aspirations": {
+							"aspiration1": {
+								"type": "String",
+								"label": "Aspiration 1",
+								"value": ""
+							},
+							"aspiration2": {
+								"type": "String",
+								"label": "Aspiration 2",
+								"value": ""
+							},
+							"aspiration3": {
+								"type": "String",
+								"label": "Aspiration 3",
+								"value": ""
+							}
+						},
+						"ban": {
+							"type": "String",
+							"label": "Ban",
+							"value": ""
+						},
+						"bane": {
+							"type": "String",
+							"label": "Bane",
+							"value": ""
+						}
+					}
 				}
 			}
 		},
 
 		"character": {
-			"templates": ["data"]
+			"templates": ["mortal", "vampire", "werewolf", "mage"]
 		}
 	},
 
@@ -510,21 +1299,36 @@
 			"armor",
 			"equipment",
 			"vehicle",
-			"merit",
 			"service",
+			"merit",
+			"discipline",
+			"devotion",
+			"gift",
+			"rite",
+			"fetish",
+			"spell",
+			"attainment",
+			"magical tool",
 			"condition",
 			"tilt",
 			"dread",
-			"numina",
-			"discipline"
+			"numina"
 		],
 
 		"templates": {
 			"quantity": {
-				"quantity": 1
+				"quantity": {
+					"type": "Number",
+					"label": "Quantity",
+					"value": 1
+				}
 			},
 			"weight": {
-				"weight": ""
+				"weight": {
+					"type": "String",
+					"label": "Weight",
+					"value": ""
+				}
 			},
 			"description": {
 				"description": {
@@ -537,7 +1341,7 @@
 				"attack": {
 					"type": "String",
 					"label": "Attack",
-					"value": ""
+					"value": "brawl"
 				}
 			},
 			"damage": {
@@ -547,11 +1351,25 @@
 					"value": 0
 				}
 			},
+			"range": {
+				"range": {
+					"type": "String",
+					"label": "Ranges",
+					"value": ""
+				}
+			},
+			"clip": {
+				"clip": {
+					"type": "String",
+					"label": "Clip",
+					"value": ""
+				}
+			},
 			"strength": {
 				"strength": {
-					"type": "Number",
+					"type": "String",
 					"label": "Strength",
-					"value": 0
+					"value": ""
 				}
 			},
 			"size": {
@@ -575,18 +1393,56 @@
 					"value": ""
 				}
 			},
+			"grating": {
+				"grating": {
+					"type": "Number",
+					"label": "General Rating",
+					"value": 0,
+					"min": 0,
+					"max": 5
+				}
+			},
+			"brating": {
+				"brating": {
+					"type": "Number",
+					"label": "Ballistic Rating",
+					"value": 0,
+					"min": 0,
+					"max": 5
+				}
+			},
+			"def": {
+				"def": {
+					"type": "Number",
+					"label": "Defense",
+					"value": 0,
+					"min": -5,
+					"max": 0
+				}
+			},
 			"speed": {
 				"speed": {
 					"type": "Number",
 					"label": "Speed",
-					"value": 0
+					"value": 0,
+					"min": -3,
+					"max": 0
+				}
+			},
+			"coverage": {
+				"coverage": {
+					"type": "String",
+					"label": "Coverage",
+					"value": ""
 				}
 			},
 			"bonus": {
 				"bonus": {
 					"type": "Number",
 					"label": "Dice Bonus",
-					"value": 0
+					"value": 0,
+					"min": 0,
+					"max": 5
 				}
 			},
 			"durability": {
@@ -603,6 +1459,13 @@
 					"value": 0
 				}
 			},
+			"modifier": {
+				"modifier": {
+					"type": "Number",
+					"label": "Dice Modifier",
+					"value": 0
+				}
+			},
 			"initiative": {
 				"initiative": {
 					"type": "Number",
@@ -610,11 +1473,47 @@
 					"value": 0
 				}
 			},
+			"group": {
+				"group": {
+					"type": "String",
+					"label": "Group",
+					"value": ""
+				}
+			},
+			"frontPage": {
+				"frontPage": {
+					"type": "Boolean",
+					"label": "Show on front page?",
+					"value": false
+				}
+			},
 			"rank": {
 				"rank": {
 					"type": "Number",
 					"label": "Rank",
-					"value": 1
+					"value": 1,
+					"min": 1
+				}
+			},
+			"target": {
+				"target": {
+					"type": "Number",
+					"label": "Target",
+					"value": 0
+				}
+			},
+			"opposition": {
+				"opposition": {
+					"type": "String",
+					"label": "Opposition",
+					"value": ""
+				}
+			},
+			"skill": {
+				"skill": {
+					"type": "String",
+					"label": "Skill",
+					"value": ""
 				}
 			},
 			"cause": {
@@ -638,10 +1537,188 @@
 					"value": ""
 				}
 			},
+			"cost": {
+				"cost": {
+					"type": "Number",
+					"label": "Cost",
+					"value": 1,
+					"min": 0
+				}
+			},
 			"prereq": {
 				"prereq": {
 					"type": "String",
 					"label": "Prerequisites",
+					"value": ""
+				}
+			},
+			"xp": {
+				"xp": {
+					"type": "Number",
+					"label": "XP",
+					"value": 0,
+					"min": 0
+				}
+			},
+			"renown": {
+				"renown": {
+					"type": "String",
+					"label": "Renown",
+					"value": ""
+				}
+			},
+			"pool": {
+				"pool": {
+					"type": "String",
+					"label": "Dice Pool",
+					"value": ""
+				}
+			},
+			"action": {
+				"action": {
+					"type": "String",
+					"label": "Action",
+					"value": ""
+				}
+			},
+			"duration": {
+				"duration": {
+					"type": "String",
+					"label": "Duration",
+					"value": ""
+				}
+			},
+			"rating": {
+				"rating": {
+					"type": "String",
+					"label": "Rating",
+					"value": ""
+				}
+			},
+			"object": {
+				"object": {
+					"type": "String",
+					"label": "Object",
+					"value": ""
+				}
+			},
+			"lodge": {
+				"lodge": {
+					"type": "String",
+					"label": "Lodge",
+					"value": ""
+				}
+			},
+			"materials": {
+				"materials": {
+					"type": "String",
+					"label": "Materials",
+					"value": ""
+				}
+			},
+			"influence": {
+				"influence": {
+					"type": "String",
+					"label": "Sphere of Influence",
+					"value": ""
+				}
+			},
+			"dedicated": {
+				"dedicated": {
+					"type": "Boolean",
+					"label": "Dedicated tool?",
+					"value": false
+				}
+			},
+			"arcanum": {
+				"arcanum": {
+					"type": "String",
+					"label": "Arcanum",
+					"value": ""
+				}
+			},
+			"arcanum2": {
+				"arcanum2": {
+					"type": "String",
+					"label": "2nd Arcanum",
+					"value": ""
+				}
+			},
+			"praxis": {
+				"praxis": {
+					"type": "Boolean",
+					"label": "Praxis?",
+					"value": false
+				}
+			},
+			"rote": {
+				"rote": {
+					"type": "Boolean",
+					"label": "Rote?",
+					"value": false
+				}
+			},
+			"level": {
+				"level": {
+					"type": "String",
+					"label": "Level",
+					"value": ""
+				}
+			},
+			"practice": {
+				"practice": {
+					"type": "String",
+					"label": "Practice",
+					"value": ""
+				}
+			},
+			"primary": {
+				"primary": {
+					"type": "String",
+					"label": "Primary Factor",
+					"value": ""
+				}
+			},
+			"withstand": {
+				"withstand": {
+					"type": "String",
+					"label": "Withstand",
+					"value": ""
+				}
+			},
+			"roteskills": {
+				"roteskills": {
+					"type": "String",
+					"label": "Rote Skills",
+					"value": ""
+				}
+			},
+			"arcana": {
+				"arcana": {
+					"type": "String",
+					"label": "Arcana",
+					"value": ""
+				}
+			},
+			"yantra": {
+				"yantra": {
+					"type": "Boolean",
+					"label": "Yantra?",
+					"value": false
+				}
+			},
+			"mana": {
+				"mana": {
+					"type": "Number",
+					"label": "Mana",
+					"value": 1,
+					"min": 0
+				}
+			},
+			"power": {
+				"power": {
+					"type": "String",
+					"label": "Power",
 					"value": ""
 				}
 			}
@@ -654,53 +1731,29 @@
 				"description",
 				"attack",
 				"damage",
+				"range",
+				"clip",
 				"initiative",
 				"strength",
 				"size",
 				"availability",
 				"tags"
-			],
-			"range": {
-				"type": "String",
-				"label": "Range",
-				"value": ""
-			},
-			"ammunition": {
-				"type": "String",
-				"label": "Ammunition",
-				"value": ""
-			}
+			]
 		},
 		"armor": {
 			"templates": [
 				"quantity",
 				"weight",
 				"description",
+				"grating",
+				"brating",
 				"strength",
-				"availability",
+				"def",
 				"speed",
+				"availability",
+				"coverage",
 				"tags"
-			],
-			"grating": {
-				"type": "Number",
-				"label": "General Rating",
-				"value": 0
-			},
-			"brating": {
-				"type": "Number",
-				"label": "Ballistic Rating",
-				"value": 0
-			},
-			"def": {
-				"type": "Number",
-				"label": "Defense",
-				"value": 0
-			},
-			"coverage": {
-				"type": "String",
-				"label": "Coverage",
-				"value": ""
-			}
+			]
 		},
 		"equipment": {
 			"templates": [
@@ -715,33 +1768,78 @@
 			]
 		},
 		"vehicle": {
-			"templates": ["description", "size", "speed", "durability", "structure"],
-			"modifier": {
-				"type": "Number",
-				"label": "Dice Modifier",
-				"value": 0
-			}
-		},
-		"merit": {
-			"templates": ["description", "rank", "prereq"],
-			"group": {
-				"type": "String",
-				"label": "Group",
-				"value": ""
-			},
-			"frontPage": {
-				"type": "Boolean",
-				"label": "Show on front page?",
-				"value": false
-			}
+			"templates": [
+				"description",
+				"modifier",
+				"size",
+				"speed",
+				"durability",
+				"structure"
+			]
 		},
 		"service": {
-			"templates": ["description", "bonus", "availability"],
-			"skill": {
-				"type": "String",
-				"label": "Skill",
-				"value": ""
-			}
+			"templates": ["description", "skill", "bonus", "availability"]
+		},
+		"merit": {
+			"templates": ["description", "rank", "group", "frontPage", "prereq"]
+		},
+		"discipline": {
+			"templates": [
+				"rank",
+				"cost",
+				"prereq",
+				"pool",
+				"target",
+				"opposition",
+				"description"
+			]
+		},
+		"devotion": {
+			"templates": ["prereq", "xp", "cost", "pool", "description"]
+		},
+		"gift": {
+			"templates": [
+				"renown",
+				"rank",
+				"cost",
+				"pool",
+				"action",
+				"duration",
+				"description"
+			]
+		},
+		"rite": {
+			"templates": ["rank", "prereq", "cost", "description"]
+		},
+		"fetish": {
+			"templates": ["rating", "object", "lodge", "description"]
+		},
+		"spell": {
+			"templates": [
+				"level",
+				"arcanum",
+				"arcanum2",
+				"praxis",
+				"rote",
+				"practice",
+				"primary",
+				"withstand",
+				"roteskills",
+				"description"
+			]
+		},
+		"attainment": {
+			"templates": ["level", "arcana", "description"]
+		},
+		"magical tool": {
+			"templates": [
+				"dedicated",
+				"yantra",
+				"bonus",
+				"mana",
+				"power",
+				"description"
+			]
 		},
 		"condition": {
 			"templates": ["description", "cause", "resolution"]
@@ -753,15 +1851,7 @@
 			"templates": ["description", "rank"]
 		},
 		"numina": {
-			"templates": ["description", "prereq"],
-			"cost": {
-				"type": "Number",
-				"label": "Essence Cost",
-				"value": 1
-			}
-		},
-		"discipline": {
-			"templates": ["description"]
+			"templates": ["description", "cost", "prereq"]
 		}
 	}
 }

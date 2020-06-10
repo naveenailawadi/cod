@@ -17,7 +17,9 @@ export class CoDItemSheet extends ItemSheet {
 			},
 		];
 		options.classes = options.classes.concat(['cod', 'item-sheet']);
-		options.height = 425;
+		options.template = `systems/${game.system.id}/templates/items/item-sheet.html`;
+		options.system_path = `systems/${game.system.id}`;
+		options.height = 450;
 		return options;
 	}
 
@@ -34,6 +36,9 @@ export class CoDItemSheet extends ItemSheet {
 		if (this.item.type == 'weapon') data['attacks'] = CONFIG.attacks;
 		if (this.item.type == 'merit')
 			data['meritGroups'] = CONFIG.universalMeritGroups;
+		console.log(`Current state of item-sheet data:`);
+		console.log(data);
+		console.log(`------------------`);
 		return data;
 	}
 

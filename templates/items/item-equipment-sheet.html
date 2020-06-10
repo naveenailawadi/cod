@@ -18,9 +18,10 @@
 			<div class="resource">
 				<label>Quantity</label>
 				<input
-					type="Number"
-					name="data.quantity"
-					value="{{data.quantity}}"
+					type="number"
+					name="data.quantity.value"
+					value="{{data.quantity.value}}"
+					min="0"
 					data-dtype="Number"
 				/>
 			</div>
@@ -28,8 +29,8 @@
 				<label>Weight</label>
 				<input
 					type="text"
-					name="data.weight"
-					value="{{data.weight}}"
+					name="data.weight.value"
+					value="{{data.weight.value}}"
 					data-dtype="String"
 				/>
 			</div>
@@ -37,12 +38,12 @@
 	</header>
 
 	<!-- Tabs V2-->
-	<nav id="equipment-primarytabs" class="sheet-tabs tabs">
+	<nav class="sheet-tabs tabs">
 		<a class="item active" data-tab="attributes">{{localize "Attributes"}}</a>
 		<a class="item" data-tab="description">{{localize "Description"}}</a>
 	</nav>
 
-	<section class="content">
+	<section class="content sheet-body">
 		{{!-- Attributes Tab --}}
 		<div class="tab attributes" data-tab="attributes">
 			{{> "systems/cod/templates/items/parts/equipment-attributes.html"}}
