@@ -8,13 +8,13 @@
 	"templateVersion": 2,
 	"author": "Buzghash-naveenailawadi",
 	"esmodules": ["module/cod.js"],
-	"styles": ["styles/cod.css"],
+	"styles": ["styles/cod.css", "styles/bubbles.css", "styles/display.css", "styles/edit-sheet.css", "styles/header.css", "styles/main.css", "styles/nav.css", "styles/sheet-header.css", "styles/top-navigation.css"],
 	"packs": [],
 	"socket": false,
 	"initiative": "1d10",
 	"gridDistance": 1,
 	"gridUnits": "m",
-	"manifest": "https://raw.githubusercontent.com/Burzghash/cod/master/system.json",
-	"download": "https://github.com/Burzghash/cod/archive/master.zip",
+	"manifest": "https://raw.githubusercontent.com/naveenailawadi/cod/master/system.json",
+	"download": "https://github.com/naveenailawadi/cod/archive/master.zip",
 	"url": "https://github.com/naveenailawadi/cod"
 }

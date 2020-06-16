@@ -6,7 +6,6 @@
     text-align: center;
     color: #fff;
     padding: 5px;
-    background: #00000070;
     margin-bottom: 10px;
 }
 
@@ -66,8 +65,7 @@
 .attribute-categories {
     display: block;
     text-align: center;
-    font-size: 12px;
-    line-height: 24px;
+    font-size: 14px;
 }
 
 .attribute-task {
@@ -100,6 +98,7 @@
 
 .cod.sheet .main .attribute-section .attribute-categories > span {
     margin-top: 7px;
+
 }
 
 .cod.sheet .main .attribute-column .attribute {
@@ -249,4 +248,14 @@
 
 .vampire .display-other {
     display: none;
+}
+
+/* Make the attribute boxes look better (for numerical inputs)*/
+
+input[type="number"] {
+    border-radius: 4px;
+    vertical-align: middle;
+    margin: auto;
+
+
 }
