@@ -6,7 +6,7 @@
 	"minimumCoreVersion": "0.5.5",
 	"compatibleCoreVersion": "0.6.2",
 	"templateVersion": 2,
-	"author": "Buzghash",
+	"author": "Buzghash-naveenailawadi",
 	"esmodules": ["module/cod.js"],
 	"styles": ["styles/cod.css"],
 	"packs": [],
@@ -16,5 +16,5 @@
 	"gridUnits": "m",
 	"manifest": "https://raw.githubusercontent.com/Burzghash/cod/master/system.json",
 	"download": "https://github.com/Burzghash/cod/archive/master.zip",
-	"url": "https://github.com/Burzghash/cod"
+	"url": "https://github.com/naveenailawadi/cod"
 }
