@@ -69,18 +69,19 @@
 }
 
 .attribute-task {
+    font-size: 30px;
     line-height: 12px;
     display: block;
-    padding: 1px;
-    background: #f0f0e0;
-    border: 1px solid #7a7971;
-    width: 60px;
+    padding: 10px;
+    width: 750px;
+    text-align: center;
 }
 
 .attribute_column1 {
     display: block;
     float: left;
     width: 8%;
+    margin-left: 1%;
 }
 
 .attribute_column2,
@@ -90,6 +91,12 @@
     float: left;
     width: 30%;
     margin-left: 1%;
+    margin-top: 4%;
+    border-style: groove;
+}
+
+.attribute-section {
+    background-color: #e6e6e6;
 }
 
 .cod.sheet .main .attribute-section .attribute-categories {
@@ -135,11 +142,11 @@
 
 .display-skills {
     background: #ffffff70;
+    color: #000000;
 }
 
 .display-skills h3 {
-    background: #666;
-    color: #fff;
+    background: #e6e6e6;
     text-align: center;
 }
 
